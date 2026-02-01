@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection, render } from 'astro:content';
+
+const getSlug = (id: string) => id.replace(/\.md$/, '');
+
+export async function getStaticPaths() {
+  const tools = await getCollection('tools');
+  return tools.map(tool => ({
+    params: { slug: tool.id.replace(/\.md$/, '') },
+    props: { tool },
+  }));
+}
+
+const { tool } = Astro.props;
+const { Content } = await render(tool);
+
+const categories = await getCollection('categories');
+const category = categories.find(c => getSlug(c.id) === tool.data.category);
+
+const allTools = await getCollection('tools');
+const alternatives = tool.data.alternatives
+  ?.map(alt => allTools.find(t => getSlug(t.id) === alt))
+  .filter(Boolean) || [];
+
+const sameCategoryTools = allTools
+  .filter(t => t.data.category === tool.data.category && t.id !== tool.id)
+  .slice(0, 3);
+---
+
+<BaseLayout title={tool.data.name} description={tool.data.description}>
+  <article class="py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <!-- Breadcrumb -->
+      <nav class="mb-6 text-sm">
+        <a href="/tools" class="text-gray-500 hover:text-gray-700">Tools</a>
+        <span class="mx-2 text-gray-400">/</span>
+        {category && (
+          <>
+            <a href={`/categories/${getSlug(category.id)}`} class="text-gray-500 hover:text-gray-700">
+              {category.data.name}
+            </a>
+            <span class="mx-2 text-gray-400">/</span>
+          </>
+        )}
+        <span class="text-gray-900">{tool.data.name}</span>
+      </nav>
+
+      <!-- Header -->
+      <header class="mb-8">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <h1 class="text-3xl font-bold text-gray-900 mb-2">{tool.data.name}</h1>
+            <p class="text-xl text-gray-600">{tool.data.description}</p>
+          </div>
+          {tool.data.featured && (
+            <span class="featured-badge">Featured</span>
+          )}
+        </div>
+        <div class="flex flex-wrap gap-4 items-center">
+          <a
+            href={tool.data.website}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            Visit Website →
+          </a>
+          <span class="text-gray-600">{tool.data.pricing}</span>
+        </div>
+      </header>
+
+      <!-- Main content -->
+      <div class="prose prose-gray max-w-none mb-12">
+        <Content />
+      </div>
+
+      <!-- Pros and Cons -->
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <div class="bg-green-50 rounded-xl p-6">
+          <h2 class="font-semibold text-green-800 mb-4">Pros</h2>
+          <ul class="space-y-2">
+            {tool.data.pros.map(pro => (
+              <li class="flex items-start gap-2 text-green-700">
+                <span class="text-green-500 mt-0.5">✓</span>
+                {pro}
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-6">
+          <h2 class="font-semibold text-red-800 mb-4">Cons</h2>
+          <ul class="space-y-2">
+            {tool.data.cons.map(con => (
+              <li class="flex items-start gap-2 text-red-700">
+                <span class="text-red-500 mt-0.5">✗</span>
+                {con}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Alternatives -->
+      {alternatives.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">Alternatives</h2>
+          <div class="grid md:grid-cols-3 gap-4">
+            {alternatives.map(alt => (
+              <a href={`/tools/${getSlug(alt.id)}`} class="card group">
+                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 mb-1">
+                  {alt.data.name}
+                </h3>
+                <p class="text-gray-600 text-sm">{alt.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- More in category -->
+      {sameCategoryTools.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">
+            More in {category?.data.name}
+          </h2>
+          <div class="grid md:grid-cols-3 gap-4">
+            {sameCategoryTools.map(t => (
+              <a href={`/tools/${getSlug(t.id)}`} class="card group">
+                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 mb-1">
+                  {t.data.name}
+                </h3>
+                <p class="text-gray-600 text-sm">{t.data.description}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <!-- Meta -->
+      <footer class="text-sm text-gray-500 border-t border-gray-200 pt-6">
+        <p>Last verified: {tool.data.lastVerified}</p>
+      </footer>
+    </div>
+  </article>
+</BaseLayout>

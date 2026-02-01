@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Stripe payment link - replace with actual link after setup
+const stripeLink = import.meta.env.PUBLIC_STRIPE_FEATURED_LINK || '#';
+---
+
+<BaseLayout title="Advertise" description="Get your tool featured in the Solo Founder Tools directory">
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="text-center mb-12">
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">Get Featured</h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Reach thousands of solo founders actively looking for the right tools for their business.
+        </p>
+      </div>
+
+      <!-- Pricing -->
+      <div class="max-w-md mx-auto mb-12">
+        <div class="card border-2 border-primary-500 relative">
+          <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+            <span class="bg-primary-500 text-white text-sm font-medium px-3 py-1 rounded-full">
+              Most Popular
+            </span>
+          </div>
+          <div class="text-center pt-4">
+            <h2 class="text-xl font-semibold text-gray-900 mb-2">Featured Listing</h2>
+            <div class="mb-4">
+              <span class="text-4xl font-bold text-gray-900">€39</span>
+              <span class="text-gray-600">/month</span>
+            </div>
+            <ul class="text-left space-y-3 mb-6">
+              <li class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>Appear first in your category</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>"Featured" badge on your listing</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>Highlighted on the homepage</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>Priority in search results</span>
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="text-green-500">✓</span>
+                <span>Cancel anytime</span>
+              </li>
+            </ul>
+            <a href={stripeLink} class="btn-primary w-full justify-center">
+              Get Featured →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="grid md:grid-cols-3 gap-6 mb-12">
+        <div class="text-center p-6 bg-gray-50 rounded-xl">
+          <div class="text-3xl font-bold text-gray-900 mb-1">100+</div>
+          <div class="text-gray-600">Tools Listed</div>
+        </div>
+        <div class="text-center p-6 bg-gray-50 rounded-xl">
+          <div class="text-3xl font-bold text-gray-900 mb-1">1,000+</div>
+          <div class="text-gray-600">Monthly Visitors</div>
+        </div>
+        <div class="text-center p-6 bg-gray-50 rounded-xl">
+          <div class="text-3xl font-bold text-gray-900 mb-1">Solo</div>
+          <div class="text-gray-600">Founder Audience</div>
+        </div>
+      </div>
+
+      <!-- FAQ -->
+      <div class="max-w-2xl mx-auto">
+        <h2 class="text-xl font-semibold text-gray-900 mb-6 text-center">Frequently Asked Questions</h2>
+        <div class="space-y-4">
+          <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="font-medium text-gray-900 mb-2">How does featured placement work?</h3>
+            <p class="text-gray-600 text-sm">
+              Featured tools appear at the top of their category page, on the homepage, and get a "Featured" badge. They also rank higher in search results.
+            </p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="font-medium text-gray-900 mb-2">My tool isn't listed yet. Can I still get featured?</h3>
+            <p class="text-gray-600 text-sm">
+              Yes! <a href="/submit" class="text-primary-600 hover:text-primary-700">Submit your tool</a> first, and once it's added, you can purchase a featured listing.
+            </p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="font-medium text-gray-900 mb-2">Can I cancel anytime?</h3>
+            <p class="text-gray-600 text-sm">
+              Yes, you can cancel your subscription at any time. Your featured status will remain until the end of your billing period.
+            </p>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-4">
+            <h3 class="font-medium text-gray-900 mb-2">Do you edit the pros/cons for featured tools?</h3>
+            <p class="text-gray-600 text-sm">
+              No. We maintain honest, balanced reviews for all tools regardless of featured status. Featured placement is about visibility, not review content.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact -->
+      <div class="text-center mt-12 p-8 bg-primary-50 rounded-xl">
+        <h2 class="text-xl font-semibold text-gray-900 mb-2">Questions?</h2>
+        <p class="text-gray-600 mb-4">
+          Want to discuss custom placement or have questions about advertising?
+        </p>
+        <a href="/submit" class="btn-secondary">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

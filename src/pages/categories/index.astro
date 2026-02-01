@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const categories = await getCollection('categories');
+const tools = await getCollection('tools');
+
+const sortedCategories = categories.sort((a, b) => a.data.order - b.data.order);
+
+// Helper to get clean slug from id
+const getSlug = (id: string) => id.replace(/\.md$/, '');
+---
+
+<BaseLayout title="Categories" description="Browse tools by category">
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Browse by Category</h1>
+      <p class="text-gray-600 mb-8">Find the right tools for every part of your business</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sortedCategories.map(category => {
+          const slug = getSlug(category.id);
+          const categoryTools = tools.filter(t => t.data.category === slug);
+          return (
+            <a href={`/categories/${slug}`} class="card group">
+              <div class="text-4xl mb-3">{category.data.icon}</div>
+              <h2 class="text-xl font-semibold text-gray-900 group-hover:text-primary-600 mb-2">
+                {category.data.name}
+              </h2>
+              <p class="text-gray-600 text-sm mb-3">{category.data.description}</p>
+              <p class="text-primary-600 text-sm font-medium">
+                {categoryTools.length} tools →
+              </p>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</BaseLayout>

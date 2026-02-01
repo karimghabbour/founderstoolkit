@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const tools = await getCollection('tools');
+const categories = await getCollection('categories');
+
+const getSlug = (id: string) => id.replace(/\.md$/, '');
+
+// Sort: featured first, then alphabetically
+const sortedTools = tools.sort((a, b) => {
+  if (a.data.featured && !b.data.featured) return -1;
+  if (!a.data.featured && b.data.featured) return 1;
+  return a.data.name.localeCompare(b.data.name);
+});
+---
+
+<BaseLayout title="All Tools" description="Browse all tools for solo founders">
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">All Tools</h1>
+      <p class="text-gray-600 mb-8">{tools.length} tools to help you build and grow</p>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sortedTools.map(tool => {
+          const category = categories.find(c => getSlug(c.id) === tool.data.category);
+          return (
+            <a href={`/tools/${getSlug(tool.id)}`} class="card group">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600">
+                  {tool.data.name}
+                </h3>
+                {tool.data.featured && <span class="featured-badge">Featured</span>}
+              </div>
+              {category && (
+                <p class="text-xs text-gray-500 mb-2">{category.data.icon} {category.data.name}</p>
+              )}
+              <p class="text-gray-600 text-sm mb-3">{tool.data.description}</p>
+              <p class="text-gray-500 text-xs">{tool.data.pricing}</p>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
