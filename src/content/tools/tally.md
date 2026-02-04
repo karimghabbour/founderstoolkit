@@ -16,6 +16,8 @@ alternatives:
   - "typeform"
   - "formspark"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-02"
+outreachEmail: "hello@tally.so"
 ---
 
 Tally is a form builder that feels like writing a document. Create forms quickly with unlimited responses on the free tier.

@@ -16,6 +16,8 @@ alternatives:
   - "intercom"
   - "helpscout"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-02"
+outreachEmail: "contact@crisp.chat"
 ---
 
 Crisp combines live chat, email, and a knowledge base in one platform. The free tier is generous enough for small businesses.

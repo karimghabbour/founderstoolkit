@@ -16,6 +16,8 @@ alternatives:
   - "stripe"
   - "paddle"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-03"
+outreachEmail: "hello@lemonsqueezy.com"
 ---
 
 LemonSqueezy is a merchant of record, meaning they handle all tax compliance, VAT, and sales tax for you. This makes selling internationally much simpler.

@@ -16,6 +16,8 @@ alternatives:
   - "lemonsqueezy"
   - "stripe"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-03"
+outreachEmail: "sahil@gumroad.com"
 ---
 
 Gumroad is the simplest way to sell digital products. Create a product, set a price, and start selling in minutes. They handle payments, delivery, and basic analytics.

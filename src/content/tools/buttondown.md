@@ -16,6 +16,8 @@ alternatives:
   - "convertkit"
   - "substack"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-02"
+outreachEmail: "support@buttondown.com"
 ---
 
 Buttondown is a deliberately minimal newsletter tool. Write in markdown, send to subscribers. No complex features you don't need.

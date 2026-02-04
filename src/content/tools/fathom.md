@@ -16,6 +16,8 @@ alternatives:
   - "plausible"
   - "umami"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-02"
+outreachEmail: "jack@usefathom.com"
 ---
 
 Fathom provides privacy-respecting analytics with a focus on simplicity. One dashboard, key metrics, no complexity.

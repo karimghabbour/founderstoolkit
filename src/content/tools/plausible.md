@@ -17,6 +17,8 @@ alternatives:
   - "fathom"
   - "umami"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-03"
+outreachEmail: "hello@plausible.io"
 ---
 
 Plausible is a lightweight and privacy-friendly alternative to Google Analytics. It doesn't use cookies and is fully compliant with GDPR, CCPA, and PECR.
