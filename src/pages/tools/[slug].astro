@@ -26,6 +26,9 @@ const alternatives = tool.data.alternatives
 const sameCategoryTools = allTools
   .filter(t => t.data.category === tool.data.category && t.id !== tool.id)
   .slice(0, 3);
+
+const visitUrl = tool.data.affiliateUrl || tool.data.website;
+const isAffiliate = !!tool.data.affiliateUrl;
 ---
 
 <BaseLayout title={tool.data.name} description={tool.data.description}>
@@ -59,14 +62,17 @@ const sameCategoryTools = allTools
         </div>
         <div class="flex flex-wrap gap-4 items-center">
           <a
-            href={tool.data.website}
+            href={visitUrl}
             target="_blank"
-            rel="noopener noreferrer"
+            rel={isAffiliate ? "noopener noreferrer nofollow sponsored" : "noopener noreferrer"}
             class="btn-primary"
           >
             Visit Website →
           </a>
           <span class="text-gray-600">{tool.data.pricing}</span>
+          {isAffiliate && (
+            <span class="text-xs text-gray-400">We may earn a commission if you sign up through our link.</span>
+          )}
         </div>
       </header>
 

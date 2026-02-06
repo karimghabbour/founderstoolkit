@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import { getCollection, render } from 'astro:content';
 
 const getSlug = (id: string) => id.replace(/\.md$/, '');
@@ -35,13 +36,95 @@ const { Content: Content2 } = await render(tool2);
 const categories = await getCollection('categories');
 const category = categories.find(c => getSlug(c.id) === tool1.data.category);
 
+const allTools = await getCollection('tools');
+const sameCategoryTools = allTools.filter(t => t.data.category === tool1.data.category);
+
+const visitUrl1 = tool1.data.affiliateUrl || tool1.data.website;
+const visitUrl2 = tool2.data.affiliateUrl || tool2.data.website;
+const isAffiliate1 = !!tool1.data.affiliateUrl;
+const isAffiliate2 = !!tool2.data.affiliateUrl;
+const hasAnyAffiliate = isAffiliate1 || isAffiliate2;
+
+// Last updated date (latest lastVerified of the two tools)
+const lastUpdated = [tool1.data.lastVerified, tool2.data.lastVerified].sort().pop();
+
+// Generate related comparisons (up to 6 other pairs in the same category)
+const relatedComparisons: Array<{ slug: string; name: string }> = [];
+const tool1Slug = getSlug(tool1.id);
+const tool2Slug = getSlug(tool2.id);
+
+for (const other of sameCategoryTools) {
+  if (relatedComparisons.length >= 6) break;
+  const otherSlug = getSlug(other.id);
+  if (otherSlug === tool1Slug || otherSlug === tool2Slug) continue;
+
+  // Pair with tool1
+  if (relatedComparisons.length < 6) {
+    const [a, b] = [tool1Slug, otherSlug].sort();
+    relatedComparisons.push({
+      slug: `${a}-vs-${b}`,
+      name: `${a === tool1Slug ? tool1.data.name : other.data.name} vs ${a === tool1Slug ? other.data.name : tool1.data.name}`,
+    });
+  }
+
+  // Pair with tool2
+  if (relatedComparisons.length < 6) {
+    const [a, b] = [tool2Slug, otherSlug].sort();
+    relatedComparisons.push({
+      slug: `${a}-vs-${b}`,
+      name: `${a === tool2Slug ? tool2.data.name : other.data.name} vs ${a === tool2Slug ? other.data.name : tool2.data.name}`,
+    });
+  }
+}
+
 const title = `${tool1.data.name} vs ${tool2.data.name}`;
 const description = `Compare ${tool1.data.name} and ${tool2.data.name}. See features, pricing, pros and cons side by side.`;
+
+// JSON-LD structured data
+const jsonLd = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": tool1.data.name,
+    "description": tool1.data.description,
+    "url": tool1.data.website,
+    "applicationCategory": "BusinessApplication",
+    "offers": { "@type": "Offer", "description": tool1.data.pricing },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": tool2.data.name,
+    "description": tool2.data.description,
+    "url": tool2.data.website,
+    "applicationCategory": "BusinessApplication",
+    "offers": { "@type": "Offer", "description": tool2.data.pricing },
+  },
+]);
 ---
 
 <BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
   <article class="py-12">
     <div class="max-w-6xl mx-auto px-4">
+      <!-- Breadcrumb -->
+      <nav class="mb-8 text-sm">
+        <a href="/categories" class="text-gray-500 hover:text-gray-700">Categories</a>
+        <span class="mx-2 text-gray-400">/</span>
+        {category && (
+          <>
+            <a href={`/categories/${getSlug(category.id)}`} class="text-gray-500 hover:text-gray-700">
+              {category.data.name}
+            </a>
+            <span class="mx-2 text-gray-400">/</span>
+          </>
+        )}
+        <span class="text-gray-900">Compare</span>
+      </nav>
+
       <!-- Header -->
       <header class="text-center mb-12">
         <p class="text-sm text-gray-500 mb-2">
@@ -53,6 +136,7 @@ const description = `Compare ${tool1.data.name} and ${tool2.data.name}. See feat
         <p class="text-gray-600 max-w-2xl mx-auto">
           A detailed comparison to help you choose the right tool for your needs.
         </p>
+        <p class="text-xs text-gray-400 mt-2">Last updated: {lastUpdated}</p>
       </header>
 
       <!-- Quick comparison table -->
@@ -108,18 +192,50 @@ const description = `Compare ${tool1.data.name} and ${tool2.data.name}. See feat
             <tr>
               <td class="py-4 px-4 text-gray-600">Website</td>
               <td class="py-4 px-4">
-                <a href={tool1.data.website} target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-700">
+                <a href={visitUrl1} target="_blank" rel={isAffiliate1 ? "noopener nofollow sponsored" : "noopener"} class="text-primary-600 hover:text-primary-700">
                   Visit →
                 </a>
               </td>
               <td class="py-4 px-4">
-                <a href={tool2.data.website} target="_blank" rel="noopener" class="text-primary-600 hover:text-primary-700">
+                <a href={visitUrl2} target="_blank" rel={isAffiliate2 ? "noopener nofollow sponsored" : "noopener"} class="text-primary-600 hover:text-primary-700">
                   Visit →
                 </a>
               </td>
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Verdict section -->
+      <div class="grid md:grid-cols-2 gap-6 mb-12">
+        <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+          <h2 class="font-semibold text-blue-900 mb-3">Choose {tool1.data.name} if you want...</h2>
+          <ul class="space-y-2">
+            {tool1.data.pros.map(pro => (
+              <li class="flex items-start gap-2 text-blue-800 text-sm">
+                <span class="text-blue-500 mt-0.5 flex-shrink-0">→</span>
+                {pro}
+              </li>
+            ))}
+          </ul>
+          <a href={visitUrl1} target="_blank" rel={isAffiliate1 ? "noopener nofollow sponsored" : "noopener"} class="btn-primary mt-4 inline-block text-sm">
+            Try {tool1.data.name} →
+          </a>
+        </div>
+        <div class="bg-purple-50 rounded-xl p-6 border border-purple-100">
+          <h2 class="font-semibold text-purple-900 mb-3">Choose {tool2.data.name} if you want...</h2>
+          <ul class="space-y-2">
+            {tool2.data.pros.map(pro => (
+              <li class="flex items-start gap-2 text-purple-800 text-sm">
+                <span class="text-purple-500 mt-0.5 flex-shrink-0">→</span>
+                {pro}
+              </li>
+            ))}
+          </ul>
+          <a href={visitUrl2} target="_blank" rel={isAffiliate2 ? "noopener nofollow sponsored" : "noopener"} class="btn-primary mt-4 inline-block text-sm">
+            Try {tool2.data.name} →
+          </a>
+        </div>
       </div>
 
       <!-- Detailed descriptions -->
@@ -146,6 +262,27 @@ const description = `Compare ${tool1.data.name} and ${tool2.data.name}. See feat
         </div>
       </div>
 
+      <!-- Newsletter CTA -->
+      <div class="mb-12">
+        <NewsletterSignup />
+      </div>
+
+      <!-- Related Comparisons -->
+      {relatedComparisons.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-xl font-semibold text-gray-900 mb-4">Related Comparisons</h2>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
+            {relatedComparisons.map(comp => (
+              <a href={`/compare/${comp.slug}`} class="card group text-center py-3">
+                <span class="font-medium text-gray-900 group-hover:text-primary-600 text-sm">
+                  {comp.name}
+                </span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
       <!-- CTA -->
       <div class="text-center bg-primary-50 rounded-xl p-8">
         <h2 class="text-xl font-semibold text-gray-900 mb-2">Still deciding?</h2>
@@ -161,6 +298,14 @@ const description = `Compare ${tool1.data.name} and ${tool2.data.name}. See feat
           </a>
         </div>
       </div>
+
+      <!-- Affiliate disclosure -->
+      {hasAnyAffiliate && (
+        <p class="text-xs text-gray-400 mt-6 text-center">
+          Some links on this page are affiliate links. We may earn a commission at no extra cost to you.
+          <a href="/about#affiliate-disclosure" class="underline hover:text-gray-600">Learn more</a>.
+        </p>
+      )}
     </div>
   </article>
 </BaseLayout>

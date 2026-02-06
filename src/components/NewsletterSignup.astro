@@ -1,0 +1,50 @@
+---
+interface Props {
+  variant?: 'section' | 'inline';
+}
+const { variant = 'section' } = Astro.props;
+
+const beehiivFormId = 'cffabca6-8ffb-4eb4-a3e5-6713b37e7b86';
+const iframeSrc = `https://subscribe-forms.beehiiv.com/${beehiivFormId}`;
+---
+
+{variant === 'section' ? (
+  <section class="bg-gradient-to-br from-primary-50 to-white py-16 px-4 sm:px-6 lg:px-8 rounded-2xl">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
+        Stay ahead of the curve
+      </h2>
+      <p class="mt-4 text-lg text-gray-600">
+        Get weekly picks of the best tools for solo founders, plus tips on building with AI.
+      </p>
+      <div class="mt-8 flex justify-center">
+        <iframe
+          src={iframeSrc}
+          class="beehiiv-embed"
+          frameborder="0"
+          scrolling="no"
+          style="width: 100%; max-width: 480px; height: 160px; border-radius: 8px; background-color: transparent;"
+        ></iframe>
+      </div>
+      <p class="mt-4 text-sm text-gray-500">
+        Join solo founders getting weekly tool recommendations. No spam, unsubscribe anytime.
+      </p>
+    </div>
+  </section>
+) : (
+  <div>
+    <p class="text-sm font-semibold text-gray-200 mb-3">
+      Get our weekly tools newsletter
+    </p>
+    <iframe
+      src={iframeSrc}
+      class="beehiiv-embed"
+      frameborder="0"
+      scrolling="no"
+      style="width: 100%; max-width: 400px; height: 120px; background-color: transparent;"
+    ></iframe>
+    <p class="mt-2 text-xs text-gray-400">
+      No spam, unsubscribe anytime.
+    </p>
+  </div>
+)}

@@ -6,6 +6,31 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added — Revenue Pivot
+- `affiliateUrl` optional field in tool schema for affiliate tracking links
+- Affiliate link support on tool pages and comparison pages (with `rel="nofollow sponsored"`)
+- Affiliate disclosure text on pages with affiliate links
+- Affiliate disclosure section on About page (FTC compliance)
+- "AI & Coding Tools" category with 20 tool listings (Cursor, Windsurf, Claude Code, GitHub Copilot, Lovable, Bolt.new, Replit Agent, v0, Devin, Cody, Tabnine, Cline, Aider, Continue, Base44, Tempo, Trae, Pieces, Supermaven, Codeium)
+- `<head>` slot in BaseLayout for structured data injection
+- JSON-LD SoftwareApplication schema on comparison pages
+- Breadcrumb navigation on comparison pages
+- "Choose X if..." verdict section on comparison pages
+- "Last updated" date on comparison pages
+- Related comparisons section (6 links to same-category pairs)
+- NewsletterSignup component (section and inline variants, Beehiiv integration)
+- Newsletter signup in site footer (global), homepage, and comparison pages
+- Stack Builder interactive page — pick business type, swap tools, see monthly cost, share via URL
+- Stack Builder link in main navigation and homepage CTA
+
+### Changed
+- Footer redesigned with dark background, newsletter signup, and updated links
+- Navigation updated with Stack Builder link
+- Homepage now includes newsletter section and Stack Builder CTA
+- Comparison pages significantly enhanced for SEO and conversion
+
+### Previous
+
 ### Added
 - Project initialized with PSB workflow
 - brainstorm.md — project goals and milestones

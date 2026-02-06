@@ -6,6 +6,7 @@ const tools = defineCollection({
     name: z.string(),
     category: z.string(),
     website: z.string().url(),
+    affiliateUrl: z.string().url().optional(),
     pricing: z.string(),
     featured: z.boolean().default(false),
     featuredUntil: z.string().nullable().optional(),

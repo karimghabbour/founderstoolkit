@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Search from '../components/Search.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
 import { getCollection } from 'astro:content';
 
 const tools = await getCollection('tools');
@@ -105,6 +106,28 @@ const sortedCategories = categories.sort((a, b) => a.data.order - b.data.order);
       <div class="text-center mt-8">
         <a href="/tools" class="btn-secondary">View All Tools</a>
       </div>
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="py-12">
+    <div class="max-w-4xl mx-auto px-4">
+      <NewsletterSignup />
+    </div>
+  </section>
+
+  <!-- Stack Builder CTA -->
+  <section class="py-12 bg-gray-50">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-bold text-gray-900 mb-3">
+        Not sure where to start?
+      </h2>
+      <p class="text-gray-600 mb-6 max-w-xl mx-auto">
+        Pick your business type and get a complete tool stack recommendation with estimated monthly costs.
+      </p>
+      <a href="/stack-builder" class="btn-primary">
+        Try the Stack Builder →
+      </a>
     </div>
   </section>
 
