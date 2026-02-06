@@ -2,17 +2,18 @@
 name: "Cline"
 category: "ai-coding"
 website: "https://cline.bot"
-pricing: "Free (open source), pay for API usage"
+pricing: "Free (open source), you pay for the AI API you choose"
 featured: false
 featuredUntil: null
-description: "Open-source autonomous coding agent for VS Code that can use any LLM provider"
+description: "Open-source VS Code extension that acts as an autonomous coding agent — bring your own AI model"
 pros:
-  - "Free and open source"
-  - "Bring your own API key — works with any LLM"
-  - "Agentic mode can browse, run commands, edit files"
+  - "Use any AI model (Claude, GPT-4, Gemini, local models) — you control the cost"
+  - "Can browse the web, run terminal commands, create files, and edit code autonomously"
+  - "Free and open source — no subscription, just API costs"
 cons:
-  - "Requires managing your own API costs"
-  - "Setup more complex than commercial alternatives"
+  - "API costs are on you and can surprise you if you are not watching"
+  - "Setup takes more work than commercial alternatives — API keys, model selection, configuration"
+  - "Quality depends entirely on which AI model you pick"
 alternatives:
   - "cursor"
   - "aider"
@@ -20,6 +21,6 @@ alternatives:
 lastVerified: "2026-02-06"
 ---
 
-Cline is an open-source autonomous coding agent that runs as a VS Code extension. It supports multiple LLM providers (Anthropic, OpenAI, etc.) and can autonomously create files, run terminal commands, and browse the web.
+Cline is a VS Code extension that turns your editor into an AI coding agent. Pick your AI model (Anthropic Claude, OpenAI, local models through Ollama), give it a task, and it will plan, write code, run commands, and iterate. It asks for permission before each action, so you stay in control.
 
-Ideal for solo founders who want maximum flexibility and control over their AI coding setup. You choose your model and only pay for API usage.
+The big advantage over Cursor is flexibility and transparency. You see exactly what you are paying (API costs per request), you can switch models anytime, and there is no subscription. The big disadvantage is that you have to manage all of that yourself. If you want something that just works out of the box, Cursor is easier. If you want to pick your own model and only pay for what you use, Cline is the way.

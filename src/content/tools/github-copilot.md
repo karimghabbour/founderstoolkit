@@ -5,14 +5,15 @@ website: "https://github.com/features/copilot"
 pricing: "Free tier, Pro from $10/mo"
 featured: false
 featuredUntil: null
-description: "AI pair programmer from GitHub that suggests code completions and answers questions in your editor"
+description: "GitHub's AI coding assistant — inline suggestions, chat, and agent mode right in your editor"
 pros:
-  - "Tight GitHub integration for repos and PRs"
-  - "Works across VS Code, JetBrains, Neovim, and more"
-  - "Affordable pricing with free tier for open source"
+  - "Works everywhere — VS Code, JetBrains, Neovim, Xcode, even the CLI"
+  - "Free tier is enough to see if AI coding helps your workflow"
+  - "$10/mo Pro is the cheapest paid option from a major player"
 cons:
-  - "Suggestions can be generic without deep context"
-  - "Limited agentic capabilities compared to newer tools"
+  - "Suggestions can be generic — less context-aware than Cursor or Cody"
+  - "Agent mode is newer and still catching up to Cursor and Cline"
+  - "Free tier limits you to 2,000 completions/month"
 alternatives:
   - "cursor"
   - "cody"
@@ -20,6 +21,6 @@ alternatives:
 lastVerified: "2026-02-06"
 ---
 
-GitHub Copilot is one of the most widely adopted AI coding assistants, offering inline code suggestions, chat, and now agent mode for multi-step tasks. It integrates directly with popular editors.
+Copilot is the safe default. It works in almost every editor, the price is right, and if you already use GitHub for your repos, it plugs in without any extra setup. The inline suggestions are good for everyday coding — writing boilerplate, completing function signatures, filling in repetitive patterns.
 
-A solid default choice for solo founders already in the GitHub ecosystem. The free tier covers basic completions, and the Pro plan adds unlimited suggestions and chat.
+Where it falls short compared to newer tools is deep project understanding. Cursor and Cline can reason about your entire codebase; Copilot's context window is more limited. The newer agent mode is improving this, but it is still playing catch-up. If you just want solid autocomplete at a low price, Copilot is hard to beat. If you want an AI that can refactor across 20 files, look elsewhere.

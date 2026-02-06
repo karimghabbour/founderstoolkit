@@ -3,16 +3,17 @@ name: "Plausible"
 slug: "plausible"
 category: "analytics"
 website: "https://plausible.io"
-pricing: "From €9/mo, or self-hosted free"
+pricing: "From $9/mo, or self-hosted free"
 featured: false
-description: "Privacy-friendly Google Analytics alternative"
+description: "Lightweight, privacy-friendly Google Analytics alternative that does not need cookie consent"
 pros:
-  - "No cookies, GDPR compliant by default"
-  - "Lightweight script (< 1KB)"
-  - "Clean, simple dashboard"
+  - "Script is under 1KB — does not slow your site down at all"
+  - "No cookies means no GDPR consent banner needed"
+  - "Self-host for free if you have the technical skills"
 cons:
-  - "Fewer features than Google Analytics"
-  - "No free hosted tier"
+  - "No free hosted plan — $9/month minimum"
+  - "No funnels, cohorts, or advanced analysis"
+  - "Self-hosting requires server maintenance"
 alternatives:
   - "fathom"
   - "umami"
@@ -21,6 +22,6 @@ lastOutreach: "2026-02-03"
 outreachEmail: "hello@plausible.io"
 ---
 
-Plausible is a lightweight and privacy-friendly alternative to Google Analytics. It doesn't use cookies and is fully compliant with GDPR, CCPA, and PECR.
+Plausible gives you clean website analytics in a script that weighs less than 1KB. No cookies, no consent banners, no complex setup. It is fully GDPR, CCPA, and PECR compliant out of the box because it does not collect personal data.
 
-For solo founders who care about user privacy, Plausible is an excellent choice. The dashboard gives you all the essential metrics without the complexity of GA4. You can self-host it for free or use their hosted service starting at €9/month.
+The dashboard shows visitors, page views, referrers, and top pages — the metrics you actually check. If you need user-level tracking, funnels, or A/B testing, this is not the tool. If you want to know "is my content working?" without the guilt of tracking your visitors, Plausible is the cleanest option. Self-hosting is free if you are comfortable managing a server; the hosted service starts at $9/month.

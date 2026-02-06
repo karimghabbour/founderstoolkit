@@ -5,14 +5,15 @@ website: "https://bolt.new"
 pricing: "Free tier, Pro from $20/mo"
 featured: false
 featuredUntil: null
-description: "AI-powered full-stack web app builder that runs entirely in the browser with instant previews"
+description: "Build full-stack web apps in your browser by describing what you want — no local setup needed"
 pros:
-  - "No local setup needed — runs in browser"
-  - "Instant previews as you iterate"
-  - "Supports multiple frameworks (React, Next.js, etc.)"
+  - "Zero setup — open a browser tab and start building"
+  - "Live preview updates as the AI writes code"
+  - "Supports React, Next.js, Astro, and more out of the box"
 cons:
-  - "Browser-based limits available computing power"
-  - "Token limits on free tier can be restrictive"
+  - "Free tier token limits mean you hit walls mid-project"
+  - "Browser-based means no access to native tools, local databases, or heavy computation"
+  - "Generated code can be messy and hard to maintain long-term"
 alternatives:
   - "lovable"
   - "replit-agent"
@@ -20,6 +21,6 @@ alternatives:
 lastVerified: "2026-02-06"
 ---
 
-Bolt.new by StackBlitz lets you prompt, run, edit, and deploy full-stack web apps directly in the browser. It uses WebContainers to run Node.js natively without a server.
+Bolt.new runs a full Node.js environment inside your browser using WebContainers. You describe what you want to build, it writes the code, and you see a live preview instantly. No installing Node, no terminal, no VS Code — just a browser tab.
 
-Great for solo founders who want to prototype and deploy quickly without setting up a development environment. The browser-based approach means you can build from any device.
+This is genuinely useful for prototyping. You can go from "I need a landing page with a waitlist form" to a working app in minutes. But the limitations show up when you try to build something complex — the free tier token limits are tight, and the generated code sometimes needs cleanup before it is production-ready. Think of it as a rapid prototyping tool, not a replacement for a real development setup.

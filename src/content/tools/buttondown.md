@@ -4,14 +4,15 @@ category: "email"
 website: "https://buttondown.email"
 pricing: "Free up to 100 subs, from $9/mo"
 featured: false
-description: "Simple, minimalist newsletter tool for writers"
+description: "Minimal newsletter tool for people who just want to write in markdown and hit send"
 pros:
-  - "Clean markdown-based editor"
-  - "Affordable pricing"
-  - "No bloat"
+  - "Markdown-based editor — no dragging boxes around"
+  - "$9/month for up to 1,000 subscribers is the cheapest paid newsletter tool"
+  - "No bloated features — it does newsletters and that is it"
 cons:
-  - "Basic automation features"
-  - "Limited templates"
+  - "Very basic automation — no complex email sequences"
+  - "Only 100 subscribers on free tier; Substack and Beehiiv offer more"
+  - "Minimal templates — your emails look plain (which some people prefer)"
 alternatives:
   - "convertkit"
   - "substack"
@@ -20,6 +21,6 @@ lastOutreach: "2026-02-02"
 outreachEmail: "support@buttondown.com"
 ---
 
-Buttondown is a deliberately minimal newsletter tool. Write in markdown, send to subscribers. No complex features you don't need.
+Buttondown is the newsletter tool for people who think ConvertKit has too many features. Write in markdown, send to your list, done. No drag-and-drop editors, no complex automation flows, no features you will never use.
 
-Perfect for solo founders who want a simple, affordable newsletter without the overhead of larger platforms.
+Built and run solo by Justin Duke. The $9/month starting price is the cheapest in the newsletter space. The tradeoff is obvious: if you want referral programs, A/B testing, or complex automation, you need a different tool. If you just want to write and send a newsletter without the tooling getting in the way, Buttondown is refreshingly simple.

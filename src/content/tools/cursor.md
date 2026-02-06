@@ -2,17 +2,18 @@
 name: "Cursor"
 category: "ai-coding"
 website: "https://cursor.com"
-pricing: "Free tier, Pro from $20/mo"
+pricing: "Free tier, Pro from $20/mo (credit-based)"
 featured: false
 featuredUntil: null
-description: "AI-first code editor built on VS Code with inline chat, autocomplete, and codebase-aware AI"
+description: "AI code editor (VS Code fork) that lets you talk to your codebase, autocomplete across files, and refactor with a prompt"
 pros:
-  - "Deep codebase understanding for accurate suggestions"
-  - "Familiar VS Code interface and extension support"
-  - "Tab autocomplete feels natural and fast"
+  - "Feels like VS Code — your extensions and shortcuts just work"
+  - "Tab completions predict multi-line changes, not just single words"
+  - "Can reference your entire codebase when answering questions"
 cons:
-  - "Pro plan required for heavy usage"
-  - "Can suggest incorrect code for niche frameworks"
+  - "Free tier runs out fast — expect to hit the Pro paywall within a week of real use"
+  - "Sometimes confidently suggests wrong code, especially for less popular libraries"
+  - "Credit-based billing (since mid-2025) makes costs harder to predict"
 alternatives:
   - "windsurf"
   - "github-copilot"
@@ -20,6 +21,6 @@ alternatives:
 lastVerified: "2026-02-06"
 ---
 
-Cursor is an AI-powered code editor forked from VS Code that integrates AI deeply into the editing experience. It offers inline chat, multi-file editing, and codebase-wide context for suggestions.
+If you already use VS Code, Cursor is the shortest path to having AI actually understand your project. It is not just autocomplete — you can highlight code and ask "why is this breaking?" or tell it "add error handling to all API routes" and watch it edit multiple files.
 
-Ideal for solo founders who want AI assistance without leaving their editor. The free tier includes limited AI completions, while Pro unlocks unlimited fast completions and premium models.
+The tab completions are the killer feature. They predict what you are about to type based on what you just did, and they are eerily good at continuing patterns. The free Hobby tier gives you a taste, but you will burn through the 50 premium requests quickly. Pro at $20/month is where most solo devs land. Since mid-2025 they switched to credit-based billing, so keep an eye on your usage if you are doing heavy agent work.

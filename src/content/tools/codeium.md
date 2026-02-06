@@ -5,14 +5,15 @@ website: "https://codeium.com"
 pricing: "Free for individuals"
 featured: false
 featuredUntil: null
-description: "Free AI code completion and chat tool supporting 70+ programming languages"
+description: "Free AI code completion that works in 40+ editors — the same company behind Windsurf IDE"
 pros:
-  - "Free for individual developers"
-  - "Supports 70+ languages and 40+ IDEs"
-  - "Fast autocomplete with good accuracy"
+  - "Actually free for individual developers — not a trial, not freemium"
+  - "Works in 40+ IDEs including VS Code, JetBrains, Vim, and Emacs"
+  - "Supports 70+ programming languages"
 cons:
-  - "Advanced features moved to Windsurf IDE"
-  - "Less context-aware than premium competitors"
+  - "Advanced features (agent mode, deep context) moved to Windsurf IDE"
+  - "Autocomplete quality is solid but a step behind Cursor and Copilot"
+  - "The company's focus has shifted to Windsurf — Codeium extensions get less attention"
 alternatives:
   - "windsurf"
   - "github-copilot"
@@ -20,6 +21,6 @@ alternatives:
 lastVerified: "2026-02-06"
 ---
 
-Codeium provides free AI code completion and chat for individual developers. It supports a wide range of programming languages and integrates with most popular IDEs including VS Code, JetBrains, and Vim.
+Codeium is the best free AI autocomplete you can add to your existing editor. It works in basically everything — VS Code, JetBrains, Vim, Emacs, you name it. The completions are good, and you are not hitting a paywall after a trial period.
 
-The best option for solo founders who want free AI code completions in their existing editor. For more advanced agentic features, check out Windsurf (Codeium's full IDE).
+The catch is that Codeium the extension is now the "free tier" of Windsurf the company. The more advanced features — agent mode, multi-file editing, deep project context — have moved to the Windsurf IDE. If you just want solid autocomplete in your current editor without paying anything, Codeium is the answer. If you want more, they want you to switch to Windsurf.

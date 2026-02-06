@@ -5,14 +5,15 @@ website: "https://tempo.new"
 pricing: "Free tier, Pro from $20/mo"
 featured: false
 featuredUntil: null
-description: "AI-powered React app builder with visual editing and Figma-to-code conversion"
+description: "AI React app builder with a visual editor — import Figma designs or describe what you want"
 pros:
-  - "Visual drag-and-drop editing alongside AI"
-  - "Figma import for design-to-code workflow"
-  - "Generates clean React + Tailwind code"
+  - "Visual drag-and-drop editing alongside AI generation"
+  - "Import Figma designs and turn them into working React components"
+  - "Outputs clean React + Tailwind code you can take with you"
 cons:
-  - "React-focused — limited framework support"
-  - "Visual editor can be limiting for complex logic"
+  - "React-only — if you use Vue, Svelte, or anything else, this is not for you"
+  - "Visual editor hits limits fast when building complex application logic"
+  - "Newer tool with a smaller community and fewer resources"
 alternatives:
   - "v0"
   - "lovable"
@@ -20,6 +21,6 @@ alternatives:
 lastVerified: "2026-02-06"
 ---
 
-Tempo combines AI code generation with visual editing for building React applications. You can import Figma designs, use AI prompts, or visually edit components — then export clean React and Tailwind code.
+Tempo sits between a design tool and a code generator. You can import Figma designs, use AI prompts, or visually edit components with drag-and-drop — then export clean React and Tailwind code. It is the visual approach to AI-assisted coding.
 
-A strong choice for solo founders who think visually and want a bridge between design and code. The Figma integration is particularly useful for design-minded builders.
+If you think in terms of visual layouts rather than code, Tempo might click better than text-prompt tools like v0. The Figma import is particularly useful if you already have designs. The limitation is that it only outputs React, and the visual editor works better for UI than for business logic. Think of it as a UI building tool, not a full app builder.

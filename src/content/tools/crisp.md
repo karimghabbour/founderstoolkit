@@ -4,14 +4,15 @@ category: "support"
 website: "https://crisp.chat"
 pricing: "Free tier, Pro from $25/mo"
 featured: false
-description: "All-in-one customer messaging platform with live chat"
+description: "Live chat, shared inbox, and knowledge base in one — with a free tier that actually works"
 pros:
-  - "Generous free tier"
-  - "Clean, modern interface"
-  - "Shared inbox for teams"
+  - "Free tier includes live chat and a shared inbox for 2 operators"
+  - "Modern, clean interface that does not look like 2010 enterprise software"
+  - "Knowledge base and chatbot features on paid plans"
 cons:
-  - "Some features locked to higher tiers"
-  - "Can be slow on mobile"
+  - "Free tier is limited to 2 team members — solo founder only"
+  - "Mobile app can be slow and miss notifications"
+  - "Some features (chatbot, video calls) are locked to expensive tiers"
 alternatives:
   - "intercom"
   - "helpscout"
@@ -20,6 +21,6 @@ lastOutreach: "2026-02-02"
 outreachEmail: "contact@crisp.chat"
 ---
 
-Crisp combines live chat, email, and a knowledge base in one platform. The free tier is generous enough for small businesses.
+Crisp gives solo founders live chat, email support, and a knowledge base without paying Intercom prices. The free tier includes live chat and a shared inbox — enough to handle customer conversations professionally when you are the only person responding.
 
-Great for solo founders who want professional customer support without enterprise pricing.
+The interface is modern and does not feel like enterprise support software. On paid plans, you get chatbot automation and a knowledge base that can deflect common questions before they hit your inbox. The main gripe is the mobile app: notifications can be unreliable, which matters when you are the only person on support.

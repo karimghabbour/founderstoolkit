@@ -2,24 +2,25 @@
 name: "Supermaven"
 category: "ai-coding"
 website: "https://supermaven.com"
-pricing: "Free tier, Pro from $10/mo"
+pricing: "Being sunset — acquired by Cursor in Nov 2024"
 featured: false
 featuredUntil: null
-description: "Ultra-fast AI code completion with a 1 million token context window"
+description: "Ultra-fast AI code completion (now part of Cursor — standalone plugins still work but future is uncertain)"
 pros:
-  - "Extremely fast completions with low latency"
-  - "Massive 1M token context window"
-  - "Lightweight and doesn't slow down your editor"
+  - "Fastest completions in the market when it was independent"
+  - "1M token context window meant better suggestions on big projects"
+  - "Plugins still work in VS Code and JetBrains for now"
 cons:
-  - "Focused on completions — limited chat/agentic features"
-  - "Smaller team and community"
+  - "Acquired by Cursor in November 2024 — standalone product is winding down"
+  - "No new features or updates to the standalone plugins"
+  - "If you want what Supermaven offered, Cursor now includes its technology"
 alternatives:
+  - "cursor"
   - "github-copilot"
-  - "tabnine"
   - "cody"
 lastVerified: "2026-02-06"
 ---
 
-Supermaven delivers AI code completions with extremely low latency and a massive context window. Founded by the creator of Tabnine, it focuses on doing code completion exceptionally well rather than trying to be an all-in-one AI tool.
+Supermaven was the speed king of AI code completion — built by the creator of Tabnine, it focused on doing one thing (autocomplete) with extremely low latency and a massive context window. In November 2024, Cursor acquired Supermaven and is folding its technology into the Cursor editor.
 
-Great for solo founders who want the fastest possible code completions without the overhead of a full AI IDE. The large context window means better suggestions on bigger projects.
+The standalone VS Code and JetBrains plugins still work for now, but there are no new updates coming. If you were using Supermaven and liked it, the natural move is to Cursor, which now includes Supermaven's speed and context technology. There is no reason to start using Supermaven as a new user today.

@@ -2,17 +2,18 @@
 name: "Aider"
 category: "ai-coding"
 website: "https://aider.chat"
-pricing: "Free (open source), pay for API usage"
+pricing: "Free (open source), you pay for API usage"
 featured: false
 featuredUntil: null
-description: "Open-source AI pair programming tool that works in the terminal with any LLM"
+description: "Open-source terminal AI that edits your code and makes clean git commits automatically"
 pros:
-  - "Free and open source with active community"
-  - "Git-aware — creates commits automatically"
-  - "Supports many LLM providers and models"
+  - "Git-aware — every change is a well-described commit you can review or revert"
+  - "Works with Claude, GPT-4, Gemini, and local models"
+  - "Top scores on SWE-bench coding benchmarks"
 cons:
-  - "Terminal-only interface"
-  - "Requires managing API keys and costs"
+  - "Terminal-only — no GUI, no visual diff preview"
+  - "API costs are yours to manage and can add up with large context"
+  - "Learning curve to get the most out of it (knowing which files to add, how to prompt)"
 alternatives:
   - "claude-code"
   - "cline"
@@ -20,6 +21,6 @@ alternatives:
 lastVerified: "2026-02-06"
 ---
 
-Aider is a command-line AI pair programmer that lets you collaboratively edit code with LLMs. It understands your git repo, suggests changes, and automatically creates well-described commits.
+Aider is a terminal tool that pair-programs with you. You tell it what to change, it edits the files, and — here is the part that wins people over — it creates a clean git commit with a descriptive message. Every change is tracked, reviewable, and revertable. No other AI coding tool handles version control this naturally.
 
-Great for solo founders comfortable with the terminal who want an open-source, flexible AI coding assistant. Top-ranked on SWE-bench coding benchmarks.
+Built by Paul Gauthier, it consistently ranks at the top of SWE-bench coding benchmarks. The tradeoff is that it is terminal-only and requires you to bring your own API key. If you are already comfortable with git and the command line, aider fits into your workflow like a glove. If you want a visual editor experience, look at Cursor or Cline instead.

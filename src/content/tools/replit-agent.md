@@ -2,17 +2,18 @@
 name: "Replit Agent"
 category: "ai-coding"
 website: "https://replit.com"
-pricing: "Free tier, Replit Core from $25/mo"
+pricing: "Free trial, Core from $25/mo (plus usage credits)"
 featured: false
 featuredUntil: null
-description: "AI agent that builds and deploys full applications from natural language descriptions in the cloud"
+description: "Describe what you want, and Replit's AI builds the whole app — database, auth, deployment, all in the cloud"
 pros:
-  - "End-to-end app building and deployment"
-  - "Cloud-based with built-in hosting"
-  - "Handles databases, auth, and deployment automatically"
+  - "Truly end-to-end: goes from description to deployed app"
+  - "Built-in hosting means your app is live the moment it is built"
+  - "Handles databases, auth, and deployment so you do not have to think about infrastructure"
 cons:
-  - "Hosting tied to Replit platform"
-  - "Less control over infrastructure choices"
+  - "You are locked into Replit's hosting — migrating away later is painful"
+  - "Less control over architecture decisions and code structure"
+  - "Usage-based pricing (effort-based) means costs are unpredictable"
 alternatives:
   - "lovable"
   - "bolt-new"
@@ -20,6 +21,6 @@ alternatives:
 lastVerified: "2026-02-06"
 ---
 
-Replit Agent is an AI-powered development assistant that can build entire applications from a description. It plans the architecture, writes code, sets up databases, and deploys — all within the Replit cloud environment.
+Replit Agent is the closest thing to "describe your app and get it built." You write a description, it plans the architecture, writes the code, sets up the database, and deploys — all without leaving the browser. For non-technical founders, this is genuinely powerful.
 
-Ideal for solo founders who want a single platform for building, hosting, and iterating on their product. The cloud-first approach eliminates DevOps concerns.
+The tradeoff is control. You are building on Replit's platform, and moving your app somewhere else later is not straightforward. The new effort-based pricing means simple changes cost pennies, but complex features can add up. Best for validating ideas fast or building internal tools where long-term architecture matters less than getting something working today.
