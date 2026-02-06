@@ -5,23 +5,28 @@
 @layer base {
   body {
     @apply bg-white text-gray-900 antialiased;
+    font-feature-settings: "kern" 1, "liga" 1;
+  }
+
+  h1, h2, h3 {
+    letter-spacing: -0.025em;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center px-4 py-2 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors;
+    @apply inline-flex items-center px-5 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center px-4 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition-colors;
+    @apply inline-flex items-center px-5 py-2.5 border border-gray-300 text-gray-700 text-sm font-semibold rounded-lg hover:bg-gray-50 transition-colors;
   }
 
   .card {
-    @apply bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow;
+    @apply bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-sm transition-all;
   }
 
   .featured-badge {
-    @apply inline-flex items-center px-2 py-1 text-xs font-semibold bg-amber-100 text-amber-800 rounded-full;
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 rounded-full;
   }
 }

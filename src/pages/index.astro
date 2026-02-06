@@ -19,68 +19,36 @@ const sortedCategories = categories.sort((a, b) => a.data.order - b.data.order);
 
 <BaseLayout title="Home">
   <!-- Hero -->
-  <section class="bg-gradient-to-b from-gray-50 to-white py-16">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-        Tools for Solo Founders
+  <section class="py-20 border-b border-gray-100">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
+        Find the right tools for your solo business
       </h1>
-      <p class="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-        A curated directory of software tools for solopreneurs, indie hackers, and one-person businesses.
+      <p class="text-lg text-gray-500 mb-10 max-w-xl mx-auto">
+        {tools.length} tools across {categories.length} categories, with honest pros, cons, and pricing.
       </p>
-      <div class="flex justify-center gap-4">
-        <a href="/categories" class="btn-primary">Browse Categories</a>
-        <a href="/tools" class="btn-secondary">View All Tools</a>
+      <div class="max-w-lg mx-auto">
+        <Search />
       </div>
     </div>
   </section>
-
-  <!-- Search -->
-  <section class="py-8 border-b border-gray-100">
-    <div class="max-w-2xl mx-auto px-4">
-      <Search />
-    </div>
-  </section>
-
-  <!-- Featured Tools -->
-  {featuredTools.length > 0 && (
-    <section class="py-12">
-      <div class="max-w-6xl mx-auto px-4">
-        <h2 class="text-2xl font-bold text-gray-900 mb-6">Featured Tools</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {featuredTools.map(tool => (
-            <a href={`/tools/${getSlug(tool.id)}`} class="card group">
-              <div class="flex items-start justify-between mb-3">
-                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600">
-                  {tool.data.name}
-                </h3>
-                <span class="featured-badge">Featured</span>
-              </div>
-              <p class="text-gray-600 text-sm mb-3">{tool.data.description}</p>
-              <p class="text-gray-500 text-xs">{tool.data.pricing}</p>
-            </a>
-          ))}
-        </div>
-      </div>
-    </section>
-  )}
 
   <!-- Categories -->
-  <section class="py-12 bg-gray-50">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Browse by Category</h2>
-      <div class="grid md:grid-cols-3 lg:grid-cols-5 gap-4">
+  <section class="py-14 border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="text-xl font-bold text-gray-900">Categories</h2>
+        <a href="/categories" class="text-sm text-gray-500 hover:text-gray-700">View all</a>
+      </div>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
         {sortedCategories.map(category => {
           const slug = getSlug(category.id);
           const count = tools.filter(t => t.data.category === slug).length;
           return (
-            <a href={`/categories/${slug}`} class="card text-center group">
-              <div class="text-3xl mb-2">{category.data.icon}</div>
-              <h3 class="font-semibold text-gray-900 group-hover:text-primary-600">
-                {category.data.name}
-              </h3>
-              <p class="text-gray-500 text-sm mt-1">
-                {count} tools
-              </p>
+            <a href={`/categories/${slug}`} class="group text-center py-4 px-3 rounded-xl border border-gray-100 hover:border-gray-200 hover:bg-gray-50/50 transition-all">
+              <div class="text-2xl mb-1.5">{category.data.icon}</div>
+              <p class="text-sm font-medium text-gray-900 group-hover:text-primary-600">{category.data.name}</p>
+              <p class="text-xs text-gray-400 mt-0.5">{count}</p>
             </a>
           );
         })}
@@ -88,108 +56,68 @@ const sortedCategories = categories.sort((a, b) => a.data.order - b.data.order);
     </div>
   </section>
 
-  <!-- Recent Tools -->
-  <section class="py-12">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-gray-900 mb-6">Recently Added</h2>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <!-- Featured Tools -->
+  {featuredTools.length > 0 && (
+    <section class="py-14 border-b border-gray-100">
+      <div class="max-w-5xl mx-auto px-4">
+        <h2 class="text-xl font-bold text-gray-900 mb-8">Featured</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {featuredTools.map(tool => (
+            <a href={`/tools/${getSlug(tool.id)}`} class="card group">
+              <div class="flex items-start justify-between mb-2">
+                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600">
+                  {tool.data.name}
+                </h3>
+                <span class="featured-badge">Featured</span>
+              </div>
+              <p class="text-sm text-gray-500 mb-3 line-clamp-2">{tool.data.description}</p>
+              <p class="text-xs text-gray-400">{tool.data.pricing}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Recently Added -->
+  <section class="py-14 border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="flex items-baseline justify-between mb-8">
+        <h2 class="text-xl font-bold text-gray-900">Recently added</h2>
+        <a href="/tools" class="text-sm text-gray-500 hover:text-gray-700">View all {tools.length} tools</a>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         {recentTools.map(tool => (
           <a href={`/tools/${getSlug(tool.id)}`} class="card group">
             <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 mb-2">
               {tool.data.name}
             </h3>
-            <p class="text-gray-600 text-sm mb-3">{tool.data.description}</p>
-            <p class="text-gray-500 text-xs">{tool.data.pricing}</p>
+            <p class="text-sm text-gray-500 mb-3 line-clamp-2">{tool.data.description}</p>
+            <p class="text-xs text-gray-400">{tool.data.pricing}</p>
           </a>
         ))}
-      </div>
-      <div class="text-center mt-8">
-        <a href="/tools" class="btn-secondary">View All Tools</a>
       </div>
     </div>
   </section>
 
   <!-- Stack Builder CTA -->
-  <section class="py-16 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 relative overflow-hidden">
-    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%2338bdf8&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-    <div class="max-w-4xl mx-auto px-4 relative">
-      <div class="flex flex-col md:flex-row items-center gap-10">
-        <div class="flex-1 text-center md:text-left">
-          <div class="inline-flex items-center gap-2 bg-primary-500/20 text-primary-300 text-sm font-medium px-4 py-1.5 rounded-full mb-5">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
-            Interactive Tool Picker
-          </div>
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
-            Not sure where to start?
-          </h2>
-          <p class="text-gray-300 text-lg mb-8 max-w-lg">
-            Pick your business type and get a complete tool stack recommendation with estimated monthly costs. Swap in alternatives to build your perfect setup.
-          </p>
-          <a href="/stack-builder" class="inline-flex items-center gap-2 px-7 py-3.5 bg-primary-500 text-white font-semibold rounded-xl hover:bg-primary-400 transition-all shadow-lg shadow-primary-500/25 hover:shadow-xl hover:shadow-primary-500/30 text-lg">
-            Try the Stack Builder
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-          </a>
-        </div>
-        <div class="hidden md:block flex-shrink-0">
-          <div class="w-64 space-y-3">
-            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-              <div class="flex items-center gap-3">
-                <span class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center text-sm">&#x1F680;</span>
-                <div>
-                  <p class="text-white text-sm font-medium">Hosting</p>
-                  <p class="text-gray-400 text-xs">Vercel</p>
-                </div>
-                <span class="ml-auto text-green-400 text-xs font-medium">$0/mo</span>
-              </div>
-            </div>
-            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-              <div class="flex items-center gap-3">
-                <span class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center text-sm">&#x1F4B3;</span>
-                <div>
-                  <p class="text-white text-sm font-medium">Payments</p>
-                  <p class="text-gray-400 text-xs">Stripe</p>
-                </div>
-                <span class="ml-auto text-gray-400 text-xs font-medium">2.9%</span>
-              </div>
-            </div>
-            <div class="bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/10">
-              <div class="flex items-center gap-3">
-                <span class="w-8 h-8 bg-primary-500/20 rounded-lg flex items-center justify-center text-sm">&#x1F4CA;</span>
-                <div>
-                  <p class="text-white text-sm font-medium">Analytics</p>
-                  <p class="text-gray-400 text-xs">PostHog</p>
-                </div>
-                <span class="ml-auto text-green-400 text-xs font-medium">$0/mo</span>
-              </div>
-            </div>
-            <div class="bg-gradient-to-r from-primary-500/20 to-primary-400/10 rounded-xl p-3 border border-primary-500/20 text-center">
-              <p class="text-primary-300 text-xs font-medium">+ 4 more categories</p>
-            </div>
-          </div>
-        </div>
-      </div>
+  <section class="py-14 border-b border-gray-100 bg-gray-50/50">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-xl font-bold text-gray-900 mb-3">Not sure where to start?</h2>
+      <p class="text-gray-500 mb-6">
+        Pick your business type and get a recommended tool stack with pricing.
+      </p>
+      <a href="/stack-builder" class="btn-primary">
+        Try the Stack Builder
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+      </a>
     </div>
   </section>
 
   <!-- Newsletter -->
-  <section class="py-16">
-    <div class="max-w-4xl mx-auto px-4">
+  <section class="py-14">
+    <div class="max-w-3xl mx-auto px-4">
       <NewsletterSignup />
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-16 bg-primary-600">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h2 class="text-2xl font-bold text-white mb-4">
-        Want your tool featured?
-      </h2>
-      <p class="text-primary-100 mb-6">
-        Get prominent placement and reach thousands of solo founders looking for the right tools.
-      </p>
-      <a href="/advertise" class="inline-flex items-center px-6 py-3 bg-white text-primary-600 font-semibold rounded-lg hover:bg-primary-50 transition-colors">
-        Learn About Featured Listings
-      </a>
     </div>
   </section>
 </BaseLayout>

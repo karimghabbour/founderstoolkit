@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+import { getCollection } from 'astro:content';
+
+export const frontmatter = {
+  title: "Best AI Coding Tools for Solo Founders in 2026",
+  date: "2026-02-06",
+  excerpt: "A practical guide to the AI coding assistants that actually help solo founders ship faster — with honest pros, cons, and pricing breakdowns."
+};
+
+const tools = await getCollection('tools');
+const aiTools = tools
+  .filter(t => t.data.category === 'ai-coding')
+  .sort((a, b) => a.data.name.localeCompare(b.data.name));
+
+const getSlug = (id: string) => id.replace(/\.md$/, '');
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.excerpt}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": frontmatter.title,
+      "datePublished": frontmatter.date,
+      "description": frontmatter.excerpt,
+      "publisher": {
+        "@type": "Organization",
+        "name": "Solo Founder Tools"
+      }
+    })} />
+  </Fragment>
+
+  <article class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-gray-500 mb-6">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/blog" class="hover:text-primary-600">Blog</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-700">Best AI Coding Tools</span>
+      </nav>
+
+      <p class="text-sm text-gray-500 mb-3">{frontmatter.date}</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        {frontmatter.title}
+      </h1>
+
+      <div class="prose prose-gray max-w-none">
+        <p class="text-xl text-gray-600 mb-8">
+          As a solo founder, you don't have a dev team to lean on. AI coding tools can be the difference between shipping in a weekend and spending a month on something. But with dozens of options competing for your attention, which ones actually deliver?
+        </p>
+
+        <p>
+          We've reviewed {aiTools.length} AI coding tools in our directory, used by solo founders building real products. Here's what you need to know about each one — the good, the bad, and whether it's worth your money.
+        </p>
+
+        <h2>The landscape in 2026</h2>
+        <p>
+          AI coding tools broadly fall into three categories:
+        </p>
+        <ul>
+          <li><strong>Code completion assistants</strong> — They sit in your editor and suggest code as you type. Think GitHub Copilot, Supermaven, Tabnine, Codeium.</li>
+          <li><strong>AI-powered editors</strong> — Full IDE experiences built around AI. Cursor, Windsurf, Continue.dev.</li>
+          <li><strong>App builders</strong> — Generate entire apps from descriptions. Lovable, Bolt.new, v0, Base44, Replit Agent.</li>
+        </ul>
+        <p>
+          For solo founders, the choice depends on your technical level and what you're building.
+        </p>
+
+        <h2>If you're a developer building a SaaS</h2>
+        <p>
+          You want a tool that speeds up your existing workflow without taking control away. The best options:
+        </p>
+        <ul>
+          <li><strong>Cursor</strong> — The most popular AI-first editor. Built on VS Code, so your extensions work. The chat and inline editing features are genuinely useful for refactoring and writing boilerplate. Starts at $20/mo.</li>
+          <li><strong>Claude Code</strong> — Anthropic's CLI tool that operates directly in your terminal. No IDE lock-in. Excellent for larger refactors and multi-file changes. Works with any editor.</li>
+          <li><strong>GitHub Copilot</strong> — The original. Works inside VS Code and JetBrains. Reliable autocomplete. $10/mo individual, $19/mo business. Good enough for most developers.</li>
+          <li><strong>Windsurf</strong> — Codeium's editor, similar to Cursor but with a focus on their "Cascade" flow for multi-step tasks. Worth trying if you find Cursor's chat too basic.</li>
+        </ul>
+
+        <h2>If you're non-technical and want to build an app</h2>
+        <p>
+          The app builder category has exploded. These tools let you describe what you want and get a working application:
+        </p>
+        <ul>
+          <li><strong>Lovable</strong> — Generates full-stack React apps with Supabase backends. Good for MVPs. The free tier gives you a taste, paid starts at $20/mo.</li>
+          <li><strong>Bolt.new</strong> — StackBlitz's AI app builder. Runs entirely in the browser. Great for prototyping, less great for production apps.</li>
+          <li><strong>v0</strong> — Vercel's UI generator. Excellent for creating frontend components and landing pages. Integrates with Next.js.</li>
+          <li><strong>Replit Agent</strong> — Build and deploy apps without leaving the browser. The agent handles the full cycle from code to hosting.</li>
+        </ul>
+
+        <h2>The honest truth about pricing</h2>
+        <p>
+          Most of these tools have free tiers, but they're limited. As a solo founder, expect to spend $20-40/mo on your primary AI coding tool. That's a bargain compared to the developer time you're saving — but it adds up if you're subscribing to multiple tools. Our recommendation: pick one and go deep with it rather than spreading across three.
+        </p>
+
+        <h2>All {aiTools.length} AI coding tools compared</h2>
+        <p>
+          Here's every AI coding tool in our directory with pricing at a glance:
+        </p>
+      </div>
+
+      <!-- Tool listing table -->
+      <div class="mt-6 mb-8 overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th class="text-left py-3 pr-4 font-semibold text-gray-900">Tool</th>
+              <th class="text-left py-3 pr-4 font-semibold text-gray-900">Pricing</th>
+              <th class="text-left py-3 font-semibold text-gray-900">Best for</th>
+            </tr>
+          </thead>
+          <tbody>
+            {aiTools.map(tool => (
+              <tr class="border-b border-gray-100">
+                <td class="py-3 pr-4">
+                  <a href={`/tools/${getSlug(tool.id)}`} class="text-primary-600 hover:text-primary-700 font-medium">
+                    {tool.data.name}
+                  </a>
+                </td>
+                <td class="py-3 pr-4 text-gray-600">{tool.data.pricing}</td>
+                <td class="py-3 text-gray-600">{tool.data.pros[0]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose prose-gray max-w-none">
+        <h2>Bottom line</h2>
+        <p>
+          If you're a developer, start with <a href="/tools/cursor">Cursor</a> or <a href="/tools/github-copilot">GitHub Copilot</a>. If you're non-technical, try <a href="/tools/lovable">Lovable</a> or <a href="/tools/bolt-new">Bolt.new</a>. Check our <a href="/compare/cursor-vs-windsurf">detailed comparison pages</a> to see how any two tools stack up head-to-head.
+        </p>
+      </div>
+
+      <!-- Newsletter CTA -->
+      <div class="mt-12">
+        <NewsletterSignup />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

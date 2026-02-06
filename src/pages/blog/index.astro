@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// Get all blog posts from this directory (excluding index)
+const allPages = await Astro.glob('./*.astro');
+const posts = allPages
+  .filter(p => !p.url?.endsWith('/blog'))
+  .map(p => ({ url: p.url, frontmatter: p.frontmatter }))
+  .filter(p => p.frontmatter?.title)
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+---
+
+<BaseLayout title="Blog" description="Guides, comparisons, and insights for solo founders choosing the right tools">
+  <section class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <h1 class="text-3xl font-bold text-gray-900 mb-3">Blog</h1>
+      <p class="text-lg text-gray-600 mb-10">
+        Guides, comparisons, and insights for solo founders choosing the right tools.
+      </p>
+
+      {posts.length > 0 ? (
+        <div class="space-y-8">
+          {posts.map(post => (
+            <a href={post.url} class="block group">
+              <article class="border border-gray-200 rounded-xl p-6 hover:border-primary-300 hover:shadow-sm transition-all">
+                <p class="text-sm text-gray-500 mb-2">{post.frontmatter.date}</p>
+                <h2 class="text-xl font-semibold text-gray-900 group-hover:text-primary-600 mb-2">
+                  {post.frontmatter.title}
+                </h2>
+                <p class="text-gray-600">{post.frontmatter.excerpt}</p>
+              </article>
+            </a>
+          ))}
+        </div>
+      ) : (
+        <p class="text-gray-500">Posts coming soon.</p>
+      )}
+    </div>
+  </section>
+</BaseLayout>
