@@ -126,156 +126,186 @@ const jsonLd = JSON.stringify([
       </nav>
 
       <!-- Header -->
-      <header class="text-center mb-12">
-        <p class="text-sm text-gray-500 mb-2">
+      <header class="text-center mb-16">
+        <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-3">
           {category?.data.icon} {category?.data.name} Comparison
         </p>
-        <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-          {tool1.data.name} vs {tool2.data.name}
+        <h1 class="font-display text-4xl md:text-5xl lg:text-6xl text-gray-900 mb-5 leading-[1.1]">
+          {tool1.data.name} <span class="text-gray-300 italic">vs</span> {tool2.data.name}
         </h1>
-        <p class="text-gray-600 max-w-2xl mx-auto">
+        <p class="text-lg text-gray-500 max-w-xl mx-auto leading-relaxed">
           A detailed comparison to help you choose the right tool for your needs.
         </p>
-        <p class="text-xs text-gray-400 mt-2">Last updated: {lastUpdated}</p>
+        <p class="text-xs text-gray-400 mt-3">Last updated: {lastUpdated}</p>
       </header>
 
-      <!-- Quick comparison table -->
-      <div class="overflow-x-auto mb-12">
-        <table class="w-full border-collapse">
-          <thead>
-            <tr class="border-b-2 border-gray-200">
-              <th class="text-left py-4 px-4 font-semibold text-gray-900">Feature</th>
-              <th class="text-left py-4 px-4 font-semibold text-gray-900">{tool1.data.name}</th>
-              <th class="text-left py-4 px-4 font-semibold text-gray-900">{tool2.data.name}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="border-b border-gray-100">
-              <td class="py-4 px-4 text-gray-600">Pricing</td>
-              <td class="py-4 px-4">{tool1.data.pricing}</td>
-              <td class="py-4 px-4">{tool2.data.pricing}</td>
-            </tr>
-            <tr class="border-b border-gray-100">
-              <td class="py-4 px-4 text-gray-600">Pros</td>
-              <td class="py-4 px-4">
-                <ul class="space-y-1">
-                  {tool1.data.pros.map(pro => (
-                    <li class="text-sm text-green-700">✓ {pro}</li>
-                  ))}
-                </ul>
-              </td>
-              <td class="py-4 px-4">
-                <ul class="space-y-1">
-                  {tool2.data.pros.map(pro => (
-                    <li class="text-sm text-green-700">✓ {pro}</li>
-                  ))}
-                </ul>
-              </td>
-            </tr>
-            <tr class="border-b border-gray-100">
-              <td class="py-4 px-4 text-gray-600">Cons</td>
-              <td class="py-4 px-4">
-                <ul class="space-y-1">
-                  {tool1.data.cons.map(con => (
-                    <li class="text-sm text-red-700">✗ {con}</li>
-                  ))}
-                </ul>
-              </td>
-              <td class="py-4 px-4">
-                <ul class="space-y-1">
-                  {tool2.data.cons.map(con => (
-                    <li class="text-sm text-red-700">✗ {con}</li>
-                  ))}
-                </ul>
-              </td>
-            </tr>
-            <tr>
-              <td class="py-4 px-4 text-gray-600">Website</td>
-              <td class="py-4 px-4">
-                <a href={visitUrl1} target="_blank" rel={isAffiliate1 ? "noopener nofollow sponsored" : "noopener"} class="text-primary-600 hover:text-primary-700">
-                  Visit →
-                </a>
-              </td>
-              <td class="py-4 px-4">
-                <a href={visitUrl2} target="_blank" rel={isAffiliate2 ? "noopener nofollow sponsored" : "noopener"} class="text-primary-600 hover:text-primary-700">
-                  Visit →
-                </a>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <!-- Side-by-side comparison -->
+      <div class="grid md:grid-cols-2 gap-5 mb-16">
+        {/* Tool 1 Column */}
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <div class="bg-[#fafaf9] px-6 py-5 border-b border-gray-200">
+            <h2 class="font-display text-2xl text-gray-900">{tool1.data.name}</h2>
+            <p class="text-sm text-gray-500 mt-1">{tool1.data.pricing}</p>
+          </div>
+          <div class="px-6 py-5">
+            <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-3">Strengths</p>
+            <ul class="space-y-2.5 mb-6">
+              {tool1.data.pros.map(pro => (
+                <li class="flex items-start gap-2.5 text-sm text-gray-700">
+                  <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex-shrink-0 mt-0.5 text-xs font-bold">+</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-3">Weaknesses</p>
+            <ul class="space-y-2.5 mb-6">
+              {tool1.data.cons.map(con => (
+                <li class="flex items-start gap-2.5 text-sm text-gray-500">
+                  <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-50 text-amber-600 flex-shrink-0 mt-0.5 text-xs font-bold">&minus;</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+            <a href={visitUrl1} target="_blank" rel={isAffiliate1 ? "noopener nofollow sponsored" : "noopener"} class="btn-primary w-full justify-center">
+              Visit {tool1.data.name} &rarr;
+            </a>
+          </div>
+        </div>
+
+        {/* Tool 2 Column */}
+        <div class="border border-gray-200 rounded-xl overflow-hidden">
+          <div class="bg-[#fafaf9] px-6 py-5 border-b border-gray-200">
+            <h2 class="font-display text-2xl text-gray-900">{tool2.data.name}</h2>
+            <p class="text-sm text-gray-500 mt-1">{tool2.data.pricing}</p>
+          </div>
+          <div class="px-6 py-5">
+            <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-3">Strengths</p>
+            <ul class="space-y-2.5 mb-6">
+              {tool2.data.pros.map(pro => (
+                <li class="flex items-start gap-2.5 text-sm text-gray-700">
+                  <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-emerald-50 text-emerald-600 flex-shrink-0 mt-0.5 text-xs font-bold">+</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+            <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-3">Weaknesses</p>
+            <ul class="space-y-2.5 mb-6">
+              {tool2.data.cons.map(con => (
+                <li class="flex items-start gap-2.5 text-sm text-gray-500">
+                  <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-amber-50 text-amber-600 flex-shrink-0 mt-0.5 text-xs font-bold">&minus;</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+            <a href={visitUrl2} target="_blank" rel={isAffiliate2 ? "noopener nofollow sponsored" : "noopener"} class="btn-primary w-full justify-center">
+              Visit {tool2.data.name} &rarr;
+            </a>
+          </div>
+        </div>
       </div>
 
       <!-- Verdict section -->
-      <div class="grid md:grid-cols-2 gap-6 mb-12">
-        <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
-          <h2 class="font-semibold text-blue-900 mb-3">Choose {tool1.data.name} if you want...</h2>
-          <ul class="space-y-2">
-            {tool1.data.pros.map(pro => (
-              <li class="flex items-start gap-2 text-blue-800 text-sm">
-                <span class="text-blue-500 mt-0.5 flex-shrink-0">→</span>
-                {pro}
-              </li>
-            ))}
-          </ul>
-          <a href={visitUrl1} target="_blank" rel={isAffiliate1 ? "noopener nofollow sponsored" : "noopener"} class="btn-primary mt-4 inline-block text-sm">
-            Try {tool1.data.name} →
-          </a>
+      <section class="mb-16 border-t border-gray-100 pt-16">
+        <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">The verdict</p>
+        <h2 class="font-display text-3xl text-gray-900 mb-8">Which one is right for you?</h2>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="bg-[#fafaf9] rounded-xl p-6 border border-gray-200">
+            <p class="text-xs font-semibold tracking-widest uppercase text-emerald-600 mb-3">Choose {tool1.data.name} if you want</p>
+            <ul class="space-y-3">
+              {tool1.data.pros.map(pro => (
+                <li class="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed">
+                  <span class="text-emerald-500 mt-0.5 flex-shrink-0 font-medium">&rarr;</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6 pt-5 border-t border-gray-200">
+              <a href={visitUrl1} target="_blank" rel={isAffiliate1 ? "noopener nofollow sponsored" : "noopener"} class="btn-primary text-sm">
+                Try {tool1.data.name} &rarr;
+              </a>
+            </div>
+          </div>
+          <div class="bg-[#fafaf9] rounded-xl p-6 border border-gray-200">
+            <p class="text-xs font-semibold tracking-widest uppercase text-emerald-600 mb-3">Choose {tool2.data.name} if you want</p>
+            <ul class="space-y-3">
+              {tool2.data.pros.map(pro => (
+                <li class="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed">
+                  <span class="text-emerald-500 mt-0.5 flex-shrink-0 font-medium">&rarr;</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+            <div class="mt-6 pt-5 border-t border-gray-200">
+              <a href={visitUrl2} target="_blank" rel={isAffiliate2 ? "noopener nofollow sponsored" : "noopener"} class="btn-primary text-sm">
+                Try {tool2.data.name} &rarr;
+              </a>
+            </div>
+          </div>
         </div>
-        <div class="bg-purple-50 rounded-xl p-6 border border-purple-100">
-          <h2 class="font-semibold text-purple-900 mb-3">Choose {tool2.data.name} if you want...</h2>
-          <ul class="space-y-2">
-            {tool2.data.pros.map(pro => (
-              <li class="flex items-start gap-2 text-purple-800 text-sm">
-                <span class="text-purple-500 mt-0.5 flex-shrink-0">→</span>
-                {pro}
-              </li>
-            ))}
-          </ul>
-          <a href={visitUrl2} target="_blank" rel={isAffiliate2 ? "noopener nofollow sponsored" : "noopener"} class="btn-primary mt-4 inline-block text-sm">
-            Try {tool2.data.name} →
-          </a>
-        </div>
-      </div>
+      </section>
 
       <!-- Detailed descriptions -->
-      <div class="grid md:grid-cols-2 gap-8 mb-12">
-        <div class="bg-gray-50 rounded-xl p-6">
-          <h2 class="text-xl font-semibold text-gray-900 mb-4">{tool1.data.name}</h2>
-          <p class="text-gray-600 mb-4">{tool1.data.description}</p>
-          <div class="prose prose-sm prose-gray">
-            <Content1 />
+      <section class="mb-16 border-t border-gray-100 pt-16">
+        <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">In depth</p>
+        <h2 class="font-display text-3xl text-gray-900 mb-8">About each tool</h2>
+        <div class="grid md:grid-cols-2 gap-5">
+          <div class="border border-gray-200 rounded-xl overflow-hidden">
+            <div class="bg-[#fafaf9] px-6 py-4 border-b border-gray-200">
+              <h3 class="font-display text-xl text-gray-900">{tool1.data.name}</h3>
+            </div>
+            <div class="px-6 py-5">
+              <p class="text-sm text-gray-600 mb-4 leading-relaxed">{tool1.data.description}</p>
+              <div class="prose prose-sm prose-gray max-w-none">
+                <Content1 />
+              </div>
+              <div class="mt-5 pt-4 border-t border-gray-100">
+                <a href={`/tools/${getSlug(tool1.id)}`} class="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">
+                  View full details &rarr;
+                </a>
+              </div>
+            </div>
           </div>
-          <a href={`/tools/${getSlug(tool1.id)}`} class="btn-secondary mt-4 inline-block">
-            View Full Details →
-          </a>
-        </div>
-        <div class="bg-gray-50 rounded-xl p-6">
-          <h2 class="text-xl font-semibold text-gray-900 mb-4">{tool2.data.name}</h2>
-          <p class="text-gray-600 mb-4">{tool2.data.description}</p>
-          <div class="prose prose-sm prose-gray">
-            <Content2 />
+          <div class="border border-gray-200 rounded-xl overflow-hidden">
+            <div class="bg-[#fafaf9] px-6 py-4 border-b border-gray-200">
+              <h3 class="font-display text-xl text-gray-900">{tool2.data.name}</h3>
+            </div>
+            <div class="px-6 py-5">
+              <p class="text-sm text-gray-600 mb-4 leading-relaxed">{tool2.data.description}</p>
+              <div class="prose prose-sm prose-gray max-w-none">
+                <Content2 />
+              </div>
+              <div class="mt-5 pt-4 border-t border-gray-100">
+                <a href={`/tools/${getSlug(tool2.id)}`} class="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">
+                  View full details &rarr;
+                </a>
+              </div>
+            </div>
           </div>
-          <a href={`/tools/${getSlug(tool2.id)}`} class="btn-secondary mt-4 inline-block">
-            View Full Details →
-          </a>
         </div>
-      </div>
+      </section>
 
       <!-- Newsletter CTA -->
-      <div class="mb-12">
+      <div class="mb-16">
         <NewsletterSignup />
       </div>
 
       <!-- Related Comparisons -->
       {relatedComparisons.length > 0 && (
-        <section class="mb-12">
-          <h2 class="text-xl font-semibold text-gray-900 mb-4">Related Comparisons</h2>
+        <section class="mb-16 border-t border-gray-100 pt-16">
+          <div class="flex items-end justify-between mb-8">
+            <div>
+              <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">Keep exploring</p>
+              <h2 class="font-display text-3xl text-gray-900">Related comparisons</h2>
+            </div>
+          </div>
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-3">
             {relatedComparisons.map(comp => (
-              <a href={`/compare/${comp.slug}`} class="card group text-center py-3">
-                <span class="font-medium text-gray-900 group-hover:text-primary-600 text-sm">
+              <a href={`/compare/${comp.slug}`} class="group flex items-center justify-between py-3.5 px-5 rounded-lg border border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm transition-all">
+                <span class="text-sm font-semibold text-gray-900 group-hover:text-primary-600 transition-colors">
                   {comp.name}
+                </span>
+                <span class="text-xs font-medium text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
+                  Compare &rarr;
                 </span>
               </a>
             ))}
@@ -284,16 +314,17 @@ const jsonLd = JSON.stringify([
       )}
 
       <!-- CTA -->
-      <div class="text-center bg-primary-50 rounded-xl p-8">
-        <h2 class="text-xl font-semibold text-gray-900 mb-2">Still deciding?</h2>
-        <p class="text-gray-600 mb-4">
-          Browse more tools in {category?.data.name} or explore other categories.
+      <div class="bg-gray-950 rounded-2xl px-8 py-14 md:px-16 text-center">
+        <p class="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-3">Still deciding?</p>
+        <h2 class="font-display text-2xl md:text-3xl text-white mb-4">Explore more {category?.data.name} tools</h2>
+        <p class="text-gray-400 mb-8 max-w-md mx-auto leading-relaxed">
+          Browse the full category or discover tools across all categories.
         </p>
-        <div class="flex justify-center gap-4">
-          <a href={`/categories/${getSlug(category?.id || '')}`} class="btn-primary">
+        <div class="flex flex-col sm:flex-row justify-center gap-3">
+          <a href={`/categories/${getSlug(category?.id || '')}`} class="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
             More {category?.data.name} Tools
           </a>
-          <a href="/categories" class="btn-secondary">
+          <a href="/categories" class="inline-flex items-center justify-center px-6 py-3 border border-gray-600 text-gray-300 text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors">
             All Categories
           </a>
         </div>

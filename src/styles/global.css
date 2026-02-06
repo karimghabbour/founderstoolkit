@@ -4,29 +4,29 @@
 
 @layer base {
   body {
-    @apply bg-white text-gray-900 antialiased;
+    @apply bg-white text-gray-900 antialiased font-sans;
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
   h1, h2, h3 {
-    letter-spacing: -0.025em;
+    letter-spacing: -0.02em;
   }
 }
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center px-5 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-colors;
+    @apply inline-flex items-center px-6 py-2.5 bg-gray-900 text-white text-sm font-semibold rounded-lg hover:bg-gray-800 transition-all shadow-sm hover:shadow-md;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center px-5 py-2.5 border border-gray-300 text-gray-700 text-sm font-semibold rounded-lg hover:bg-gray-50 transition-colors;
+    @apply inline-flex items-center px-5 py-2.5 border border-gray-200 text-gray-700 text-sm font-semibold rounded-lg hover:bg-gray-50 hover:border-gray-300 transition-all;
   }
 
   .card {
-    @apply bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-300 hover:shadow-sm transition-all;
+    @apply bg-white border border-gray-200 rounded-xl p-5 hover:border-gray-300 hover:shadow-md transition-all duration-200;
   }
 
   .featured-badge {
-    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-semibold bg-amber-50 text-amber-700 border border-amber-200 rounded-full;
+    @apply inline-flex items-center px-2 py-0.5 text-[11px] font-bold uppercase tracking-wider bg-amber-50 text-amber-600 border border-amber-200/80 rounded;
   }
 }

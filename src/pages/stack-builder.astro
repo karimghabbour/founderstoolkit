@@ -103,35 +103,36 @@ const CATEGORY_ICONS: Record<string, string> = {
 <BaseLayout title="Stack Builder" description="Build your ideal solo founder tool stack. Pick a business type, customize your tools, and see the total monthly cost.">
 
   <!-- Hero -->
-  <section class="py-14 border-b border-gray-100">
+  <section class="pt-20 pb-14 bg-[#fafaf9]">
     <div class="max-w-4xl mx-auto px-4">
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3 tracking-tight">
-        Stack Builder
+      <p class="text-xs font-semibold tracking-widest uppercase text-primary-600 mb-3">Interactive Tool Picker</p>
+      <h1 class="font-display text-4xl md:text-5xl text-gray-900 mb-4 leading-[1.1]">
+        Build your <em class="italic">stack</em>
       </h1>
-      <p class="text-lg text-gray-500 max-w-xl">
-        Pick a business type, swap alternatives, see your monthly cost.
+      <p class="text-lg text-gray-500 max-w-lg leading-relaxed">
+        Pick a business type, swap in alternatives, and see your total monthly cost at a glance.
       </p>
     </div>
   </section>
 
   <!-- Business Type Selector -->
-  <section class="py-8 border-b border-gray-100 bg-gray-50/50">
+  <section class="pb-14 bg-[#fafaf9] border-b border-gray-200">
     <div class="max-w-4xl mx-auto px-4">
-      <p class="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">I'm building a...</p>
-      <div class="flex flex-wrap gap-2" id="type-selector">
-        <button data-type="saas" class="type-btn px-5 py-2.5 border border-gray-200 rounded-full text-sm font-medium text-gray-600 bg-white hover:border-primary-400 hover:text-primary-700 hover:bg-primary-50 transition-all cursor-pointer">
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">I'm building a...</p>
+      <div class="flex flex-wrap gap-2.5" id="type-selector">
+        <button data-type="saas" class="type-btn px-6 py-3 border border-gray-200 rounded-lg text-sm font-semibold text-gray-600 bg-white hover:border-gray-300 hover:text-gray-900 transition-all cursor-pointer shadow-sm">
           SaaS
         </button>
-        <button data-type="creator" class="type-btn px-5 py-2.5 border border-gray-200 rounded-full text-sm font-medium text-gray-600 bg-white hover:border-primary-400 hover:text-primary-700 hover:bg-primary-50 transition-all cursor-pointer">
+        <button data-type="creator" class="type-btn px-6 py-3 border border-gray-200 rounded-lg text-sm font-semibold text-gray-600 bg-white hover:border-gray-300 hover:text-gray-900 transition-all cursor-pointer shadow-sm">
           Creator Business
         </button>
-        <button data-type="ecommerce" class="type-btn px-5 py-2.5 border border-gray-200 rounded-full text-sm font-medium text-gray-600 bg-white hover:border-primary-400 hover:text-primary-700 hover:bg-primary-50 transition-all cursor-pointer">
+        <button data-type="ecommerce" class="type-btn px-6 py-3 border border-gray-200 rounded-lg text-sm font-semibold text-gray-600 bg-white hover:border-gray-300 hover:text-gray-900 transition-all cursor-pointer shadow-sm">
           Ecommerce
         </button>
-        <button data-type="freelancer" class="type-btn px-5 py-2.5 border border-gray-200 rounded-full text-sm font-medium text-gray-600 bg-white hover:border-primary-400 hover:text-primary-700 hover:bg-primary-50 transition-all cursor-pointer">
+        <button data-type="freelancer" class="type-btn px-6 py-3 border border-gray-200 rounded-lg text-sm font-semibold text-gray-600 bg-white hover:border-gray-300 hover:text-gray-900 transition-all cursor-pointer shadow-sm">
           Freelancing
         </button>
-        <button data-type="agency" class="type-btn px-5 py-2.5 border border-gray-200 rounded-full text-sm font-medium text-gray-600 bg-white hover:border-primary-400 hover:text-primary-700 hover:bg-primary-50 transition-all cursor-pointer">
+        <button data-type="agency" class="type-btn px-6 py-3 border border-gray-200 rounded-lg text-sm font-semibold text-gray-600 bg-white hover:border-gray-300 hover:text-gray-900 transition-all cursor-pointer shadow-sm">
           Agency
         </button>
       </div>
@@ -139,48 +140,49 @@ const CATEGORY_ICONS: Record<string, string> = {
   </section>
 
   <!-- Stack Table -->
-  <section class="py-10">
+  <section class="py-12">
     <div class="max-w-4xl mx-auto px-4">
       <!-- Empty state -->
-      <div id="empty-state" class="text-center py-20">
-        <p class="text-gray-400 text-lg">Select a business type to see your recommended stack</p>
+      <div id="empty-state" class="text-center py-24">
+        <p class="text-gray-300 text-5xl mb-4 select-none" aria-hidden="true">&uarr;</p>
+        <p class="text-gray-400 text-base">Pick a business type above to see your recommended stack</p>
       </div>
 
       <!-- Table content (hidden initially) -->
       <div id="stack-content" class="hidden">
         <!-- Actions bar -->
-        <div class="flex items-center justify-between mb-6">
+        <div class="flex items-center justify-between mb-8">
           <div>
-            <span class="text-sm text-gray-500">Estimated monthly cost:</span>
-            <span class="text-2xl font-bold text-gray-900 ml-2" id="total-cost">$0/mo</span>
+            <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Estimated monthly cost</p>
+            <p class="text-3xl font-bold text-gray-900 tabular-nums" id="total-cost">$0/mo</p>
           </div>
           <div class="flex gap-2">
-            <button id="share-btn" class="text-sm text-gray-500 hover:text-gray-700 px-3 py-1.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+            <button id="share-btn" class="text-sm font-medium text-gray-600 hover:text-gray-900 px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
               Copy link
             </button>
-            <button id="reset-btn" class="text-sm text-gray-500 hover:text-gray-700 px-3 py-1.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
+            <button id="reset-btn" class="text-sm font-medium text-gray-600 hover:text-gray-900 px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
               Reset
             </button>
           </div>
         </div>
 
         <!-- The table -->
-        <div class="border border-gray-200 rounded-xl overflow-hidden">
+        <div class="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
           <table class="w-full">
             <thead>
-              <tr class="bg-gray-50 border-b border-gray-200">
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3 w-32">Need</th>
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3">Tool</th>
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3 w-28">Cost</th>
-                <th class="text-left text-xs font-semibold text-gray-500 uppercase tracking-wider px-5 py-3 hidden sm:table-cell">Why</th>
-                <th class="px-5 py-3 w-10"></th>
+              <tr class="bg-[#fafaf9] border-b border-gray-200">
+                <th class="text-left text-[11px] font-semibold text-gray-400 uppercase tracking-widest px-5 py-3.5 w-32">Need</th>
+                <th class="text-left text-[11px] font-semibold text-gray-400 uppercase tracking-widest px-5 py-3.5">Tool</th>
+                <th class="text-left text-[11px] font-semibold text-gray-400 uppercase tracking-widest px-5 py-3.5 w-28">Cost</th>
+                <th class="text-left text-[11px] font-semibold text-gray-400 uppercase tracking-widest px-5 py-3.5 hidden sm:table-cell">Why</th>
+                <th class="px-5 py-3.5 w-10"></th>
               </tr>
             </thead>
             <tbody id="stack-tbody"></tbody>
             <tfoot>
-              <tr class="bg-gray-50 border-t border-gray-200">
-                <td class="px-5 py-4 text-sm font-bold text-gray-900" colspan="2">Total</td>
-                <td class="px-5 py-4 text-sm font-bold text-gray-900" id="total-cost-footer">$0/mo</td>
+              <tr class="bg-[#fafaf9] border-t-2 border-gray-200">
+                <td class="px-5 py-4 text-xs font-bold text-gray-900 uppercase tracking-widest" colspan="2">Total</td>
+                <td class="px-5 py-4 text-base font-bold text-gray-900 tabular-nums" id="total-cost-footer">$0/mo</td>
                 <td class="px-5 py-4 hidden sm:table-cell"></td>
                 <td class="px-5 py-4"></td>
               </tr>
@@ -188,7 +190,7 @@ const CATEGORY_ICONS: Record<string, string> = {
           </table>
         </div>
 
-        <p class="text-xs text-gray-400 mt-3">Based on lowest advertised pricing. Click a tool name to see full details.</p>
+        <p class="text-xs text-gray-400 mt-4 pl-3 border-l-2 border-gray-200">Based on lowest advertised pricing. Click a tool name to see full details.</p>
       </div>
     </div>
   </section>
@@ -286,27 +288,34 @@ const CATEGORY_ICONS: Record<string, string> = {
             return '<option value="' + a.slug + '"' + sel + '>' + a.name + '</option>';
           }).join('');
 
+          var costDisplay = cost === 0
+            ? '<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-green-50 text-green-700 border border-green-200">Free</span>'
+            : '<span class="text-sm font-semibold text-gray-900 tabular-nums">' + fmt(cost) + '</span>';
+
           html += '<tr class="hover:bg-gray-50/50 transition-colors' + borderClass + '">' +
             '<td class="px-5 py-4 align-top">' +
-              '<span class="text-sm font-medium text-gray-500">' + icon + ' ' + label + '</span>' +
+              '<div class="flex items-center gap-2">' +
+                '<span class="text-base leading-none">' + icon + '</span>' +
+                '<span class="text-sm font-medium text-gray-500">' + label + '</span>' +
+              '</div>' +
             '</td>' +
             '<td class="px-5 py-4 align-top">' +
-              '<div class="flex flex-col gap-1.5">' +
-                '<a href="/tools/' + slug + '" class="text-sm font-semibold text-gray-900 hover:text-primary-600 transition-colors">' + tool.name + '</a>' +
-                '<select class="swap-select text-xs border border-gray-200 rounded-md px-2 py-1 bg-white text-gray-500 cursor-pointer hover:border-gray-300 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 w-fit" data-category="' + cat + '">' +
+              '<div class="flex items-center gap-3">' +
+                '<a href="/tools/' + slug + '" class="text-sm font-semibold text-gray-900 hover:text-primary-600 transition-colors whitespace-nowrap">' + tool.name + '</a>' +
+                '<select class="swap-select text-xs border border-gray-200 rounded px-1.5 py-0.5 bg-white text-gray-400 cursor-pointer hover:border-gray-300 hover:text-gray-600 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 w-fit" data-category="' + cat + '">' +
                   opts +
                 '</select>' +
               '</div>' +
             '</td>' +
             '<td class="px-5 py-4 align-top">' +
-              '<span class="text-sm font-medium ' + (cost === 0 ? 'text-green-600' : 'text-gray-900') + '">' + fmt(cost) + '</span>' +
+              costDisplay +
             '</td>' +
             '<td class="px-5 py-4 align-top hidden sm:table-cell">' +
-              '<span class="text-xs text-gray-500">' + topPro + '</span>' +
+              '<span class="text-xs text-gray-400 leading-relaxed">' + topPro + '</span>' +
             '</td>' +
             '<td class="px-5 py-4 align-top">' +
-              '<a href="' + link + '" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-primary-600 transition-colors" title="Visit ' + tool.name + '">' +
-                '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>' +
+              '<a href="' + link + '" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-gray-300 hover:text-gray-600 transition-colors" title="Visit ' + tool.name + '">' +
+                '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>' +
               '</a>' +
             '</td>' +
           '</tr>';
@@ -339,11 +348,11 @@ const CATEGORY_ICONS: Record<string, string> = {
         document.querySelectorAll('.type-btn').forEach(function(btn) {
           var t = btn.getAttribute('data-type');
           if (t === currentType) {
-            btn.classList.add('border-primary-500', 'bg-primary-50', 'text-primary-700');
-            btn.classList.remove('border-gray-200', 'text-gray-600', 'bg-white');
+            btn.classList.add('border-gray-900', 'bg-gray-900', 'text-white', 'shadow-md');
+            btn.classList.remove('border-gray-200', 'text-gray-600', 'bg-white', 'shadow-sm');
           } else {
-            btn.classList.remove('border-primary-500', 'bg-primary-50', 'text-primary-700');
-            btn.classList.add('border-gray-200', 'text-gray-600', 'bg-white');
+            btn.classList.remove('border-gray-900', 'bg-gray-900', 'text-white', 'shadow-md');
+            btn.classList.add('border-gray-200', 'text-gray-600', 'bg-white', 'shadow-sm');
           }
         });
       }

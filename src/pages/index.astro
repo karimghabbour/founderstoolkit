@@ -15,40 +15,52 @@ const recentTools = tools
   .slice(0, 6);
 
 const sortedCategories = categories.sort((a, b) => a.data.order - b.data.order);
+
+// Category name lookup for cards
+const categoryMap = Object.fromEntries(
+  categories.map(c => [getSlug(c.id), c.data.name])
+);
 ---
 
 <BaseLayout title="Home">
   <!-- Hero -->
-  <section class="py-20 border-b border-gray-100">
+  <section class="pt-24 pb-20 bg-[#fafaf9]">
     <div class="max-w-3xl mx-auto px-4 text-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-5">
-        Find the right tools for your solo business
+      <p class="text-sm font-semibold tracking-wide uppercase text-primary-600 mb-4">{tools.length} tools across {categories.length} categories</p>
+      <h1 class="font-display text-5xl md:text-6xl lg:text-7xl text-gray-900 mb-6 leading-[1.05]">
+        The tools that <em class="italic">solo founders</em> actually use
       </h1>
-      <p class="text-lg text-gray-500 mb-10 max-w-xl mx-auto">
-        {tools.length} tools across {categories.length} categories, with honest pros, cons, and pricing.
+      <p class="text-lg text-gray-500 mb-10 max-w-xl mx-auto leading-relaxed">
+        Honest pros, cons, and pricing for every tool. No fluff, no sponsored rankings.
       </p>
       <div class="max-w-lg mx-auto">
         <Search />
       </div>
+      <p class="mt-5 text-xs text-gray-400">Updated weekly &middot; 100% independent &middot; No sponsored rankings</p>
     </div>
   </section>
 
   <!-- Categories -->
-  <section class="py-14 border-b border-gray-100">
+  <section class="py-20 border-t border-gray-100">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="flex items-baseline justify-between mb-8">
-        <h2 class="text-xl font-bold text-gray-900">Categories</h2>
-        <a href="/categories" class="text-sm text-gray-500 hover:text-gray-700">View all</a>
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">Browse</p>
+          <h2 class="font-display text-3xl text-gray-900">Categories</h2>
+        </div>
+        <a href="/categories" class="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">View all &rarr;</a>
       </div>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
         {sortedCategories.map(category => {
           const slug = getSlug(category.id);
           const count = tools.filter(t => t.data.category === slug).length;
           return (
-            <a href={`/categories/${slug}`} class="group text-center py-4 px-3 rounded-xl border border-gray-100 hover:border-gray-200 hover:bg-gray-50/50 transition-all">
-              <div class="text-2xl mb-1.5">{category.data.icon}</div>
-              <p class="text-sm font-medium text-gray-900 group-hover:text-primary-600">{category.data.name}</p>
-              <p class="text-xs text-gray-400 mt-0.5">{count}</p>
+            <a href={`/categories/${slug}`} class="group flex items-center gap-3.5 py-3.5 px-4 rounded-lg border border-gray-150 bg-white hover:border-gray-300 hover:shadow-sm transition-all">
+              <span class="text-xl flex-shrink-0">{category.data.icon}</span>
+              <div class="min-w-0">
+                <p class="text-sm font-semibold text-gray-900 group-hover:text-primary-600 transition-colors truncate">{category.data.name}</p>
+                <p class="text-xs text-gray-400">{count} tools</p>
+              </div>
             </a>
           );
         })}
@@ -58,20 +70,27 @@ const sortedCategories = categories.sort((a, b) => a.data.order - b.data.order);
 
   <!-- Featured Tools -->
   {featuredTools.length > 0 && (
-    <section class="py-14 border-b border-gray-100">
+    <section class="py-20 border-t border-gray-100">
       <div class="max-w-5xl mx-auto px-4">
-        <h2 class="text-xl font-bold text-gray-900 mb-8">Featured</h2>
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div class="mb-10">
+          <p class="text-xs font-semibold tracking-widest uppercase text-amber-500 mb-2">Spotlight</p>
+          <h2 class="font-display text-3xl text-gray-900">Featured</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {featuredTools.map(tool => (
-            <a href={`/tools/${getSlug(tool.id)}`} class="card group">
-              <div class="flex items-start justify-between mb-2">
-                <h3 class="font-semibold text-gray-900 group-hover:text-primary-600">
-                  {tool.data.name}
-                </h3>
+            <a href={`/tools/${getSlug(tool.id)}`} class="group block bg-white border border-gray-200 rounded-xl p-5 hover:border-amber-300 hover:shadow-md transition-all duration-200">
+              <div class="flex items-center gap-2 mb-3">
                 <span class="featured-badge">Featured</span>
+                <span class="text-xs text-gray-400">{categoryMap[tool.data.category] || tool.data.category}</span>
               </div>
-              <p class="text-sm text-gray-500 mb-3 line-clamp-2">{tool.data.description}</p>
-              <p class="text-xs text-gray-400">{tool.data.pricing}</p>
+              <h3 class="text-base font-semibold text-gray-900 group-hover:text-primary-700 mb-1.5">
+                {tool.data.name}
+              </h3>
+              <p class="text-sm text-gray-500 mb-4 line-clamp-2 leading-relaxed">{tool.data.description}</p>
+              <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+                <p class="text-xs font-medium text-gray-500">{tool.data.pricing}</p>
+                <span class="text-xs font-medium text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity">View details &rarr;</span>
+              </div>
             </a>
           ))}
         </div>
@@ -80,20 +99,27 @@ const sortedCategories = categories.sort((a, b) => a.data.order - b.data.order);
   )}
 
   <!-- Recently Added -->
-  <section class="py-14 border-b border-gray-100">
+  <section class="py-20 border-t border-gray-100">
     <div class="max-w-5xl mx-auto px-4">
-      <div class="flex items-baseline justify-between mb-8">
-        <h2 class="text-xl font-bold text-gray-900">Recently added</h2>
-        <a href="/tools" class="text-sm text-gray-500 hover:text-gray-700">View all {tools.length} tools</a>
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">New</p>
+          <h2 class="font-display text-3xl text-gray-900">Recently added</h2>
+        </div>
+        <a href="/tools" class="text-sm font-medium text-gray-400 hover:text-gray-900 transition-colors">All {tools.length} tools &rarr;</a>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {recentTools.map(tool => (
-          <a href={`/tools/${getSlug(tool.id)}`} class="card group">
-            <h3 class="font-semibold text-gray-900 group-hover:text-primary-600 mb-2">
+          <a href={`/tools/${getSlug(tool.id)}`} class="group block bg-white border border-gray-200 rounded-xl p-5 hover:border-gray-300 hover:shadow-md transition-all duration-200">
+            <p class="text-xs font-medium text-gray-400 mb-2.5">{categoryMap[tool.data.category] || tool.data.category}</p>
+            <h3 class="text-base font-semibold text-gray-900 group-hover:text-primary-700 mb-1.5">
               {tool.data.name}
             </h3>
-            <p class="text-sm text-gray-500 mb-3 line-clamp-2">{tool.data.description}</p>
-            <p class="text-xs text-gray-400">{tool.data.pricing}</p>
+            <p class="text-sm text-gray-500 mb-4 line-clamp-2 leading-relaxed">{tool.data.description}</p>
+            <div class="flex items-center justify-between pt-3 border-t border-gray-100">
+              <p class="text-xs font-medium text-gray-500">{tool.data.pricing}</p>
+              <span class="text-xs font-medium text-primary-600 opacity-0 group-hover:opacity-100 transition-opacity">View details &rarr;</span>
+            </div>
           </a>
         ))}
       </div>
@@ -101,21 +127,24 @@ const sortedCategories = categories.sort((a, b) => a.data.order - b.data.order);
   </section>
 
   <!-- Stack Builder CTA -->
-  <section class="py-14 border-b border-gray-100 bg-gray-50/50">
-    <div class="max-w-3xl mx-auto px-4 text-center">
-      <h2 class="text-xl font-bold text-gray-900 mb-3">Not sure where to start?</h2>
-      <p class="text-gray-500 mb-6">
-        Pick your business type and get a recommended tool stack with pricing.
-      </p>
-      <a href="/stack-builder" class="btn-primary">
-        Try the Stack Builder
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
-      </a>
+  <section class="py-24 border-t border-gray-100">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="bg-gray-950 rounded-2xl px-8 py-16 md:px-16 text-center">
+        <p class="text-xs font-semibold tracking-widest uppercase text-gray-500 mb-3">Stack Builder</p>
+        <h2 class="font-display text-3xl md:text-4xl text-white mb-4">Not sure where to start?</h2>
+        <p class="text-gray-400 mb-8 max-w-md mx-auto leading-relaxed">
+          Pick your business type and get a recommended tool stack, complete with pricing breakdowns.
+        </p>
+        <a href="/stack-builder" class="inline-flex items-center px-6 py-3 bg-white text-gray-900 text-sm font-semibold rounded-lg hover:bg-gray-100 transition-colors">
+          Build your stack
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+        </a>
+      </div>
     </div>
   </section>
 
   <!-- Newsletter -->
-  <section class="py-14">
+  <section class="py-20 border-t border-gray-100">
     <div class="max-w-3xl mx-auto px-4">
       <NewsletterSignup />
     </div>
