@@ -103,41 +103,49 @@ const CATEGORY_ICONS: Record<string, string> = {
 <BaseLayout title="Stack Builder" description="Build your ideal solo founder tool stack. Pick a business type, customize your tools, and see the total monthly cost.">
 
   <!-- Hero -->
-  <section class="bg-gradient-to-b from-gray-50 to-white py-12">
-    <div class="max-w-4xl mx-auto px-4 text-center">
-      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-        Stack Builder
+  <section class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 py-20 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;60&quot; height=&quot;60&quot; viewBox=&quot;0 0 60 60&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;none&quot; fill-rule=&quot;evenodd&quot;%3E%3Cg fill=&quot;%2338bdf8&quot;%3E%3Cpath d=&quot;M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z&quot;/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+    <!-- Gradient orbs for visual interest -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-primary-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-72 h-72 bg-primary-400/5 rounded-full blur-3xl"></div>
+    <div class="max-w-4xl mx-auto px-4 text-center relative">
+      <div class="inline-flex items-center gap-2 bg-primary-500/20 text-primary-300 text-sm font-medium px-4 py-1.5 rounded-full mb-6 border border-primary-500/20">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+        Interactive Tool Picker
+      </div>
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-5 tracking-tight">
+        Build Your Perfect Stack
       </h1>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Build your ideal tool stack for your solo business. Pick a starting template, swap in alternatives, and see your estimated monthly cost.
+      <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
+        Pick your business type, swap in alternatives, and see your estimated monthly cost -- all in one place.
       </p>
     </div>
   </section>
 
   <!-- Business Type Selector -->
-  <section class="py-8 border-b border-gray-100">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4 text-center">What are you building?</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3" id="type-selector">
-        <button data-type="saas" class="type-btn flex flex-col items-center gap-2 p-4 border-2 border-gray-200 rounded-xl hover:border-primary-400 transition-colors cursor-pointer bg-white">
-          <span class="text-2xl">&#x1F6E0;&#xFE0F;</span>
-          <span class="text-sm font-medium text-gray-700">SaaS Builder</span>
+  <section class="py-12 border-b border-gray-100 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4">
+      <h2 class="text-lg font-bold text-gray-900 mb-6 text-center">What are you building?</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4" id="type-selector">
+        <button data-type="saas" class="type-btn group flex flex-col items-center gap-3 p-8 border-2 border-gray-200 rounded-2xl hover:border-primary-400 hover:shadow-lg transition-all duration-200 cursor-pointer bg-white">
+          <span class="text-4xl group-hover:scale-110 transition-transform duration-200">&#x1F6E0;&#xFE0F;</span>
+          <span class="text-sm font-bold text-gray-700 group-hover:text-primary-700">SaaS Builder</span>
         </button>
-        <button data-type="creator" class="type-btn flex flex-col items-center gap-2 p-4 border-2 border-gray-200 rounded-xl hover:border-primary-400 transition-colors cursor-pointer bg-white">
-          <span class="text-2xl">&#x1F3A8;</span>
-          <span class="text-sm font-medium text-gray-700">Creator</span>
+        <button data-type="creator" class="type-btn group flex flex-col items-center gap-3 p-8 border-2 border-gray-200 rounded-2xl hover:border-primary-400 hover:shadow-lg transition-all duration-200 cursor-pointer bg-white">
+          <span class="text-4xl group-hover:scale-110 transition-transform duration-200">&#x1F3A8;</span>
+          <span class="text-sm font-bold text-gray-700 group-hover:text-primary-700">Creator</span>
         </button>
-        <button data-type="ecommerce" class="type-btn flex flex-col items-center gap-2 p-4 border-2 border-gray-200 rounded-xl hover:border-primary-400 transition-colors cursor-pointer bg-white">
-          <span class="text-2xl">&#x1F6D2;</span>
-          <span class="text-sm font-medium text-gray-700">Ecommerce</span>
+        <button data-type="ecommerce" class="type-btn group flex flex-col items-center gap-3 p-8 border-2 border-gray-200 rounded-2xl hover:border-primary-400 hover:shadow-lg transition-all duration-200 cursor-pointer bg-white">
+          <span class="text-4xl group-hover:scale-110 transition-transform duration-200">&#x1F6D2;</span>
+          <span class="text-sm font-bold text-gray-700 group-hover:text-primary-700">Ecommerce</span>
         </button>
-        <button data-type="freelancer" class="type-btn flex flex-col items-center gap-2 p-4 border-2 border-gray-200 rounded-xl hover:border-primary-400 transition-colors cursor-pointer bg-white">
-          <span class="text-2xl">&#x1F4BB;</span>
-          <span class="text-sm font-medium text-gray-700">Freelancer</span>
+        <button data-type="freelancer" class="type-btn group flex flex-col items-center gap-3 p-8 border-2 border-gray-200 rounded-2xl hover:border-primary-400 hover:shadow-lg transition-all duration-200 cursor-pointer bg-white">
+          <span class="text-4xl group-hover:scale-110 transition-transform duration-200">&#x1F4BB;</span>
+          <span class="text-sm font-bold text-gray-700 group-hover:text-primary-700">Freelancer</span>
         </button>
-        <button data-type="agency" class="type-btn flex flex-col items-center gap-2 p-4 border-2 border-gray-200 rounded-xl hover:border-primary-400 transition-colors cursor-pointer bg-white">
-          <span class="text-2xl">&#x1F3E2;</span>
-          <span class="text-sm font-medium text-gray-700">Agency</span>
+        <button data-type="agency" class="type-btn group flex flex-col items-center gap-3 p-8 border-2 border-gray-200 rounded-2xl hover:border-primary-400 hover:shadow-lg transition-all duration-200 cursor-pointer bg-white">
+          <span class="text-4xl group-hover:scale-110 transition-transform duration-200">&#x1F3E2;</span>
+          <span class="text-sm font-bold text-gray-700 group-hover:text-primary-700">Agency</span>
         </button>
       </div>
     </div>
@@ -147,28 +155,35 @@ const CATEGORY_ICONS: Record<string, string> = {
   <section class="py-10">
     <div class="max-w-4xl mx-auto px-4">
       <!-- Empty state -->
-      <div id="empty-state" class="text-center py-16">
-        <p class="text-gray-400 text-lg">Select a business type above to get started</p>
+      <div id="empty-state" class="text-center py-24">
+        <div class="inline-flex items-center justify-center w-20 h-20 bg-gray-100 rounded-2xl mb-6">
+          <svg class="w-10 h-10 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+        </div>
+        <p class="text-gray-500 text-xl font-medium">Select a business type above to get started</p>
+        <p class="text-gray-400 text-sm mt-2">We'll recommend a complete tool stack for you</p>
       </div>
 
       <!-- Stack content (hidden initially) -->
       <div id="stack-content" class="hidden">
         <!-- Cost summary bar -->
-        <div class="flex items-center justify-between mb-8 bg-gray-50 rounded-xl p-5 border border-gray-200">
-          <div>
-            <p class="text-sm text-gray-500">Estimated monthly cost</p>
-            <p class="text-3xl font-bold text-gray-900" id="total-cost">$0</p>
-            <p class="text-xs text-gray-400 mt-1">Based on lowest advertised plan pricing</p>
-          </div>
-          <div class="flex gap-2">
-            <button id="share-btn" class="btn-secondary text-sm" title="Copy share link">
-              <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
-              Share Stack
-            </button>
-            <button id="reset-btn" class="btn-secondary text-sm" title="Reset stack">
-              <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
-              Reset
-            </button>
+        <div class="mb-10 bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 rounded-2xl p-8 text-white shadow-xl relative overflow-hidden">
+          <div class="absolute inset-0 bg-gradient-to-r from-primary-600/10 via-transparent to-primary-600/10"></div>
+          <div class="relative flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <p class="text-gray-400 text-sm font-medium uppercase tracking-wider">Estimated monthly cost</p>
+              <p class="text-5xl font-extrabold mt-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent" id="total-cost">$0</p>
+              <p class="text-gray-500 text-xs mt-2">Based on lowest advertised plan pricing</p>
+            </div>
+            <div class="flex gap-2">
+              <button id="share-btn" class="inline-flex items-center px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-xl transition-all border border-white/10" title="Copy share link">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path></svg>
+                Share
+              </button>
+              <button id="reset-btn" class="inline-flex items-center px-5 py-2.5 bg-white/10 hover:bg-white/20 text-white text-sm font-medium rounded-xl transition-all border border-white/10" title="Reset stack">
+                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                Reset
+              </button>
+            </div>
           </div>
         </div>
 
@@ -293,7 +308,7 @@ const CATEGORY_ICONS: Record<string, string> = {
         var prosHtml = '';
         if (tool.pros && tool.pros.length > 0) {
           prosHtml = tool.pros.slice(0, 2).map(function(p) {
-            return '<span class="inline-flex items-center text-xs text-green-700 bg-green-50 px-2 py-0.5 rounded-full mr-1 mb-1">' +
+            return '<span class="inline-flex items-center text-xs text-green-700 bg-green-50 px-2.5 py-1 rounded-full mr-1.5 mb-1.5">' +
               '<svg class="w-3 h-3 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>' +
               p + '</span>';
           }).join('');
@@ -302,33 +317,38 @@ const CATEGORY_ICONS: Record<string, string> = {
         var consHtml = '';
         if (tool.cons && tool.cons.length > 0) {
           consHtml = tool.cons.slice(0, 1).map(function(c) {
-            return '<span class="inline-flex items-center text-xs text-amber-700 bg-amber-50 px-2 py-0.5 rounded-full mr-1 mb-1">' +
+            return '<span class="inline-flex items-center text-xs text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full mr-1.5 mb-1.5">' +
               '<svg class="w-3 h-3 mr-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>' +
               c + '</span>';
           }).join('');
         }
 
-        return '<div class="bg-white border border-gray-200 rounded-xl p-5 hover:shadow-md transition-shadow" data-category="' + category + '">' +
+        var costClass = cost === 0 ? 'text-green-600 bg-green-50 border border-green-200' : 'text-gray-700 bg-gray-100 border border-gray-200';
+
+        return '<div class="stack-row bg-white border border-gray-200 rounded-2xl p-6 hover:shadow-lg hover:border-gray-300 transition-all duration-300" data-category="' + category + '" style="opacity:0;transform:translateY(8px)">' +
           '<div class="flex flex-col sm:flex-row sm:items-start gap-4">' +
-            '<div class="sm:w-32 flex-shrink-0">' +
-              '<span class="text-lg mr-1.5">' + icon + '</span>' +
-              '<span class="text-sm font-semibold text-gray-500 uppercase tracking-wide">' + label + '</span>' +
+            '<div class="sm:w-40 flex-shrink-0">' +
+              '<div class="flex items-center gap-3">' +
+                '<span class="inline-flex items-center justify-center w-11 h-11 bg-gray-50 border border-gray-100 rounded-xl text-xl">' + icon + '</span>' +
+                '<span class="text-xs font-bold text-gray-400 uppercase tracking-wider">' + label + '</span>' +
+              '</div>' +
             '</div>' +
             '<div class="flex-1 min-w-0">' +
-              '<div class="flex items-start justify-between gap-3 mb-1">' +
+              '<div class="flex items-start justify-between gap-3 mb-2">' +
                 '<div>' +
-                  '<a href="/tools/' + selectedSlug + '" class="text-lg font-semibold text-gray-900 hover:text-primary-600 transition-colors">' + tool.name + '</a>' +
+                  '<a href="/tools/' + selectedSlug + '" class="text-lg font-bold text-gray-900 hover:text-primary-600 transition-colors">' + tool.name + '</a>' +
                   '<span class="ml-2 text-sm text-gray-400">' + tool.pricing + '</span>' +
                 '</div>' +
-                '<span class="text-sm font-semibold text-gray-700 whitespace-nowrap">' + formatCost(cost) + '/mo</span>' +
+                '<span class="text-sm font-bold px-3 py-1 rounded-full whitespace-nowrap ' + costClass + '">' + formatCost(cost) + '/mo</span>' +
               '</div>' +
-              '<p class="text-sm text-gray-600 mb-2">' + tool.description + '</p>' +
+              '<p class="text-sm text-gray-600 mb-3 leading-relaxed">' + tool.description + '</p>' +
               '<div class="flex flex-wrap mb-3">' + prosHtml + consHtml + '</div>' +
-              '<div class="flex items-center gap-3">' +
-                '<select class="swap-select text-sm border border-gray-300 rounded-lg px-3 py-1.5 bg-white text-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 cursor-pointer" data-category="' + category + '">' +
+              '<div class="flex items-center gap-3 pt-3 border-t border-gray-100">' +
+                '<label class="text-xs text-gray-400 font-semibold uppercase tracking-wide">Swap:</label>' +
+                '<select class="swap-select text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-gray-50 text-gray-700 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 cursor-pointer hover:bg-white transition-colors" data-category="' + category + '">' +
                   optionsHtml +
                 '</select>' +
-                '<a href="' + link + '" target="_blank" rel="noopener noreferrer" class="text-sm text-primary-600 hover:text-primary-700 font-medium whitespace-nowrap">Visit site &rarr;</a>' +
+                '<a href="' + link + '" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-sm text-primary-600 hover:text-primary-700 font-medium whitespace-nowrap ml-auto gap-1">Visit site <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg></a>' +
               '</div>' +
             '</div>' +
           '</div>' +
@@ -341,22 +361,53 @@ const CATEGORY_ICONS: Record<string, string> = {
         if (!container) return;
 
         var categories = Object.keys(currentStack);
-        container.innerHTML = categories.map(function(cat) {
+        var html = categories.map(function(cat) {
           return createStackRow(cat, currentStack[cat]);
         }).join('');
 
-        updateTotalCost();
+        // Fade animation: briefly reduce opacity, swap content, fade back in
+        container.style.opacity = '0';
+        container.style.transform = 'translateY(8px)';
+        setTimeout(function() {
+          container.innerHTML = html;
+          updateTotalCost();
 
-        // Attach change handlers to swap selects
-        var selects = container.querySelectorAll('.swap-select');
-        selects.forEach(function(sel) {
-          sel.addEventListener('change', function(e) {
-            var cat = e.target.getAttribute('data-category');
-            currentStack[cat] = e.target.value;
-            renderStack();
-            updateUrl();
+          // Attach change handlers to swap selects
+          var selects = container.querySelectorAll('.swap-select');
+          selects.forEach(function(sel) {
+            sel.addEventListener('change', function(e) {
+              var cat = e.target.getAttribute('data-category');
+              var row = e.target.closest('.stack-row');
+              // Animate just the row being swapped
+              if (row) {
+                row.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+                row.style.opacity = '0';
+                row.style.transform = 'scale(0.98) translateY(4px)';
+              }
+              currentStack[cat] = e.target.value;
+              setTimeout(function() {
+                renderStack();
+                updateUrl();
+              }, 200);
+            });
           });
-        });
+
+          // Trigger staggered fade-in for each row
+          requestAnimationFrame(function() {
+            container.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            container.style.opacity = '1';
+            container.style.transform = 'translateY(0)';
+
+            var rows = container.querySelectorAll('.stack-row');
+            rows.forEach(function(row, i) {
+              setTimeout(function() {
+                row.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+                row.style.opacity = '1';
+                row.style.transform = 'translateY(0)';
+              }, i * 60);
+            });
+          });
+        }, 150);
       }
 
       // Show/hide stack content
@@ -380,10 +431,10 @@ const CATEGORY_ICONS: Record<string, string> = {
         btns.forEach(function(btn) {
           var type = btn.getAttribute('data-type');
           if (type === currentType) {
-            btn.classList.add('border-primary-500', 'bg-primary-50');
+            btn.classList.add('border-primary-500', 'bg-primary-50', 'shadow-lg', 'ring-2', 'ring-primary-200');
             btn.classList.remove('border-gray-200', 'bg-white');
           } else {
-            btn.classList.remove('border-primary-500', 'bg-primary-50');
+            btn.classList.remove('border-primary-500', 'bg-primary-50', 'shadow-lg', 'ring-2', 'ring-primary-200');
             btn.classList.add('border-gray-200', 'bg-white');
           }
         });

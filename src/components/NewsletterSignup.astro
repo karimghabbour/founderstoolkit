@@ -4,28 +4,40 @@ interface Props {
 }
 const { variant = 'section' } = Astro.props;
 
-const beehiivFormId = 'cffabca6-8ffb-4eb4-a3e5-6713b37e7b86';
-const iframeSrc = `https://subscribe-forms.beehiiv.com/${beehiivFormId}`;
+const beehiivUrl = 'https://subscribe-forms.beehiiv.com/cffabca6-8ffb-4eb4-a3e5-6713b37e7b86';
 ---
 
 {variant === 'section' ? (
-  <section class="bg-gradient-to-br from-primary-50 to-white py-16 px-4 sm:px-6 lg:px-8 rounded-2xl">
-    <div class="max-w-2xl mx-auto text-center">
+  <section class="bg-gradient-to-br from-primary-50 via-white to-primary-50 py-16 px-4 sm:px-6 lg:px-8 rounded-2xl border border-primary-100 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-[0.04]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;40&quot; height=&quot;40&quot; viewBox=&quot;0 0 40 40&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cg fill=&quot;%230284c7&quot; fill-opacity=&quot;0.4&quot;%3E%3Cpath d=&quot;M20 0L40 20L20 40L0 20z&quot; fill=&quot;none&quot; stroke=&quot;%230284c7&quot; stroke-width=&quot;0.5&quot;/%3E%3C/g%3E%3C/svg%3E');"></div>
+    <div class="max-w-2xl mx-auto text-center relative">
+      <div class="inline-flex items-center justify-center w-14 h-14 bg-primary-100 rounded-full mb-5">
+        <svg class="w-7 h-7 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+        </svg>
+      </div>
       <h2 class="text-3xl font-bold text-gray-900 sm:text-4xl">
         Stay ahead of the curve
       </h2>
       <p class="mt-4 text-lg text-gray-600">
         Get weekly picks of the best tools for solo founders, plus tips on building with AI.
       </p>
-      <div class="mt-8 flex justify-center">
-        <iframe
-          src={iframeSrc}
-          class="beehiiv-embed"
-          frameborder="0"
-          scrolling="no"
-          style="width: 100%; max-width: 480px; height: 160px; border-radius: 8px; background-color: transparent;"
-        ></iframe>
-      </div>
+      <form class="newsletter-form mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" data-beehiiv-url={beehiivUrl}>
+        <input
+          type="email"
+          name="email"
+          required
+          placeholder="you@example.com"
+          class="newsletter-email flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-gray-900 placeholder-gray-400 text-base"
+        />
+        <button
+          type="submit"
+          class="newsletter-submit btn-primary px-6 py-3 whitespace-nowrap text-base font-semibold shadow-sm hover:shadow-md transition-all"
+        >
+          Subscribe
+        </button>
+      </form>
+      <div class="newsletter-status mt-3 text-sm hidden"></div>
       <p class="mt-4 text-sm text-gray-500">
         Join solo founders getting weekly tool recommendations. No spam, unsubscribe anytime.
       </p>
@@ -33,18 +45,97 @@ const iframeSrc = `https://subscribe-forms.beehiiv.com/${beehiivFormId}`;
   </section>
 ) : (
   <div>
-    <p class="text-sm font-semibold text-gray-200 mb-3">
+    <p class="text-sm font-semibold text-white mb-3">
       Get our weekly tools newsletter
     </p>
-    <iframe
-      src={iframeSrc}
-      class="beehiiv-embed"
-      frameborder="0"
-      scrolling="no"
-      style="width: 100%; max-width: 400px; height: 120px; background-color: transparent;"
-    ></iframe>
+    <form class="newsletter-form flex gap-2 max-w-sm" data-beehiiv-url={beehiivUrl}>
+      <input
+        type="email"
+        name="email"
+        required
+        placeholder="you@example.com"
+        class="newsletter-email flex-1 px-3 py-2.5 rounded-lg text-sm bg-white text-gray-900 placeholder-gray-400 border-0 focus:ring-2 focus:ring-primary-400 shadow-sm"
+      />
+      <button
+        type="submit"
+        class="newsletter-submit px-5 py-2.5 bg-primary-500 text-white text-sm font-semibold rounded-lg hover:bg-primary-400 transition-colors whitespace-nowrap shadow-sm"
+      >
+        Subscribe
+      </button>
+    </form>
+    <div class="newsletter-status mt-2 text-xs hidden"></div>
     <p class="mt-2 text-xs text-gray-400">
       No spam, unsubscribe anytime.
     </p>
   </div>
 )}
+
+<script is:inline>
+  (function() {
+    var forms = document.querySelectorAll('.newsletter-form');
+
+    forms.forEach(function(form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        var emailInput = form.querySelector('.newsletter-email');
+        var submitBtn = form.querySelector('.newsletter-submit');
+        var statusEl = form.parentElement.querySelector('.newsletter-status');
+        var email = emailInput.value.trim();
+        var beehiivUrl = form.getAttribute('data-beehiiv-url');
+
+        if (!email) return;
+
+        // Detect dark context (footer)
+        var isDark = !!(form.closest('.bg-gray-900') || form.closest('footer'));
+
+        // Show loading state
+        var originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Subscribing...';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.7';
+
+        // POST to Beehiiv's subscribe endpoint (no-cors mode)
+        fetch(beehiivUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: 'email=' + encodeURIComponent(email),
+          mode: 'no-cors'
+        }).then(function() {
+          // no-cors means we can't read the response, but the request was sent
+          if (statusEl) {
+            statusEl.textContent = 'Thanks for subscribing! Check your inbox to confirm.';
+            statusEl.className = 'newsletter-status mt-3 text-sm';
+            if (isDark) {
+              statusEl.classList.add('text-green-400');
+            } else {
+              statusEl.classList.add('text-green-600');
+            }
+          }
+          emailInput.value = '';
+          submitBtn.textContent = 'Subscribed!';
+          submitBtn.style.opacity = '1';
+          setTimeout(function() {
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          }, 3000);
+        }).catch(function() {
+          // Fallback: open Beehiiv subscribe page in new tab
+          window.open(beehiivUrl + '?email=' + encodeURIComponent(email), '_blank');
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+          if (statusEl) {
+            statusEl.textContent = 'A subscription page has opened in a new tab.';
+            statusEl.className = 'newsletter-status mt-3 text-sm';
+            if (isDark) {
+              statusEl.classList.add('text-blue-400');
+            } else {
+              statusEl.classList.add('text-blue-600');
+            }
+          }
+        });
+      });
+    });
+  })();
+</script>
