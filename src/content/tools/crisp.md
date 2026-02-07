@@ -16,6 +16,8 @@ cons:
 alternatives:
   - "intercom"
   - "helpscout"
+  - "tawk-to"
+  - "chatwoot"
 lastVerified: "2026-01-31"
 lastOutreach: "2026-02-02"
 outreachEmail: "contact@crisp.chat"

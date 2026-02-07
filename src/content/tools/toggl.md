@@ -6,12 +6,12 @@ pricing: "Free tier, paid from $9/user/mo"
 featured: false
 description: "Simple time tracking that works"
 pros:
-  - "Clean, minimal interface"
-  - "Good free tier"
-  - "100% bootstrapped"
+  - "One-click timer that stays out of your way"
+  - "Free tier covers up to 5 users with core tracking features"
+  - "100% bootstrapped to $32M ARR — the product is not going anywhere"
 cons:
-  - "Basic reporting on free"
-  - "Gets pricey per seat"
+  - "Reporting on free tier is limited to basic time logs"
+  - "$9/user/month gets expensive when you add contractors or part-timers"
 alternatives:
   - "noko"
   - "harvest"

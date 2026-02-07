@@ -16,6 +16,8 @@ alternatives:
   - "cal-com"
   - "calendly"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-06"
+outreachEmail: "derrick@savvycal.com"
 ---
 
 SavvyCal makes scheduling collaborative instead of "here's my link, pick a slot." Built by Derrick Reimer (who co-founded Drip), it lets people overlay their own calendar when booking — feels way less one-sided than traditional scheduling links. Bootstrapped to over $1M ARR.

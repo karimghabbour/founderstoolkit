@@ -6,18 +6,18 @@ pricing: "Free tier, from $79/mo"
 featured: false
 description: "Customer feedback management for product teams"
 pros:
-  - "Clean feedback boards"
-  - "Built-in roadmap feature"
-  - "Good integrations"
+  - "Feedback boards let users vote on features so you build what people actually want"
+  - "Public roadmap builds trust and reduces 'when will you add X?' emails"
+  - "Connects to Jira, Linear, Intercom, and Slack for team workflows"
 cons:
-  - "Can get expensive"
-  - "Overkill for small products"
+  - "Jumps from free to $79/month — expensive for a feedback tool"
+  - "Overkill if you have fewer than 100 active users giving feedback"
 alternatives:
   - "productboard"
   - "uservoice"
 lastVerified: "2026-02-03"
-lastOutreach: "2026-02-03"
-outreachEmail: "hello@canny.io"
+lastOutreach: "2026-02-06"
+outreachEmail: "sarah@canny.io"
 ---
 
 Canny helps product teams collect, organize, and prioritize customer feedback. Clean interface with built-in roadmaps and changelogs.

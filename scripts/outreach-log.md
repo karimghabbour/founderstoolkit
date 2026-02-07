@@ -1,7 +1,7 @@
 # Outreach Log
 
 ## Setup Status
-- [ ] Resend domain verification (required before sending)
+- [x] Resend domain verification (verified, sending works)
 - [x] Outreach skill configured with psychology-first approach
 - [x] Initial targets identified
 
@@ -53,3 +53,52 @@
 - Tally: pending
 - Crisp: pending
 - Fathom: pending
+
+### 2026-02-06
+
+**Sent: 19 emails (batch 2)**
+
+| Tool | Contact | Angle | Principle |
+|------|---------|-------|-----------|
+| Aider | paul@aider.chat | One builder to another | Liking + Unity |
+| Buffer | joel@buffer.com | Audience alignment | Unity |
+| Cal.com | peer@cal.com | Open source + founders | Alignment |
+| Canny | sarah@canny.io | Bootstrapped tribe | Unity |
+| Ghost | john@ghost.org | Nonprofit, indie publishing | Unity |
+| Help Scout | nick@helpscout.com | Anti-enterprise, human tools | Alignment |
+| Noko | amy@nokotime.com | Anti-VC, Stacking the Bricks | Unity |
+| PocketBase | gani.georgiev@gmail.com | Solo builder appreciation | Reciprocity |
+| Render | anurag@render.com | Audience fit (solo founders) | Reciprocity + Social Proof |
+| Resend | zeno@resend.com | We use Resend ourselves | Unity |
+| SavvyCal | derrick@savvycal.com | Competitive positioning | Unity + Liking |
+| Tuple | ben@tuple.app | Niche tools, audience-first | Unity |
+| Userlist | jane@userlist.com | Patient bootstrapped growth | Unity + Liking |
+| Baremetrics | hello@baremetrics.com | SaaS founder audience | Reciprocity |
+| Cline | hello@cline.bot | Garage-to-5M-installs origin | Unity + Social Proof |
+| Continue | hello@continue.dev | Bring-your-own-model philosophy | Unity + Reciprocity |
+| Pieces | tsavo@pieces.app | Underdog from Cincinnati | Unity + Liking |
+| Tabnine | dror@tabnine.com | Pioneer longevity + privacy | Authority + Unity |
+| Tempo | kevin@tempo.new | Perpetua backstory, real codebases | Liking + Authority |
+
+**Response tracking:**
+- Aider: pending
+- Buffer: pending
+- Cal.com: pending
+- Canny: pending
+- Ghost: pending
+- Help Scout: pending
+- Noko: pending
+- PocketBase: pending
+- Render: pending
+- Resend: pending
+- SavvyCal: pending
+- Tuple: pending
+- Userlist: pending
+- Baremetrics: pending
+- Cline: pending
+- Continue: pending
+- Pieces: pending
+- Tabnine: pending
+- Tempo: pending
+
+**Total outreach to date: 23 emails (4 on Feb 2 + 19 on Feb 6)**

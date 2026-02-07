@@ -16,6 +16,8 @@ alternatives:
   - "pop"
   - "screen"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-06"
+outreachEmail: "ben@tuple.app"
 ---
 
 Tuple is what Screenhero was before Slack killed it. High-quality, low-latency pair programming that actually works. Built by Ben Orenstein and team, bootstrapped to millions in revenue. Used by engineers at Shopify, Stripe, and Netflix.

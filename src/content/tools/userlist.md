@@ -16,6 +16,8 @@ alternatives:
   - "convertkit"
   - "customer-io"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-06"
+outreachEmail: "jane@userlist.com"
 ---
 
 Userlist is email automation that actually understands SaaS. Track users AND companies, trigger emails based on product usage, run onboarding sequences that adapt to behavior. Built by Jane Portman and Benedikt Deicke specifically because generic email tools don't get SaaS.

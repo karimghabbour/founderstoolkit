@@ -6,12 +6,12 @@ pricing: "Free tier, paid from $42/mo"
 featured: false
 description: "Newsletter platform built by Morning Brew alumni"
 pros:
-  - "Built-in referral system"
-  - "Ad network for monetization"
-  - "Great analytics"
+  - "Built-in referral system that actually drives subscriber growth"
+  - "Ad network lets you monetize before you have enough subs for sponsorships"
+  - "Analytics show you open rates, click rates, and revenue per subscriber"
 cons:
-  - "Newer, smaller ecosystem"
-  - "Free tier is limited"
+  - "Free tier limits you to 2,500 subscribers with Beehiiv branding"
+  - "Jump from free to $42/month is steep — no affordable middle tier"
 alternatives:
   - "substack"
   - "convertkit"

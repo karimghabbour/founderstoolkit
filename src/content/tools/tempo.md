@@ -19,6 +19,8 @@ alternatives:
   - "lovable"
   - "bolt-new"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-06"
+outreachEmail: "kevin@tempo.new"
 ---
 
 Tempo sits between a design tool and a code generator. You can import Figma designs, use AI prompts, or visually edit components with drag-and-drop — then export clean React and Tailwind code. It is the visual approach to AI-assisted coding.

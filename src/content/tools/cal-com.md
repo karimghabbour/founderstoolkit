@@ -17,6 +17,8 @@ alternatives:
   - "calendly"
   - "savvycal"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-06"
+outreachEmail: "peer@cal.com"
 ---
 
 Cal.com does what Calendly does, but it is free for individuals and open source. You get a booking page, calendar integrations, and the basics of scheduling without paying Calendly's rates.

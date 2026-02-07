@@ -6,12 +6,12 @@ pricing: "Free up to 1k subs, paid from $9/mo"
 featured: false
 description: "Simple email marketing at great prices"
 pros:
-  - "Very affordable"
-  - "Clean interface"
-  - "Good free tier"
+  - "5x cheaper than Mailchimp for comparable features"
+  - "Free tier covers 1,000 subscribers with full email builder"
+  - "Drag-and-drop editor that actually produces good-looking emails"
 cons:
-  - "Less advanced automation"
-  - "Fewer integrations"
+  - "Automation is simpler than ConvertKit or Customer.io"
+  - "Fewer native integrations — may need Zapier for your stack"
 alternatives:
   - "convertkit"
   - "buttondown"

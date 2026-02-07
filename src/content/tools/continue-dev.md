@@ -19,6 +19,8 @@ alternatives:
   - "cody"
   - "github-copilot"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-06"
+outreachEmail: "hello@continue.dev"
 ---
 
 Continue is the "bring your own brain" approach to AI coding. It is a free, open-source extension for VS Code and JetBrains that connects to any LLM you want — cloud APIs like Claude and GPT-4, or local models through Ollama. You get autocomplete, chat, and inline editing without paying for a subscription.

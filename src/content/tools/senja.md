@@ -6,12 +6,12 @@ pricing: "Free tier, from $29/mo"
 featured: false
 description: "Collect and display testimonials beautifully"
 pros:
-  - "Beautiful testimonial widgets"
-  - "Video + text support"
-  - "Generous free tier"
+  - "Testimonial widgets look polished without any design work"
+  - "Collect both video and text testimonials from one branded page"
+  - "Free tier covers 15 testimonials — enough to start building social proof"
 cons:
-  - "Newer platform"
-  - "Limited integrations"
+  - "Newer platform with fewer integrations than established tools"
+  - "Advanced features like A/B testing widgets require paid plans"
 alternatives:
   - "testimonial-to"
   - "trustpilot"

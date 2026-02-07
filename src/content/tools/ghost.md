@@ -16,6 +16,8 @@ alternatives:
   - "wordpress"
   - "substack"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-06"
+outreachEmail: "john@ghost.org"
 ---
 
 Ghost is what WordPress wishes it still was — focused on writing. Founded by John O'Nolan (ex-WordPress core team) as a non-profit. Bootstrapped after getting rejected by YC twice. Now generated over $136M total, used by Apple, DuckDuckGo, Mozilla. You can self-host free or use their managed service.

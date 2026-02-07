@@ -16,7 +16,11 @@ cons:
 alternatives:
   - "crisp"
   - "freshdesk"
+  - "intercom"
+  - "chatwoot"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-06"
+outreachEmail: "nick@helpscout.com"
 ---
 
 Help Scout makes customer support feel like a personal email conversation, not a helpdesk ticket queue. When customers email you, they get a reply from a real email address, not a portal login. Behind the scenes, you get shared inboxes, collision detection, and saved replies to keep response times low.

@@ -6,12 +6,12 @@ pricing: "Free tier, paid from $12.50/mo"
 featured: false
 description: "Quick video messages instead of meetings"
 pros:
-  - "Dead simple to record and share"
-  - "Good free tier"
-  - "Async communication done right"
+  - "Record screen + face video and share a link in under 60 seconds"
+  - "Free tier gives you 25 videos up to 5 minutes each"
+  - "Replaces meetings that should have been an email (or a video)"
 cons:
-  - "Now owned by Atlassian"
-  - "Some features getting gated"
+  - "Owned by Atlassian since 2023 — some features are being gated to paid plans"
+  - "Videos longer than 5 minutes require a paid plan ($12.50/month)"
 alternatives:
   - "tella"
   - "mmhmm"

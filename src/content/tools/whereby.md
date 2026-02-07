@@ -6,12 +6,12 @@ pricing: "Free tier, paid from $6.99/mo"
 featured: false
 description: "Video meetings in your browser, no downloads"
 pros:
-  - "No app install needed"
-  - "Custom room URLs"
-  - "Clean interface"
+  - "No app install — share a link, people click, they are in the call"
+  - "Custom room URLs like whereby.com/yourname look professional"
+  - "Works in any browser without downloads or account creation for guests"
 cons:
-  - "Less features than Zoom"
-  - "Limited free tier"
+  - "Fewer features than Zoom — no breakout rooms, limited recording"
+  - "Free tier limited to 1 meeting room and 45-minute group calls"
 alternatives:
   - "zoom"
   - "google-meet"

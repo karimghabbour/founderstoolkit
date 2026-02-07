@@ -6,12 +6,12 @@ pricing: "Free tier, paid from $10/mo"
 featured: false
 description: "AI transcription for meetings and conversations"
 pros:
-  - "Generous free tier"
-  - "Real-time transcription"
-  - "Good speaker identification"
+  - "Free tier includes 300 minutes/month of transcription"
+  - "Real-time transcription during live meetings — not just post-recording"
+  - "Speaker identification labels who said what without manual tagging"
 cons:
-  - "Accuracy varies with audio quality"
-  - "English-focused"
+  - "Accuracy drops significantly with poor audio quality or accents"
+  - "English-only for most features — limited non-English support"
 alternatives:
   - "fathom-video"
   - "fireflies"

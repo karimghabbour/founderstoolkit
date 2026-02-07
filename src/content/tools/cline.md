@@ -19,6 +19,8 @@ alternatives:
   - "aider"
   - "continue-dev"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-06"
+outreachEmail: "hello@cline.bot"
 ---
 
 Cline is a VS Code extension that turns your editor into an AI coding agent. Pick your AI model (Anthropic Claude, OpenAI, local models through Ollama), give it a task, and it will plan, write code, run commands, and iterate. It asks for permission before each action, so you stay in control.

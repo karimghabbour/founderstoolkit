@@ -6,12 +6,12 @@ pricing: "From $49/mo"
 featured: false
 description: "Auto-generate images and videos via API"
 pros:
-  - "Powerful API for automation"
-  - "NoCode integrations"
-  - "Great documentation"
+  - "API generates images/videos automatically — no manual design work per piece"
+  - "Connects to Zapier, Make, and Airtable for no-code workflows"
+  - "Templates make it easy to maintain brand consistency at scale"
 cons:
-  - "Learning curve for API"
-  - "Can get expensive at scale"
+  - "API-first approach means a learning curve before your first automation"
+  - "$49/month starting price is steep if you only generate a few images"
 alternatives:
   - "cloudinary"
   - "imgix"

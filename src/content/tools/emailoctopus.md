@@ -6,12 +6,12 @@ pricing: "Free up to 2,500 subs, from $9/mo"
 featured: false
 description: "Simple, affordable email marketing"
 pros:
-  - "1/3 the price of Mailchimp"
-  - "Generous free tier"
-  - "Clean, simple interface"
+  - "1/3 the price of Mailchimp for comparable features"
+  - "Free tier covers 2,500 subscribers — more than ConvertKit's 1,000"
+  - "Simple interface that does not try to be a CRM"
 cons:
-  - "Fewer automations than competitors"
-  - "Limited template options"
+  - "Automation is basic — no complex branching or conditional workflows"
+  - "Email template library is small compared to Mailchimp or MailerLite"
 alternatives:
   - "convertkit"
   - "buttondown"

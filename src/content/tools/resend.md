@@ -18,6 +18,8 @@ alternatives:
   - "postmark"
   - "sendgrid"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-06"
+outreachEmail: "zeno@resend.com"
 ---
 
 Resend is what happens when someone who hated the existing email APIs built a new one. Created by Zeno Rocha (who also built React Email), it focuses on developer experience above everything else. The API is clean, the docs are clear, and you can have transactional emails working in your app in about 15 minutes.

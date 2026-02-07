@@ -16,6 +16,8 @@ alternatives:
   - "profitwell"
   - "chartmogul"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-06"
+outreachEmail: "hello@baremetrics.com"
 ---
 
 Baremetrics gives you all the subscription metrics you need — MRR, ARR, LTV, churn — pulled directly from your payment processor. Founded by Josh Pigford who famously made all their metrics public. Great for founders who want a clear picture of their SaaS health without spreadsheet gymnastics.

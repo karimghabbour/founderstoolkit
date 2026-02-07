@@ -19,6 +19,8 @@ alternatives:
   - "cody"
   - "tabnine"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-06"
+outreachEmail: "tsavo@pieces.app"
 ---
 
 Pieces is not an AI coding assistant in the Cursor/Copilot sense. It is more like an AI-powered clipboard for code. Save a snippet from your browser, your editor, or a Slack message, and Pieces automatically adds descriptions, tags, and related context. When you need that snippet later, you search for it instead of digging through bookmarks.

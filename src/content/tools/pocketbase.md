@@ -16,6 +16,8 @@ alternatives:
   - "supabase"
   - "firebase"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-06"
+outreachEmail: "gani.georgiev@gmail.com"
 ---
 
 PocketBase is a complete backend in one executable file. SQLite database, auth, file storage, real-time subscriptions, admin dashboard — all included. Perfect for indie hackers who want to ship fast without managing infrastructure. Open source (MIT license).

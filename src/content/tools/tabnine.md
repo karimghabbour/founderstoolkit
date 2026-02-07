@@ -19,6 +19,8 @@ alternatives:
   - "cody"
   - "continue-dev"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-06"
+outreachEmail: "dror@tabnine.com"
 ---
 
 Tabnine was one of the first AI code completion tools and its main selling point is privacy. It can run models entirely on your machine — your code never touches a server. For solo founders working on sensitive projects or under compliance requirements, that matters.

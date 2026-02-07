@@ -17,6 +17,8 @@ alternatives:
   - "hootsuite"
   - "later"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-06"
+outreachEmail: "joel@buffer.com"
 ---
 
 Buffer does one thing and does it well: schedule social media posts. No CRM bolted on, no social listening dashboard, no enterprise features you will never use. Write your posts, pick your times, Buffer publishes them. Done.

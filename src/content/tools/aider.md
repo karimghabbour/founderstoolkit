@@ -19,6 +19,8 @@ alternatives:
   - "cline"
   - "cursor"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-06"
+outreachEmail: "paul@aider.chat"
 ---
 
 Aider is a terminal tool that pair-programs with you. You tell it what to change, it edits the files, and — here is the part that wins people over — it creates a clean git commit with a descriptive message. Every change is tracked, reviewable, and revertable. No other AI coding tool handles version control this naturally.
