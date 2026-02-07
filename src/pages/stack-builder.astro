@@ -3,10 +3,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
 const tools = await getCollection('tools');
-
+const categories = await getCollection('categories');
 const getSlug = (id: string) => id.replace(/\.md$/, '');
 
-// Serialize only safe, public fields for client-side use
 const toolsData = tools.map(tool => ({
   slug: getSlug(tool.id),
   name: tool.data.name,
@@ -19,534 +18,708 @@ const toolsData = tools.map(tool => ({
   affiliateUrl: tool.data.affiliateUrl || null,
 }));
 
-// Stack templates mapping business type -> category -> tool slug
-const STACK_TEMPLATES: Record<string, Record<string, string>> = {
-  saas: {
-    hosting: 'vercel',
-    payments: 'stripe',
-    email: 'resend',
-    analytics: 'posthog',
-    auth: 'clerk',
-    databases: 'supabase',
-    productivity: 'linear',
-    'ai-coding': 'cursor',
-  },
-  creator: {
-    hosting: 'carrd',
-    payments: 'gumroad',
-    email: 'convertkit',
-    analytics: 'fathom',
-    design: 'canva',
-    productivity: 'notion',
-    'ai-coding': 'lovable',
-  },
-  ecommerce: {
-    hosting: 'vercel',
-    payments: 'stripe',
-    email: 'mailerlite',
-    analytics: 'posthog',
-    support: 'crisp',
-    marketing: 'ahrefs',
-    'ai-coding': 'bolt-new',
-  },
-  freelancer: {
-    hosting: 'cloudflare-pages',
-    payments: 'paddle',
-    email: 'postmark',
-    analytics: 'plausible',
-    productivity: 'notion',
-    design: 'figma',
-    'ai-coding': 'cursor',
-  },
-  agency: {
-    hosting: 'vercel',
-    payments: 'stripe',
-    email: 'resend',
-    analytics: 'posthog',
-    support: 'helpscout',
-    productivity: 'linear',
-    design: 'figma',
-    'ai-coding': 'cursor',
-  },
+const categoriesData = categories
+  .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+  .map(cat => ({
+    slug: getSlug(cat.id),
+    name: cat.data.name,
+    description: cat.data.description,
+    icon: cat.data.icon,
+  }));
+
+const IMPORTANCE: Record<string, string> = {
+  hosting: 'essential',
+  payments: 'essential',
+  email: 'recommended',
+  analytics: 'recommended',
+  'ai-coding': 'recommended',
 };
 
-// Category display labels
-const CATEGORY_LABELS: Record<string, string> = {
-  hosting: 'Hosting',
-  payments: 'Payments',
-  email: 'Email',
-  analytics: 'Analytics',
-  auth: 'Auth',
-  databases: 'Databases',
-  productivity: 'Productivity',
-  design: 'Design',
-  support: 'Support',
-  marketing: 'Marketing',
-  'ai-coding': 'AI & Coding',
-};
-
-const CATEGORY_ICONS: Record<string, string> = {
-  hosting: '\u{1F680}',
-  payments: '\u{1F4B3}',
-  email: '\u{2709}\u{FE0F}',
-  analytics: '\u{1F4CA}',
-  auth: '\u{1F512}',
-  databases: '\u{1F5C4}\u{FE0F}',
-  productivity: '\u{2705}',
-  design: '\u{1F3A8}',
-  support: '\u{1F4AC}',
-  marketing: '\u{1F4E2}',
-  'ai-coding': '\u{1F916}',
+const TEMPLATES: Record<string, Record<string, string>> = {
+  saas: { hosting: 'vercel', payments: 'stripe', email: 'resend', analytics: 'posthog', auth: 'clerk', databases: 'supabase', productivity: 'linear', 'ai-coding': 'cursor' },
+  creator: { hosting: 'carrd', payments: 'gumroad', email: 'convertkit', analytics: 'fathom', design: 'canva', productivity: 'notion', 'ai-coding': 'lovable' },
+  ecommerce: { hosting: 'vercel', payments: 'stripe', email: 'mailerlite', analytics: 'posthog', support: 'crisp', marketing: 'ahrefs', 'ai-coding': 'bolt-new' },
+  freelancer: { hosting: 'cloudflare-pages', payments: 'paddle', email: 'postmark', analytics: 'plausible', productivity: 'notion', design: 'figma', 'ai-coding': 'cursor' },
+  agency: { hosting: 'vercel', payments: 'stripe', email: 'resend', analytics: 'posthog', support: 'helpscout', productivity: 'linear', design: 'figma', 'ai-coding': 'cursor' },
 };
 ---
 
-<BaseLayout title="Stack Builder" description="Build your ideal solo founder tool stack. Pick a business type, customize your tools, and see the total monthly cost.">
+<BaseLayout title="Stack Builder" description="Build your ideal tool stack as a solo founder. Compare tools side by side, see tradeoffs, and find exactly what you need.">
 
-  <!-- Hero -->
-  <section class="pt-20 pb-14 bg-[#fafaf9]">
-    <div class="max-w-4xl mx-auto px-4">
-      <p class="text-xs font-semibold tracking-widest uppercase text-primary-600 mb-3">Interactive Tool Picker</p>
+  <section class="pt-20 pb-10 bg-[#fafaf9]">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="text-xs font-semibold tracking-widest uppercase text-primary-600 mb-3">Interactive Stack Builder</p>
       <h1 class="font-display text-4xl md:text-5xl text-gray-900 mb-4 leading-[1.1]">
-        Build your <em class="italic">stack</em>
+        Build your <em class="italic">ideal</em> stack
       </h1>
-      <p class="text-lg text-gray-500 max-w-lg leading-relaxed">
-        Pick a business type, swap in alternatives, and see your total monthly cost at a glance.
+      <p class="text-lg text-gray-500 max-w-xl leading-relaxed">
+        Browse each category, compare your options, and pick the tools you actually need. See exactly what you gain and what you'd lose with every choice.
       </p>
     </div>
   </section>
 
-  <!-- Business Type Selector -->
-  <section class="pb-14 bg-[#fafaf9] border-b border-gray-200">
-    <div class="max-w-4xl mx-auto px-4">
-      <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">I'm building a...</p>
-      <div class="flex flex-wrap gap-2.5" id="type-selector">
-        <button data-type="saas" class="type-btn text-left px-5 py-3 border border-gray-200 rounded-lg bg-white hover:border-gray-300 hover:text-gray-900 transition-all cursor-pointer shadow-sm">
-          <span class="text-sm font-semibold text-gray-600 block">SaaS</span>
-          <span class="text-[11px] text-gray-400 block">Subscription software</span>
-        </button>
-        <button data-type="creator" class="type-btn text-left px-5 py-3 border border-gray-200 rounded-lg bg-white hover:border-gray-300 hover:text-gray-900 transition-all cursor-pointer shadow-sm">
-          <span class="text-sm font-semibold text-gray-600 block">Creator</span>
-          <span class="text-[11px] text-gray-400 block">Courses, content, digital products</span>
-        </button>
-        <button data-type="ecommerce" class="type-btn text-left px-5 py-3 border border-gray-200 rounded-lg bg-white hover:border-gray-300 hover:text-gray-900 transition-all cursor-pointer shadow-sm">
-          <span class="text-sm font-semibold text-gray-600 block">Ecommerce</span>
-          <span class="text-[11px] text-gray-400 block">Physical or digital storefront</span>
-        </button>
-        <button data-type="freelancer" class="type-btn text-left px-5 py-3 border border-gray-200 rounded-lg bg-white hover:border-gray-300 hover:text-gray-900 transition-all cursor-pointer shadow-sm">
-          <span class="text-sm font-semibold text-gray-600 block">Freelancing</span>
-          <span class="text-[11px] text-gray-400 block">Client services, consulting</span>
-        </button>
-        <button data-type="agency" class="type-btn text-left px-5 py-3 border border-gray-200 rounded-lg bg-white hover:border-gray-300 hover:text-gray-900 transition-all cursor-pointer shadow-sm">
-          <span class="text-sm font-semibold text-gray-600 block">Agency</span>
-          <span class="text-[11px] text-gray-400 block">Team-based client work</span>
-        </button>
+  <section class="pb-8 bg-[#fafaf9] border-b border-gray-200">
+    <div class="max-w-6xl mx-auto px-4">
+      <p class="text-xs text-gray-400 mb-2">Or start from a template:</p>
+      <div class="flex flex-wrap gap-2" id="tpl-row">
+        <button data-tpl="saas" class="tpl-btn text-xs px-3 py-1.5 border border-gray-200 rounded-full bg-white text-gray-500 hover:border-gray-400 hover:text-gray-700 transition-colors cursor-pointer">SaaS</button>
+        <button data-tpl="creator" class="tpl-btn text-xs px-3 py-1.5 border border-gray-200 rounded-full bg-white text-gray-500 hover:border-gray-400 hover:text-gray-700 transition-colors cursor-pointer">Creator</button>
+        <button data-tpl="ecommerce" class="tpl-btn text-xs px-3 py-1.5 border border-gray-200 rounded-full bg-white text-gray-500 hover:border-gray-400 hover:text-gray-700 transition-colors cursor-pointer">Ecommerce</button>
+        <button data-tpl="freelancer" class="tpl-btn text-xs px-3 py-1.5 border border-gray-200 rounded-full bg-white text-gray-500 hover:border-gray-400 hover:text-gray-700 transition-colors cursor-pointer">Freelancer</button>
+        <button data-tpl="agency" class="tpl-btn text-xs px-3 py-1.5 border border-gray-200 rounded-full bg-white text-gray-500 hover:border-gray-400 hover:text-gray-700 transition-colors cursor-pointer">Agency</button>
       </div>
     </div>
   </section>
 
-  <!-- Stack Table -->
-  <section class="py-12">
-    <div class="max-w-4xl mx-auto px-4">
-      <!-- Empty state -->
-      <div id="empty-state" class="text-center py-24">
-        <p class="text-gray-300 text-5xl mb-4 select-none" aria-hidden="true">&uarr;</p>
-        <p class="text-gray-400 text-base">Pick a business type above to see your recommended stack</p>
-      </div>
+  <section class="py-10">
+    <div class="max-w-6xl mx-auto px-4 lg:grid lg:grid-cols-[1fr_300px] lg:gap-8">
 
-      <!-- Table content (hidden initially) -->
-      <div id="stack-content" class="hidden">
-        <!-- Actions bar -->
-        <div class="flex items-center justify-between mb-8">
-          <div>
-            <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Estimated monthly cost</p>
-            <p class="text-3xl font-bold text-gray-900 tabular-nums" id="total-cost">$0/mo</p>
-          </div>
-          <div class="flex gap-2">
-            <button id="share-btn" class="text-sm font-medium text-gray-600 hover:text-gray-900 px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              Copy link
-            </button>
-            <button id="reset-btn" class="text-sm font-medium text-gray-600 hover:text-gray-900 px-4 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors">
-              Reset
-            </button>
-          </div>
-        </div>
-
-        <!-- The table -->
-        <div class="border border-gray-200 rounded-xl overflow-hidden shadow-sm">
-          <table class="w-full">
-            <thead>
-              <tr class="bg-[#fafaf9] border-b border-gray-200">
-                <th class="text-left text-[11px] font-semibold text-gray-400 uppercase tracking-widest px-5 py-3.5 w-32">Need</th>
-                <th class="text-left text-[11px] font-semibold text-gray-400 uppercase tracking-widest px-5 py-3.5">Tool</th>
-                <th class="text-left text-[11px] font-semibold text-gray-400 uppercase tracking-widest px-5 py-3.5 w-28">Cost</th>
-                <th class="text-left text-[11px] font-semibold text-gray-400 uppercase tracking-widest px-5 py-3.5 hidden sm:table-cell">Tradeoffs</th>
-                <th class="px-5 py-3.5 w-10"></th>
-              </tr>
-            </thead>
-            <tbody id="stack-tbody"></tbody>
-            <tfoot>
-              <tr class="bg-[#fafaf9] border-t-2 border-gray-200">
-                <td class="px-5 py-4 text-xs font-bold text-gray-900 uppercase tracking-widest" colspan="2">Total</td>
-                <td class="px-5 py-4 text-base font-bold text-gray-900 tabular-nums" id="total-cost-footer">$0/mo</td>
-                <td class="px-5 py-4 hidden sm:table-cell"></td>
-                <td class="px-5 py-4"></td>
-              </tr>
-              <tr id="add-category-row" class="border-t border-gray-100 hidden">
-                <td colspan="5" class="px-5 py-3">
-                  <div class="flex items-center gap-3">
-                    <button id="add-cat-btn" class="text-xs font-medium text-primary-600 hover:text-primary-800 transition-colors">+ Add a category</button>
-                    <select id="add-cat-select" class="hidden text-xs border border-gray-200 rounded px-2 py-1 bg-white text-gray-600"></select>
+      <div class="space-y-4 pb-24 lg:pb-0" id="categories-col">
+        {categoriesData.map(cat => {
+          const tier = IMPORTANCE[cat.slug] || 'optional';
+          const tierLabel = tier === 'essential' ? 'Essential' : tier === 'recommended' ? 'Recommended' : 'Optional';
+          const tierColor = tier === 'essential' ? 'bg-green-50 text-green-700 border-green-200' : tier === 'recommended' ? 'bg-blue-50 text-blue-700 border-blue-200' : 'bg-gray-50 text-gray-500 border-gray-200';
+          return (
+            <div class="cat-section border border-gray-200 rounded-xl overflow-hidden bg-white transition-all" data-cat={cat.slug}>
+              <button class="cat-header w-full flex items-center justify-between px-5 py-4 hover:bg-gray-50/50 transition-colors text-left cursor-pointer" data-toggle={cat.slug}>
+                <div class="flex items-center gap-3 min-w-0">
+                  <span class="text-xl shrink-0">{cat.icon}</span>
+                  <div class="min-w-0">
+                    <div class="flex items-center gap-2 flex-wrap">
+                      <span class="text-sm font-semibold text-gray-900">{cat.name}</span>
+                      <span class={`text-[10px] px-1.5 py-0.5 rounded-full font-medium border ${tierColor}`}>{tierLabel}</span>
+                    </div>
+                    <p class="text-xs text-gray-400 mt-0.5">{cat.description}</p>
                   </div>
-                </td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
+                </div>
+                <div class="flex items-center gap-3 shrink-0 ml-3">
+                  <div class="cat-pick text-right hidden sm:block" data-pick={cat.slug}></div>
+                  <svg class="cat-chevron w-4 h-4 text-gray-300 transition-transform duration-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                  </svg>
+                </div>
+              </button>
+              <div class="cat-body border-t border-gray-100 px-5 py-5 bg-[#fafaf9] hidden" data-body={cat.slug}></div>
+            </div>
+          );
+        })}
+      </div>
 
-        <p class="text-xs text-gray-400 mt-4 pl-3 border-l-2 border-gray-200">Based on lowest advertised pricing. Costs assume free tiers where available. Percentage-based fees (e.g., Stripe, Gumroad) depend on your revenue and are not included in the total.</p>
+      <div class="hidden lg:block">
+        <div class="sticky top-6">
+          <div class="border border-gray-200 rounded-xl bg-white shadow-sm overflow-hidden">
+            <div class="px-5 py-4 bg-[#fafaf9] border-b border-gray-200">
+              <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-1">Your Stack</p>
+              <p class="text-2xl font-bold text-gray-900 tabular-nums" id="sidebar-cost">$0/mo</p>
+              <p class="text-xs text-gray-400 mt-0.5"><span id="sidebar-count">0</span> tools selected</p>
+            </div>
+            <div id="sidebar-list" class="px-5 py-3 max-h-[360px] overflow-y-auto">
+              <p class="text-sm text-gray-300 italic py-2">Pick tools below to start building</p>
+            </div>
+            <div id="sidebar-gaps" class="px-5 py-3 border-t border-gray-100 hidden">
+              <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-2">You might also need</p>
+              <div id="sidebar-gaps-list" class="flex flex-wrap gap-1.5"></div>
+            </div>
+            <div class="px-5 py-3 border-t border-gray-100 flex gap-2">
+              <button id="share-btn" class="flex-1 text-xs font-medium text-gray-600 hover:text-gray-900 px-3 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">Copy link</button>
+              <button id="reset-btn" class="text-xs font-medium text-gray-400 hover:text-red-500 px-3 py-2 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">Reset</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Share toast -->
-  <div id="share-toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-3 rounded-lg shadow-lg text-sm transition-all duration-300 opacity-0 pointer-events-none translate-y-2 z-50">
-    Link copied to clipboard!
+  <div id="mobile-bar" class="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_12px_rgba(0,0,0,0.06)] z-40 px-4 py-3 flex items-center justify-between">
+    <div>
+      <p class="text-sm font-bold text-gray-900 tabular-nums" id="mobile-cost">$0/mo</p>
+      <p class="text-[11px] text-gray-400"><span id="mobile-count">0</span> tools selected</p>
+    </div>
+    <div class="flex gap-2">
+      <button id="mobile-share" class="text-xs font-medium text-gray-500 px-3 py-2 border border-gray-200 rounded-lg cursor-pointer">Share</button>
+      <button id="mobile-view" class="text-xs font-medium text-white bg-gray-900 px-3 py-2 rounded-lg cursor-pointer">View Stack</button>
+    </div>
   </div>
 
-  <!-- Tool data (build-time serialized, excludes internal fields) -->
+  <div id="mobile-overlay" class="lg:hidden fixed inset-0 bg-black/50 z-50 hidden" style="backdrop-filter:blur(2px)">
+    <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-2xl max-h-[80vh] overflow-y-auto">
+      <div class="sticky top-0 bg-white px-5 py-4 border-b border-gray-200 flex items-center justify-between z-10">
+        <div>
+          <p class="text-sm font-bold text-gray-900">Your Stack</p>
+          <p class="text-xs text-gray-400"><span id="overlay-count">0</span> tools &middot; <span id="overlay-cost" class="tabular-nums">$0/mo</span></p>
+        </div>
+        <button id="overlay-close" class="text-gray-400 hover:text-gray-600 p-1 cursor-pointer">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+      <div id="overlay-list" class="px-5 py-4 space-y-3"></div>
+      <div id="overlay-gaps" class="px-5 py-3 border-t border-gray-100 hidden">
+        <p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-2">You might also need</p>
+        <div id="overlay-gaps-list" class="flex flex-wrap gap-1.5"></div>
+      </div>
+      <div class="px-5 py-4 border-t border-gray-100 flex gap-2">
+        <button id="overlay-share" class="flex-1 text-sm font-medium text-gray-900 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">Copy shareable link</button>
+        <button id="overlay-reset" class="text-sm font-medium text-gray-400 hover:text-red-500 px-4 py-2.5 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors cursor-pointer">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="action-toast" class="fixed bottom-20 lg:bottom-6 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-5 py-3 rounded-xl shadow-lg text-sm transition-all duration-300 opacity-0 pointer-events-none translate-y-2 z-[60] max-w-sm text-center leading-relaxed">
+    <span id="toast-text"></span>
+  </div>
+
   <script type="application/json" id="stack-data" set:html={JSON.stringify({
     tools: toolsData,
-    templates: STACK_TEMPLATES,
-    categoryLabels: CATEGORY_LABELS,
-    categoryIcons: CATEGORY_ICONS,
+    categories: categoriesData,
+    templates: TEMPLATES,
   })}></script>
 
   <script is:inline>
-    (function() {
-      var rawData = document.getElementById('stack-data');
-      if (!rawData) return;
-      var DATA = JSON.parse(rawData.textContent);
+  (function() {
+    var raw = document.getElementById('stack-data');
+    if (!raw) return;
+    var DATA = JSON.parse(raw.textContent);
 
-      var allTools = DATA.tools;
-      var templates = DATA.templates;
-      var categoryLabels = DATA.categoryLabels;
-      var categoryIcons = DATA.categoryIcons;
+    var allTools = DATA.tools;
+    var cats = DATA.categories;
+    var templates = DATA.templates;
 
-      var toolsBySlug = {};
-      var toolsByCategory = {};
-      allTools.forEach(function(t) {
-        toolsBySlug[t.slug] = t;
-        if (!toolsByCategory[t.category]) toolsByCategory[t.category] = [];
-        toolsByCategory[t.category].push(t);
-      });
-      Object.keys(toolsByCategory).forEach(function(cat) {
-        toolsByCategory[cat].sort(function(a, b) { return a.name.localeCompare(b.name); });
-      });
+    var toolsBySlug = {};
+    var toolsByCat = {};
+    allTools.forEach(function(t) {
+      toolsBySlug[t.slug] = t;
+      if (!toolsByCat[t.category]) toolsByCat[t.category] = [];
+      toolsByCat[t.category].push(t);
+    });
+    Object.keys(toolsByCat).forEach(function(c) {
+      toolsByCat[c].sort(function(a, b) { return a.name.localeCompare(b.name); });
+    });
 
-      var currentType = null;
-      var currentStack = {};
+    var importance = { hosting:'essential', payments:'essential', email:'recommended', analytics:'recommended', 'ai-coding':'recommended' };
 
-      function parseCost(pricing) {
-        if (!pricing) return 0;
-        var lower = pricing.toLowerCase().trim();
-        if (/^free$/i.test(lower)) return 0;
-        // Prefer free tier when explicitly mentioned
-        if (lower.indexOf('free tier') !== -1 || lower.indexOf('free plan') !== -1 || lower.indexOf('free for') !== -1) return 0;
-        var m = pricing.match(/\$(\d+(?:\.\d+)?)\s*\/\s*(?:mo|month)/i);
-        if (m) return parseFloat(m[1]);
-        m = pricing.match(/from\s+\$(\d+(?:\.\d+)?)/i);
-        if (m) return parseFloat(m[1]);
-        m = pricing.match(/\$(\d+(?:\.\d+)?)/i);
-        if (m) return parseFloat(m[1]);
-        // EUR pricing
-        m = pricing.match(/EUR?\s*(\d+(?:\.\d+)?)/i);
-        if (m) return parseFloat(m[1]);
-        if (pricing.match(/\d+(\.\d+)?%/)) return 0;
-        if (lower.indexOf('free') !== -1) return 0;
-        return 0;
-      }
+    // State
+    var selected = {};
+    var expanded = {};
+    var showAll = {};
+    var toastTimer = null;
+    var CARD_LIMIT = 8;
 
-      function isTrulyFree(pricing) {
-        if (!pricing) return true;
-        var lower = pricing.toLowerCase().trim();
-        return lower.indexOf('free') !== -1;
-      }
+    // --- Cost helpers ---
+    function parseCost(p) {
+      if (!p) return 0;
+      var l = p.toLowerCase().trim();
+      if (/^free$/i.test(l)) return 0;
+      if (l.indexOf('free tier') !== -1 || l.indexOf('free plan') !== -1 || l.indexOf('free for') !== -1) return 0;
+      var m = p.match(/\$(\d+(?:\.\d+)?)\s*\/\s*(?:mo|month)/i);
+      if (m) return parseFloat(m[1]);
+      m = p.match(/from\s+\$(\d+(?:\.\d+)?)/i);
+      if (m) return parseFloat(m[1]);
+      m = p.match(/\$(\d+(?:\.\d+)?)/i);
+      if (m) return parseFloat(m[1]);
+      if (p.match(/\d+(\.\d+)?%/)) return 0;
+      if (l.indexOf('free') !== -1) return 0;
+      return 0;
+    }
+    function isFree(p) { return !p || p.toLowerCase().indexOf('free') !== -1; }
+    function fmtCost(n) { return n === 0 ? 'Free' : '$' + n + '/mo'; }
 
-      function fmt(n) { return n === 0 ? 'Free' : '$' + n.toFixed(0) + '/mo'; }
+    // --- Toast ---
+    function showToast(html, ms) {
+      var el = document.getElementById('action-toast');
+      var txt = document.getElementById('toast-text');
+      if (!el || !txt) return;
+      txt.innerHTML = html;
+      if (toastTimer) clearTimeout(toastTimer);
+      el.classList.remove('opacity-0','pointer-events-none','translate-y-2');
+      el.classList.add('opacity-100','translate-y-0');
+      toastTimer = setTimeout(function() {
+        el.classList.add('opacity-0','pointer-events-none','translate-y-2');
+        el.classList.remove('opacity-100','translate-y-0');
+      }, ms || 3000);
+    }
 
-      function updateCosts() {
-        var total = 0;
-        Object.keys(currentStack).forEach(function(cat) {
-          var tool = toolsBySlug[currentStack[cat]];
-          if (tool) total += parseCost(tool.pricing);
-        });
-        var str = '$' + total.toFixed(0) + '/mo';
-        var el = document.getElementById('total-cost');
-        var el2 = document.getElementById('total-cost-footer');
-        if (el) el.textContent = str;
-        if (el2) el2.textContent = str;
-      }
-
-      function renderTable() {
-        var tbody = document.getElementById('stack-tbody');
-        if (!tbody) return;
-
-        var cats = Object.keys(currentStack);
-        var html = '';
-
-        cats.forEach(function(cat, i) {
-          var slug = currentStack[cat];
-          var tool = toolsBySlug[slug];
-          if (!tool) return;
-
-          var alts = toolsByCategory[cat] || [];
-          var cost = parseCost(tool.pricing);
-          var label = categoryLabels[cat] || cat;
-          var icon = categoryIcons[cat] || '';
-          var topPro = tool.pros && tool.pros[0] ? tool.pros[0] : '';
-          var topCon = tool.cons && tool.cons[0] ? tool.cons[0] : '';
-          var link = tool.affiliateUrl || tool.website;
-          var borderClass = i < cats.length - 1 ? ' border-b border-gray-100' : '';
-
-          var opts = alts.map(function(a) {
-            var sel = a.slug === slug ? ' selected' : '';
-            return '<option value="' + a.slug + '"' + sel + '>' + a.name + '</option>';
-          }).join('');
-
-          var trulyFree = cost === 0 && isTrulyFree(tool.pricing);
-          var costDisplay = trulyFree
-            ? '<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-green-50 text-green-700 border border-green-200">Free</span>'
-            : cost === 0
-              ? '<span class="text-xs text-gray-500 leading-tight max-w-[8rem] block">' + (tool.pricing || 'Free') + '</span>'
-              : '<span class="text-sm font-semibold text-gray-900 tabular-nums">' + fmt(cost) + '</span>';
-
-          html += '<tr class="hover:bg-gray-50/50 transition-colors' + borderClass + '">' +
-            '<td class="px-5 py-4 align-top">' +
-              '<div class="flex items-center gap-2">' +
-                '<span class="text-base leading-none">' + icon + '</span>' +
-                '<span class="text-sm font-medium text-gray-500">' + label + '</span>' +
-              '</div>' +
-            '</td>' +
-            '<td class="px-5 py-4 align-top">' +
-              '<div>' +
-                '<div class="flex items-center gap-3">' +
-                  '<a href="/tools/' + slug + '" class="text-sm font-semibold text-gray-900 hover:text-primary-600 transition-colors whitespace-nowrap">' + tool.name + '</a>' +
-                  '<select class="swap-select text-xs border border-gray-200 rounded px-1.5 py-0.5 bg-white text-gray-400 cursor-pointer hover:border-gray-300 hover:text-gray-600 focus:ring-1 focus:ring-primary-500 focus:border-primary-500 w-fit" data-category="' + cat + '">' +
-                    opts +
-                  '</select>' +
-                '</div>' +
-                (tool.description ? '<p class="text-xs text-gray-400 mt-1 max-w-xs leading-relaxed">' + tool.description + '</p>' : '') +
-                // Mobile-only tradeoffs (hidden on sm+)
-                (topPro || topCon ? '<div class="sm:hidden mt-2 space-y-0.5">' +
-                  (topPro ? '<div class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-green-500 mt-1 shrink-0"></span><span class="text-[11px] text-gray-500">' + topPro + '</span></div>' : '') +
-                  (topCon ? '<div class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1 shrink-0"></span><span class="text-[11px] text-gray-400">' + topCon + '</span></div>' : '') +
-                '</div>' : '') +
-              '</div>' +
-            '</td>' +
-            '<td class="px-5 py-4 align-top">' +
-              costDisplay +
-            '</td>' +
-            '<td class="px-5 py-4 align-top hidden sm:table-cell">' +
-              '<div class="space-y-1">' +
-                (topPro ? '<div class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5 shrink-0"></span><span class="text-xs text-gray-600 leading-relaxed">' + topPro + '</span></div>' : '') +
-                (topCon ? '<div class="flex items-start gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1.5 shrink-0"></span><span class="text-xs text-gray-400 leading-relaxed">' + topCon + '</span></div>' : '') +
-              '</div>' +
-            '</td>' +
-            '<td class="px-5 py-4 align-top">' +
-              '<div class="flex items-center gap-2">' +
-                '<a href="' + link + '" target="_blank" rel="noopener noreferrer nofollow sponsored" class="text-gray-300 hover:text-gray-600 transition-colors" title="Visit ' + tool.name + '">' +
-                  '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>' +
-                '</a>' +
-                '<button class="remove-cat-btn text-gray-200 hover:text-red-400 transition-colors" data-category="' + cat + '" title="Remove ' + label + ' from stack">' +
-                  '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>' +
-                '</button>' +
-              '</div>' +
-            '</td>' +
-          '</tr>';
-        });
-
-        tbody.innerHTML = html;
-        updateCosts();
-
-        // Attach swap handlers
-        tbody.querySelectorAll('.swap-select').forEach(function(sel) {
-          sel.addEventListener('change', function(e) {
-            currentStack[e.target.getAttribute('data-category')] = e.target.value;
-            renderTable();
-            updateUrl();
-          });
-        });
-
-        // Attach remove handlers
-        tbody.querySelectorAll('.remove-cat-btn').forEach(function(btn) {
-          btn.addEventListener('click', function(e) {
-            var cat = e.currentTarget.getAttribute('data-category');
-            delete currentStack[cat];
-            renderTable();
-            updateUrl();
-          });
-        });
-
-        // Show "Add category" row if there are categories not in the stack
-        var addRow = document.getElementById('add-category-row');
-        var addBtn = document.getElementById('add-cat-btn');
-        var addSel = document.getElementById('add-cat-select');
-        if (addRow && addBtn && addSel) {
-          var missing = Object.keys(categoryLabels).filter(function(c) {
-            return !currentStack[c] && toolsByCategory[c] && toolsByCategory[c].length > 0;
-          });
-          if (missing.length > 0) {
-            addRow.classList.remove('hidden');
-            addSel.innerHTML = '<option value="">Pick a category...</option>' +
-              missing.map(function(c) { return '<option value="' + c + '">' + (categoryIcons[c] || '') + ' ' + (categoryLabels[c] || c) + '</option>'; }).join('');
-            // Remove old listeners by cloning
-            var newBtn = addBtn.cloneNode(true);
-            addBtn.parentNode.replaceChild(newBtn, addBtn);
-            var newSel = addSel.cloneNode(true);
-            addSel.parentNode.replaceChild(newSel, addSel);
-            newBtn.addEventListener('click', function() {
-              newSel.classList.toggle('hidden');
-            });
-            newSel.addEventListener('change', function(e) {
-              var cat = e.target.value;
-              if (cat && toolsByCategory[cat] && toolsByCategory[cat].length > 0) {
-                currentStack[cat] = toolsByCategory[cat][0].slug;
-                renderTable();
-                updateUrl();
-              }
-            });
-          } else {
-            addRow.classList.add('hidden');
-          }
-        }
-      }
-
-      function showStack() {
-        document.getElementById('empty-state').classList.add('hidden');
-        document.getElementById('stack-content').classList.remove('hidden');
-      }
-
-      function hideStack() {
-        document.getElementById('empty-state').classList.remove('hidden');
-        document.getElementById('stack-content').classList.add('hidden');
-      }
-
-      function updateTypeButtons() {
-        document.querySelectorAll('.type-btn').forEach(function(btn) {
-          var t = btn.getAttribute('data-type');
-          var nameSpan = btn.querySelector('span:first-child');
-          var descSpan = btn.querySelector('span:last-child');
-          if (t === currentType) {
-            btn.classList.add('border-gray-900', 'bg-gray-900', 'shadow-md');
-            btn.classList.remove('border-gray-200', 'bg-white', 'shadow-sm');
-            if (nameSpan) { nameSpan.classList.remove('text-gray-600'); nameSpan.classList.add('text-white'); }
-            if (descSpan) { descSpan.classList.remove('text-gray-400'); descSpan.classList.add('text-gray-300'); }
-          } else {
-            btn.classList.remove('border-gray-900', 'bg-gray-900', 'shadow-md');
-            btn.classList.add('border-gray-200', 'bg-white', 'shadow-sm');
-            if (nameSpan) { nameSpan.classList.add('text-gray-600'); nameSpan.classList.remove('text-white'); }
-            if (descSpan) { descSpan.classList.add('text-gray-400'); descSpan.classList.remove('text-gray-300'); }
-          }
-        });
-      }
-
-      function applyTemplate(type) {
-        var tpl = templates[type];
-        if (!tpl) return;
-        currentType = type;
-        currentStack = {};
-        Object.keys(tpl).forEach(function(cat) {
-          if (toolsBySlug[tpl[cat]]) currentStack[cat] = tpl[cat];
-        });
-        updateTypeButtons();
-        showStack();
-        renderTable();
-        updateUrl();
-      }
-
-      function updateUrl() {
-        var p = new URLSearchParams();
-        if (currentType) p.set('type', currentType);
-        Object.keys(currentStack).forEach(function(cat) { p.set(cat, currentStack[cat]); });
-        history.replaceState(null, '', window.location.pathname + '?' + p.toString());
-      }
-
-      function loadFromUrl() {
-        var p = new URLSearchParams(window.location.search);
-        var type = p.get('type');
-        if (!type || !templates[type]) return false;
-        currentType = type;
-        var tpl = templates[type];
-        currentStack = {};
-        Object.keys(tpl).forEach(function(cat) {
-          var v = p.get(cat);
-          if (v && toolsBySlug[v] && toolsBySlug[v].category === cat) {
-            currentStack[cat] = v;
-          } else if (toolsBySlug[tpl[cat]]) {
-            currentStack[cat] = tpl[cat];
-          }
-        });
-        p.forEach(function(val, key) {
-          if (key !== 'type' && !currentStack[key] && toolsBySlug[val] && toolsBySlug[val].category === key) {
-            currentStack[key] = val;
-          }
-        });
-        updateTypeButtons();
-        showStack();
-        renderTable();
-        return true;
-      }
-
-      function shareStack() {
-        var url = window.location.href;
-        if (navigator.clipboard && navigator.clipboard.writeText) {
-          navigator.clipboard.writeText(url).then(showToast);
-        } else {
-          var input = document.createElement('input');
-          input.value = url;
-          document.body.appendChild(input);
-          input.select();
-          document.execCommand('copy');
-          document.body.removeChild(input);
-          showToast();
-        }
-      }
-
-      function showToast() {
-        var t = document.getElementById('share-toast');
-        if (!t) return;
-        t.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-2');
-        t.classList.add('opacity-100', 'translate-y-0');
-        setTimeout(function() {
-          t.classList.add('opacity-0', 'pointer-events-none', 'translate-y-2');
-          t.classList.remove('opacity-100', 'translate-y-0');
-        }, 2000);
-      }
-
-      function resetStack() {
-        currentType = null;
-        currentStack = {};
-        updateTypeButtons();
-        hideStack();
-        history.replaceState(null, '', window.location.pathname);
-      }
-
-      function init() {
-        document.querySelectorAll('.type-btn').forEach(function(btn) {
-          btn.addEventListener('click', function() { applyTemplate(btn.getAttribute('data-type')); });
-        });
-        var shareBtn = document.getElementById('share-btn');
-        if (shareBtn) shareBtn.addEventListener('click', shareStack);
-        var resetBtn = document.getElementById('reset-btn');
-        if (resetBtn) resetBtn.addEventListener('click', resetStack);
-        loadFromUrl();
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+    // --- Toggle category ---
+    function toggleCat(catSlug) {
+      expanded[catSlug] = !expanded[catSlug];
+      var body = document.querySelector('[data-body="' + catSlug + '"]');
+      var section = document.querySelector('.cat-section[data-cat="' + catSlug + '"]');
+      var chevron = section ? section.querySelector('.cat-chevron') : null;
+      if (!body) return;
+      if (expanded[catSlug]) {
+        body.classList.remove('hidden');
+        if (chevron) chevron.style.transform = 'rotate(180deg)';
+        renderCards(catSlug);
       } else {
-        init();
+        body.classList.add('hidden');
+        if (chevron) chevron.style.transform = '';
       }
-    })();
+    }
+
+    // --- Render tool cards ---
+    function renderCards(catSlug) {
+      var body = document.querySelector('[data-body="' + catSlug + '"]');
+      if (!body) return;
+      var tools = toolsByCat[catSlug] || [];
+      if (!tools.length) {
+        body.innerHTML = '<p class="text-sm text-gray-400">No tools in this category yet.</p>';
+        return;
+      }
+
+      var selSlug = selected[catSlug];
+      var selTool = selSlug ? toolsBySlug[selSlug] : null;
+      var selCost = selTool ? parseCost(selTool.pricing) : 0;
+
+      var limit = showAll[catSlug] ? tools.length : CARD_LIMIT;
+      var display = tools.slice(0, limit);
+
+      var h = '<div class="grid sm:grid-cols-2 gap-3">';
+      display.forEach(function(tool) {
+        var isSel = tool.slug === selSlug;
+        var cost = parseCost(tool.pricing);
+        var border = isSel ? 'border-primary-500 ring-2 ring-primary-500/10 bg-white shadow-sm' : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm';
+
+        h += '<div class="tool-card border rounded-lg p-4 transition-all ' + border + '">';
+
+        // Header
+        h += '<div class="flex items-start justify-between mb-1.5">';
+        h += '<a href="/tools/' + tool.slug + '" class="text-sm font-semibold text-gray-900 hover:text-primary-600 transition-colors">' + tool.name + '</a>';
+        var priceColor = isFree(tool.pricing) ? 'text-green-600 bg-green-50' : 'text-gray-600 bg-gray-100';
+        h += '<span class="text-[11px] font-medium px-2 py-0.5 rounded-full ' + priceColor + ' whitespace-nowrap ml-2 shrink-0">' + tool.pricing + '</span>';
+        h += '</div>';
+
+        // Cost comparison vs selected
+        if (selTool && !isSel) {
+          var diff = cost - selCost;
+          var diffStr = diff === 0 ? 'Same cost as ' + selTool.name : (diff > 0 ? '+$' + diff + '/mo vs ' : '\u2212$' + Math.abs(diff) + '/mo vs ') + selTool.name;
+          var diffColor = diff === 0 ? 'text-gray-400' : diff > 0 ? 'text-amber-600' : 'text-green-600';
+          h += '<p class="text-[11px] ' + diffColor + ' mb-2">' + diffStr + '</p>';
+        }
+
+        // Description
+        if (tool.description) {
+          h += '<p class="text-xs text-gray-500 mb-3 leading-relaxed">' + tool.description + '</p>';
+        }
+
+        // Pros
+        if (tool.pros && tool.pros.length) {
+          tool.pros.forEach(function(pro) {
+            h += '<div class="flex items-start gap-1.5 mb-1"><span class="w-1.5 h-1.5 rounded-full bg-green-500 mt-1.5 shrink-0"></span><span class="text-xs text-gray-600 leading-relaxed">' + pro + '</span></div>';
+          });
+        }
+        // Cons
+        if (tool.cons && tool.cons.length) {
+          tool.cons.forEach(function(con) {
+            h += '<div class="flex items-start gap-1.5 mb-1"><span class="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1.5 shrink-0"></span><span class="text-xs text-gray-400 leading-relaxed">' + con + '</span></div>';
+          });
+        }
+
+        // Actions
+        h += '<div class="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">';
+        if (isSel) {
+          h += '<span class="text-xs font-medium text-primary-600">&#10003; In your stack</span>';
+          h += '<button class="card-remove text-xs text-gray-400 hover:text-red-500 transition-colors cursor-pointer" data-cat="' + catSlug + '">Remove</button>';
+        } else {
+          h += '<button class="card-select text-xs font-medium text-primary-600 hover:text-primary-800 transition-colors cursor-pointer" data-cat="' + catSlug + '" data-slug="' + tool.slug + '">' + (selTool ? 'Switch to this' : 'Add to stack') + '</button>';
+          h += '<a href="/tools/' + tool.slug + '" class="text-xs text-gray-400 hover:text-gray-600 transition-colors">Full review &rarr;</a>';
+        }
+        h += '</div>';
+
+        h += '</div>';
+      });
+      h += '</div>';
+
+      // Show all button
+      if (tools.length > CARD_LIMIT && !showAll[catSlug]) {
+        h += '<div class="mt-3 text-center"><button class="show-all-btn text-xs font-medium text-primary-600 hover:text-primary-800 transition-colors cursor-pointer" data-cat="' + catSlug + '">Show all ' + tools.length + ' tools in this category</button></div>';
+      }
+
+      // Compare link
+      if (selSlug) {
+        var otherTools = tools.filter(function(t) { return t.slug !== selSlug; }).slice(0, 3);
+        if (otherTools.length) {
+          h += '<div class="mt-4 pt-3 border-t border-gray-200">';
+          h += '<p class="text-[11px] font-semibold uppercase tracking-widest text-gray-400 mb-2">Compare ' + toolsBySlug[selSlug].name + ' with</p>';
+          h += '<div class="flex flex-wrap gap-2">';
+          otherTools.forEach(function(t) {
+            var pair = [selSlug, t.slug].sort();
+            h += '<a href="/compare/' + pair[0] + '-vs-' + pair[1] + '" class="text-xs text-gray-500 hover:text-primary-600 border border-gray-200 rounded-full px-2.5 py-1 hover:border-primary-300 transition-colors">' + t.name + '</a>';
+          });
+          h += '</div></div>';
+        }
+      }
+
+      body.innerHTML = h;
+
+      // Bind events
+      body.querySelectorAll('.card-select').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          selectTool(btn.dataset.cat, btn.dataset.slug);
+        });
+      });
+      body.querySelectorAll('.card-remove').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          removeTool(btn.dataset.cat);
+        });
+      });
+      body.querySelectorAll('.show-all-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          showAll[btn.dataset.cat] = true;
+          renderCards(btn.dataset.cat);
+        });
+      });
+    }
+
+    // --- Select tool ---
+    function selectTool(cat, slug) {
+      var oldSlug = selected[cat];
+      var oldTool = oldSlug ? toolsBySlug[oldSlug] : null;
+      var newTool = toolsBySlug[slug];
+      if (!newTool) return;
+
+      selected[cat] = slug;
+
+      if (oldTool && oldTool.slug !== slug) {
+        var gained = newTool.pros && newTool.pros[0] ? newTool.pros[0] : '';
+        var lost = oldTool.pros && oldTool.pros[0] ? oldTool.pros[0] : '';
+        showToast(
+          '<strong>Switched to ' + newTool.name + '</strong>' +
+          (gained ? '<br><span class="text-green-400">+ ' + gained + '</span>' : '') +
+          (lost ? '<br><span class="text-red-300">&minus; ' + lost + '</span>' : ''),
+          4000
+        );
+      } else {
+        showToast('Added <strong>' + newTool.name + '</strong> to your stack', 2500);
+      }
+
+      updateAll();
+    }
+
+    // --- Remove tool ---
+    function removeTool(cat) {
+      var oldTool = selected[cat] ? toolsBySlug[selected[cat]] : null;
+      delete selected[cat];
+
+      if (oldTool) {
+        var lost = oldTool.pros && oldTool.pros[0] ? oldTool.pros[0] : '';
+        showToast(
+          'Removed <strong>' + oldTool.name + '</strong>' +
+          (lost ? '<br><span class="text-red-300">You lost: ' + lost + '</span>' : ''),
+          3000
+        );
+      }
+
+      updateAll();
+    }
+
+    // --- Update all UI ---
+    function updateAll() {
+      updateHeaders();
+      Object.keys(expanded).forEach(function(c) {
+        if (expanded[c]) renderCards(c);
+      });
+      updateSidebar();
+      updateMobile();
+      updateUrl();
+    }
+
+    // --- Update category headers ---
+    function updateHeaders() {
+      cats.forEach(function(cat) {
+        var pick = document.querySelector('[data-pick="' + cat.slug + '"]');
+        var section = document.querySelector('.cat-section[data-cat="' + cat.slug + '"]');
+        if (!pick) return;
+
+        var slug = selected[cat.slug];
+        if (slug && toolsBySlug[slug]) {
+          var t = toolsBySlug[slug];
+          pick.innerHTML = '<span class="text-xs font-medium text-primary-600">' + t.name + '</span><span class="text-[11px] text-gray-400 ml-1.5">' + (isFree(t.pricing) ? 'Free' : fmtCost(parseCost(t.pricing))) + '</span>';
+          if (section) { section.style.borderLeftWidth = '3px'; section.style.borderLeftColor = 'rgb(14 165 233)'; }
+        } else {
+          pick.innerHTML = '<span class="text-xs text-gray-300">Not chosen</span>';
+          if (section) { section.style.borderLeftWidth = ''; section.style.borderLeftColor = ''; }
+        }
+      });
+    }
+
+    // --- Sidebar ---
+    function updateSidebar() {
+      var total = 0, count = 0;
+      var listHtml = '';
+      var gapsHtml = '';
+
+      cats.forEach(function(cat) {
+        var slug = selected[cat.slug];
+        if (slug && toolsBySlug[slug]) {
+          var t = toolsBySlug[slug];
+          var c = parseCost(t.pricing);
+          total += c;
+          count++;
+          listHtml += '<div class="flex items-center justify-between py-2 group">' +
+            '<div class="flex items-center gap-2 min-w-0">' +
+              '<span class="text-sm shrink-0">' + cat.icon + '</span>' +
+              '<div class="min-w-0">' +
+                '<span class="text-xs font-medium text-gray-900 block truncate">' + t.name + '</span>' +
+                '<span class="text-[11px] text-gray-400">' + cat.name + '</span>' +
+              '</div>' +
+            '</div>' +
+            '<div class="flex items-center gap-2 shrink-0">' +
+              '<span class="text-xs tabular-nums ' + (isFree(t.pricing) ? 'text-green-600' : 'text-gray-500') + '">' + (isFree(t.pricing) ? 'Free' : fmtCost(c)) + '</span>' +
+              '<button class="sb-remove opacity-0 group-hover:opacity-100 text-gray-300 hover:text-red-400 transition-all cursor-pointer" data-cat="' + cat.slug + '">' +
+                '<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>' +
+              '</button>' +
+            '</div>' +
+          '</div>';
+        }
+      });
+
+      // Gaps
+      cats.forEach(function(cat) {
+        if (!selected[cat.slug] && importance[cat.slug]) {
+          var badge = importance[cat.slug] === 'essential' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-gray-50 text-gray-500 border-gray-200';
+          gapsHtml += '<button class="gap-btn text-[11px] px-2 py-0.5 rounded-full border ' + badge + ' hover:bg-gray-100 transition-colors cursor-pointer" data-cat="' + cat.slug + '">' + cat.icon + ' ' + cat.name + '</button>';
+        }
+      });
+
+      // Update DOM
+      var costEl = document.getElementById('sidebar-cost');
+      var countEl = document.getElementById('sidebar-count');
+      var listEl = document.getElementById('sidebar-list');
+      if (costEl) costEl.textContent = '$' + total + '/mo';
+      if (countEl) countEl.textContent = count;
+      if (listEl) {
+        listEl.innerHTML = count ? listHtml : '<p class="text-sm text-gray-300 italic py-2">Pick tools below to start building</p>';
+        listEl.querySelectorAll('.sb-remove').forEach(function(btn) {
+          btn.addEventListener('click', function() { removeTool(btn.dataset.cat); });
+        });
+      }
+
+      var gapsEl = document.getElementById('sidebar-gaps');
+      var gapsListEl = document.getElementById('sidebar-gaps-list');
+      if (gapsEl && gapsListEl) {
+        if (gapsHtml && count > 0) {
+          gapsEl.classList.remove('hidden');
+          gapsListEl.innerHTML = gapsHtml;
+          gapsListEl.querySelectorAll('.gap-btn').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              scrollToCat(btn.dataset.cat);
+            });
+          });
+        } else {
+          gapsEl.classList.add('hidden');
+        }
+      }
+    }
+
+    // --- Mobile bar + overlay ---
+    function updateMobile() {
+      var total = 0, count = 0;
+      var listHtml = '';
+      var gapsHtml = '';
+
+      cats.forEach(function(cat) {
+        var slug = selected[cat.slug];
+        if (slug && toolsBySlug[slug]) {
+          var t = toolsBySlug[slug];
+          var c = parseCost(t.pricing);
+          total += c; count++;
+          listHtml += '<div class="flex items-center justify-between">' +
+            '<div class="flex items-center gap-2">' +
+              '<span class="text-base">' + cat.icon + '</span>' +
+              '<div><span class="text-sm font-medium text-gray-900 block">' + t.name + '</span><span class="text-xs text-gray-400">' + cat.name + '</span></div>' +
+            '</div>' +
+            '<div class="flex items-center gap-3">' +
+              '<span class="text-xs text-gray-500">' + (isFree(t.pricing) ? 'Free' : fmtCost(c)) + '</span>' +
+              '<button class="ov-remove text-gray-300 hover:text-red-400 cursor-pointer" data-cat="' + cat.slug + '">' +
+                '<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>' +
+              '</button>' +
+            '</div>' +
+          '</div>';
+        }
+      });
+
+      cats.forEach(function(cat) {
+        if (!selected[cat.slug] && importance[cat.slug]) {
+          var badge = importance[cat.slug] === 'essential' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-gray-50 text-gray-500 border-gray-200';
+          gapsHtml += '<button class="ov-gap text-[11px] px-2 py-0.5 rounded-full border ' + badge + ' cursor-pointer" data-cat="' + cat.slug + '">' + cat.icon + ' ' + cat.name + '</button>';
+        }
+      });
+
+      var mc = document.getElementById('mobile-cost');
+      var mn = document.getElementById('mobile-count');
+      var oc = document.getElementById('overlay-cost');
+      var on = document.getElementById('overlay-count');
+      var ol = document.getElementById('overlay-list');
+      if (mc) mc.textContent = '$' + total + '/mo';
+      if (mn) mn.textContent = count;
+      if (oc) oc.textContent = '$' + total + '/mo';
+      if (on) on.textContent = count;
+      if (ol) {
+        ol.innerHTML = count ? listHtml : '<p class="text-sm text-gray-300 italic">No tools selected yet</p>';
+        ol.querySelectorAll('.ov-remove').forEach(function(btn) {
+          btn.addEventListener('click', function() { removeTool(btn.dataset.cat); });
+        });
+      }
+
+      var ogEl = document.getElementById('overlay-gaps');
+      var ogList = document.getElementById('overlay-gaps-list');
+      if (ogEl && ogList) {
+        if (gapsHtml && count > 0) {
+          ogEl.classList.remove('hidden');
+          ogList.innerHTML = gapsHtml;
+          ogList.querySelectorAll('.ov-gap').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+              closeOverlay();
+              scrollToCat(btn.dataset.cat);
+            });
+          });
+        } else {
+          ogEl.classList.add('hidden');
+        }
+      }
+    }
+
+    // --- Scroll to category ---
+    function scrollToCat(catSlug) {
+      if (!expanded[catSlug]) toggleCat(catSlug);
+      var el = document.querySelector('.cat-section[data-cat="' + catSlug + '"]');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // --- URL state ---
+    function updateUrl() {
+      var p = new URLSearchParams();
+      Object.keys(selected).forEach(function(cat) { p.set(cat, selected[cat]); });
+      var qs = p.toString();
+      history.replaceState(null, '', window.location.pathname + (qs ? '?' + qs : ''));
+    }
+
+    function loadFromUrl() {
+      var p = new URLSearchParams(window.location.search);
+      var any = false;
+      p.forEach(function(slug, cat) {
+        if (toolsBySlug[slug] && toolsBySlug[slug].category === cat) {
+          selected[cat] = slug;
+          any = true;
+        }
+      });
+      if (any) updateAll();
+      return any;
+    }
+
+    // --- Templates ---
+    function applyTemplate(type) {
+      var tpl = templates[type];
+      if (!tpl) return;
+      selected = {};
+      Object.keys(tpl).forEach(function(cat) {
+        if (toolsBySlug[tpl[cat]]) selected[cat] = tpl[cat];
+      });
+      // Expand first category with a pick so user sees it
+      var first = Object.keys(selected)[0];
+      if (first && !expanded[first]) toggleCat(first);
+      updateAll();
+      showToast('Applied <strong>' + type + '</strong> template &mdash; customize below', 3000);
+
+      // Highlight active template button
+      document.querySelectorAll('.tpl-btn').forEach(function(btn) {
+        if (btn.dataset.tpl === type) {
+          btn.classList.add('bg-gray-900','text-white','border-gray-900');
+          btn.classList.remove('bg-white','text-gray-500','border-gray-200');
+        } else {
+          btn.classList.remove('bg-gray-900','text-white','border-gray-900');
+          btn.classList.add('bg-white','text-gray-500','border-gray-200');
+        }
+      });
+    }
+
+    // --- Share ---
+    function shareStack() {
+      var url = window.location.href;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function() { showToast('Link copied!', 2000); });
+      } else {
+        var inp = document.createElement('input');
+        inp.value = url;
+        document.body.appendChild(inp);
+        inp.select();
+        document.execCommand('copy');
+        document.body.removeChild(inp);
+        showToast('Link copied!', 2000);
+      }
+    }
+
+    // --- Reset ---
+    function resetStack() {
+      selected = {};
+      showAll = {};
+      document.querySelectorAll('.tpl-btn').forEach(function(btn) {
+        btn.classList.remove('bg-gray-900','text-white','border-gray-900');
+        btn.classList.add('bg-white','text-gray-500','border-gray-200');
+      });
+      updateAll();
+    }
+
+    // --- Overlay ---
+    function openOverlay() {
+      document.getElementById('mobile-overlay').classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeOverlay() {
+      document.getElementById('mobile-overlay').classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+
+    // --- Init ---
+    function init() {
+      // Category toggles
+      document.querySelectorAll('[data-toggle]').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          toggleCat(btn.dataset.toggle);
+        });
+      });
+
+      // Template buttons
+      document.querySelectorAll('.tpl-btn').forEach(function(btn) {
+        btn.addEventListener('click', function() { applyTemplate(btn.dataset.tpl); });
+      });
+
+      // Desktop sidebar buttons
+      var shareBtn = document.getElementById('share-btn');
+      if (shareBtn) shareBtn.addEventListener('click', shareStack);
+      var resetBtn = document.getElementById('reset-btn');
+      if (resetBtn) resetBtn.addEventListener('click', resetStack);
+
+      // Mobile buttons
+      var mShare = document.getElementById('mobile-share');
+      if (mShare) mShare.addEventListener('click', shareStack);
+      var mView = document.getElementById('mobile-view');
+      if (mView) mView.addEventListener('click', openOverlay);
+      var oClose = document.getElementById('overlay-close');
+      if (oClose) oClose.addEventListener('click', closeOverlay);
+      var oShare = document.getElementById('overlay-share');
+      if (oShare) oShare.addEventListener('click', shareStack);
+      var oReset = document.getElementById('overlay-reset');
+      if (oReset) oReset.addEventListener('click', function() { resetStack(); closeOverlay(); });
+
+      // Click outside overlay to close
+      var overlay = document.getElementById('mobile-overlay');
+      if (overlay) {
+        overlay.addEventListener('click', function(e) {
+          if (e.target === overlay) closeOverlay();
+        });
+      }
+
+      // Load from URL
+      if (!loadFromUrl()) {
+        updateHeaders();
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
   </script>
 </BaseLayout>
