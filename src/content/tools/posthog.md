@@ -17,6 +17,8 @@ alternatives:
   - "mixpanel"
   - "amplitude"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "james@posthog.com"
 ---
 
 PostHog is what you get when developers build analytics for developers. Instead of paying for Mixpanel (analytics) + FullStory (session replay) + LaunchDarkly (feature flags) + Optimizely (A/B tests), PostHog bundles all four into one platform. And the free tier is 1 million events per month — enough for most startups to run for months without paying.

@@ -17,6 +17,8 @@ alternatives:
   - "vercel"
   - "netlify"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@cloudflare.com"
 ---
 
 Cloudflare Pages is the "set it and forget it" hosting option. Unlimited bandwidth on the free tier means you never worry about traffic spikes — if your blog post goes viral, you do not get a surprise bill. The site you are reading right now runs on Cloudflare Pages.

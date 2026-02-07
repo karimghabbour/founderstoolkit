@@ -19,6 +19,8 @@ alternatives:
   - "vercel"
   - "fly-io"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@deno.com"
 ---
 
 Deno Deploy runs your JavaScript or TypeScript at the edge — 35+ data centers worldwide, with cold starts measured in single-digit milliseconds. Push code and it is live in seconds, serving from whichever region is closest to each user. The built-in Deno KV database means you can build a full API with persistent data without setting up Postgres or Redis.

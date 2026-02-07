@@ -19,6 +19,8 @@ alternatives:
   - "intercom"
   - "helpscout"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "pranav@chatwoot.com"
 ---
 
 Chatwoot is the open-source alternative to Intercom that bootstrapped founders actually use. You can self-host the community edition for free on a $5-10/month VPS, or use their managed cloud starting at $19 per agent per month (Startups plan). Cloud tiers go up to $99/agent for Enterprise, and every paid plan includes Captain AI credits for automated replies — 300, 500, or 800 depending on your tier.

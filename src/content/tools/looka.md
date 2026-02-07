@@ -18,6 +18,8 @@ alternatives:
   - "canva"
   - "figma"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "dawsonw@looka.com"
 ---
 
 Looka gets you from "I need a logo" to "here are 100 options" in about two minutes. You pick some styles you like, choose icons related to your business, select colors, and the AI generates a wall of logo options. Some look surprisingly professional. Others look like clip art. The quality depends on how picky you are about filtering.

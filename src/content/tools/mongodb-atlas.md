@@ -19,6 +19,8 @@ alternatives:
   - "neon"
   - "xata"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@mongodb.com"
 ---
 
 MongoDB Atlas is the managed cloud version of MongoDB, the most popular document database. You get a free shared cluster with 512 MB of storage that stays running 24/7 — no pausing for inactivity like some competitors. Documents store as JSON-like objects, so your data structure can evolve without formal migrations. This makes it fast to prototype with.

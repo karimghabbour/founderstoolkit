@@ -17,6 +17,8 @@ alternatives:
   - "vercel"
   - "cloudflare-pages"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@netlify.com"
 ---
 
 Netlify pioneered the git-push deployment workflow and still does it well. Connect your repo, push code, get a live site. The built-in extras — form submissions, identity/auth, serverless functions — mean you can build a surprisingly complete app without bolting on extra services.

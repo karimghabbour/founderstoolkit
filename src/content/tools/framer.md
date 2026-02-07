@@ -16,6 +16,8 @@ alternatives:
   - "webflow"
   - "squarespace"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "koen@framer.com"
 ---
 
 Framer went from prototyping tool to full website builder. Founded by Koen Bok and Jorn van Dijk (ex-Facebook via Sofa acquisition). The AI site generation is actually good — not just a gimmick. Running profitably at $50M ARR with a $2B valuation.

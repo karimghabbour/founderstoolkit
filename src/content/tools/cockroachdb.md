@@ -19,6 +19,8 @@ alternatives:
   - "supabase"
   - "planetscale"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@cockroachlabs.com"
 ---
 
 CockroachDB is a distributed SQL database that speaks the Postgres wire protocol. Your existing Postgres drivers, ORMs, and queries work without changes. The key selling point is resilience — data is automatically replicated across nodes, so a zone going down does not take your database offline. The Serverless free tier gives you 10 GiB of storage and 50 million request units, which covers a moderate production workload.

@@ -16,6 +16,8 @@ alternatives:
   - "notion"
   - "coda"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@airtable.com"
 ---
 
 Airtable is what spreadsheets should have been. Part spreadsheet, part database, all flexible. Founded by Howie Liu who noticed 90% of spreadsheets don't even use formulas — people just organize stuff. Great for tracking anything from content calendars to customer lists to inventory.

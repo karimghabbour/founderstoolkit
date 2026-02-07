@@ -19,6 +19,8 @@ alternatives:
   - "github-copilot"
   - "tabnine"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@codeium.com"
 ---
 
 Codeium is the best free AI autocomplete you can add to your existing editor. It works in basically everything — VS Code, JetBrains, Vim, Emacs, you name it. The completions are good, and you are not hitting a paywall after a trial period.

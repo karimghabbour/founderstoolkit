@@ -19,6 +19,8 @@ alternatives:
   - "neon"
   - "mongodb-atlas"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "monica@xata.io"
 ---
 
 Xata bundles things you usually need separate services for. You get a Postgres-based database, Elasticsearch-powered full-text search, file attachments with image transformations, and a clean spreadsheet UI for managing data — all from one provider. The free tier gives you 15 GB of data storage and 75,000 records, which is enough for a real product.

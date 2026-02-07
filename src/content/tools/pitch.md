@@ -16,6 +16,8 @@ alternatives:
   - "canva"
   - "figma"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "christian@pitch.com"
 ---
 
 Pitch is presentations for people who care about design. Founded by Christian Reber (who built Wunderlist). Had a wild journey — raised $52M VC, then returned the money and went bootstrapped in 2024. Employees now own 80%. Interesting story of de-scaling.

@@ -17,6 +17,8 @@ alternatives:
   - "figma"
   - "photopea"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@canva.com"
 ---
 
 Canva is the design tool for founders who do not have time to learn design. Need a social media graphic? Pick a template, swap the text, done. Need a pitch deck? Same process. It is not going to win design awards, but it gets you from "I need a visual" to "here it is" in 10 minutes.

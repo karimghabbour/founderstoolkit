@@ -16,6 +16,8 @@ alternatives:
   - "brex"
   - "relay"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "immad@mercury.com"
 ---
 
 Mercury is banking that doesn't suck. Founded by Immad Akhund, designed specifically for startups. Clean interface, fast onboarding, serves both VC-backed and bootstrapped companies. Valued at $1.6B+. If you're US-based and tired of traditional banks, this is the move.

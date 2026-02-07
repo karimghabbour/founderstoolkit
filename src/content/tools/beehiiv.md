@@ -16,6 +16,8 @@ alternatives:
   - "substack"
   - "convertkit"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "tyler@beehiiv.com"
 ---
 
 Beehiiv is newsletters from people who actually scaled one. Founded by Tyler Denk who was employee #2 at Morning Brew and helped grow it to 3.5M subs before the $75M exit. The referral system and ad network are built-in — not bolted on.

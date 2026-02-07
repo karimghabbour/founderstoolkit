@@ -19,6 +19,8 @@ alternatives:
   - "github-copilot"
   - "cline"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "founders@anysphere.co"
 ---
 
 If you already use VS Code, Cursor is the shortest path to having AI actually understand your project. It is not just autocomplete — you can highlight code and ask "why is this breaking?" or tell it "add error handling to all API routes" and watch it edit multiple files.

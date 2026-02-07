@@ -16,7 +16,7 @@ alternatives:
   - "netlify"
   - "vercel"
 lastVerified: "2026-02-03"
-lastOutreach: "2026-02-03"
+lastOutreach: "2026-02-07"
 outreachEmail: "hello@carrd.co"
 ---
 

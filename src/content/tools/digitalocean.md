@@ -19,6 +19,8 @@ alternatives:
   - "railway"
   - "fly-io"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@digitalocean.com"
 ---
 
 DigitalOcean has been around since 2011 and went public in 2021. The App Platform is their answer to Heroku and Render — connect a GitHub repo, pick your runtime, deploy. It is not the slickest developer experience, but it is reliable and the pricing is transparent. A $5/month Basic instance runs a small app without the billing surprises that come with usage-based platforms.

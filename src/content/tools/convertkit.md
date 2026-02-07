@@ -17,6 +17,8 @@ alternatives:
   - "buttondown"
   - "mailerlite"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "nathan@kit.com"
 ---
 
 ConvertKit was built by Nathan Barry specifically for creators — bloggers, podcasters, course creators, and indie founders who need to grow an email list. It strips away the complexity of tools like Mailchimp and focuses on what actually matters: collecting subscribers, tagging them based on behavior, and sending the right emails at the right time.

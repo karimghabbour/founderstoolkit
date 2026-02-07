@@ -19,6 +19,8 @@ alternatives:
   - "supertokens"
   - "firebase-auth"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "pilcrow@pilcrowonpaper.com"
 ---
 
 Lucia is auth stripped down to its essentials. It is a TypeScript library that handles session management and gives you helpers for password hashing, OAuth, and token generation. There is no hosted service, no dashboard, no per-user pricing — just code that runs in your app, storing sessions in whatever database you already use.

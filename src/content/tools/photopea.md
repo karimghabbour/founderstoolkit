@@ -18,6 +18,8 @@ alternatives:
   - "figma"
   - "canva"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "info@photopea.com"
 ---
 
 Photopea is what you reach for when someone sends you a PSD file and you do not have Photoshop. It opens in a browser tab and handles Photoshop files with layers, masks, and effects intact. It also opens Sketch, XD, and Illustrator files, which makes it the universal translator of design file formats.

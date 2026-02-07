@@ -16,6 +16,8 @@ alternatives:
   - "zoom"
   - "google-meet"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "oyvind@whereby.com"
 ---
 
 Whereby is video calls without the download dance. Just share a link, people click, they're in. Founded by Ingrid Ødegaard, grew organically to customers in 175 countries. Great for quick calls where you don't want to make people install yet another app.

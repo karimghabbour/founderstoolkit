@@ -19,6 +19,8 @@ alternatives:
   - "cursor"
   - "replit-agent"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@cognition.ai"
 ---
 
 Devin is the most ambitious AI coding tool on this list. You assign it a task — "fix this bug," "add this feature," "set up CI/CD" — and it goes away, works on it, and comes back with a pull request. You do not sit and watch; it works asynchronously.

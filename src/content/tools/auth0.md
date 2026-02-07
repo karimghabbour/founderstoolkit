@@ -17,6 +17,8 @@ alternatives:
   - "clerk"
   - "supabase-auth"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@auth0.com"
 ---
 
 Auth0 is the auth provider you pick when your app needs enterprise features — SAML SSO, LDAP, MFA policies, organization management. It supports every login method that exists and has been battle-tested by companies from startups to Fortune 500s. It is now part of Okta.

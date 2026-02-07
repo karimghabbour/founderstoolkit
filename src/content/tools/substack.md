@@ -16,6 +16,8 @@ alternatives:
   - "beehiiv"
   - "ghost"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@substackinc.com"
 ---
 
 Substack pioneered the paid newsletter model. Founded by Chris Best and Hamish McKenzie in 2017. Free to start, they take 10% of paid subscriptions. Over 5M paid subscriptions on the platform. Great for writers who want zero setup friction.

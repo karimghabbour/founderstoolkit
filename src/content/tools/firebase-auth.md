@@ -19,6 +19,8 @@ alternatives:
   - "auth0"
   - "supertokens"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@google.com"
 ---
 
 Firebase Auth handles email/password, social login, phone auth, and anonymous users with minimal setup. Google gives you 50,000 MAU free for most auth methods, which is five times what Clerk or Auth0 offer. If you are already using Firestore or Cloud Functions, Auth plugs in with a single line of config.

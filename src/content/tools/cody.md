@@ -19,6 +19,8 @@ alternatives:
   - "cursor"
   - "continue-dev"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "sqs@sourcegraph.com"
 ---
 
 Cody's secret weapon is Sourcegraph's code graph. While most AI tools see only the files you have open, Cody can index and understand your entire repository. Ask it "where is the authentication logic?" and it actually knows, even if those files are not open.

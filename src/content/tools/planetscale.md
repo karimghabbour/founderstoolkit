@@ -17,6 +17,8 @@ alternatives:
   - "supabase"
   - "neon"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@planetscale.com"
 ---
 
 PlanetScale brings git workflows to your database. Create a branch, change your schema, test it, then merge it into production with zero downtime. No more scary migration scripts run against your live database at 2 AM.

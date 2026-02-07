@@ -19,6 +19,8 @@ alternatives:
   - "tidio"
   - "livechat"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "robert@tawk.to"
 ---
 
 tawk.to is the only live chat tool that is actually free with no catch on the core features. You get live chat, a ticketing system, a knowledge base, and real-time visitor monitoring for unlimited agents on unlimited sites. They make money from optional add-ons: removing the "Powered by tawk.to" badge ($29/mo), AI Assist for automated replies ($29/mo), and video/voice/screensharing ($29/mo). They also sell hired agents starting at $1/hour if you want someone else handling your chats.

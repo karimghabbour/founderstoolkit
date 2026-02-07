@@ -16,6 +16,8 @@ alternatives:
   - "tella"
   - "mmhmm"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@loom.com"
 ---
 
 Loom lets you record quick screen + face videos instead of scheduling meetings. Insanely useful for async teams. Started bootstrapped on maxed credit cards, grew to 10M+ users, sold to Atlassian for $975M in 2023. The free tier is still generous enough for most solo use.

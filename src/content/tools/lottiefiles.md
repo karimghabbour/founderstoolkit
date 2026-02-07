@@ -18,6 +18,8 @@ alternatives:
   - "canva"
   - "spline"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "kshitij@lottiefiles.com"
 ---
 
 Lottie is a file format created by Airbnb that stores animations as small JSON files instead of heavy video or GIF files. A typical loading animation is 2-5KB as a Lottie file versus 200KB+ as a GIF. LottieFiles is the platform built around this format — it hosts a library of free and paid animations, provides a web editor, and offers player libraries for every major platform.

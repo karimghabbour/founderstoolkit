@@ -16,6 +16,8 @@ alternatives:
   - "convertkit"
   - "buttondown"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "ignas@mailerlite.com"
 ---
 
 MailerLite is email marketing without the bloat or the price tag. Founded in Lithuania by Ignas Rubezius, bootstrapped until acquired for $90M in 2022. 5x cheaper than competitors because remote team + Lithuanian base. Great for creators who want simple and affordable.

@@ -19,6 +19,8 @@ alternatives:
   - "crisp"
   - "chatwoot"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@freshworks.com"
 ---
 
 Freshdesk is the classic helpdesk: email ticketing, a knowledge base, canned responses, and SLA tracking. It has been around since 2010 and now serves over 60,000 companies. The free plan covers 2 agents and includes email ticketing, a knowledge base, and pre-built reports. Paid plans start at $15/agent/month (Growth) and go up to $79/agent/month (Enterprise), all billed annually.

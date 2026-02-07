@@ -19,6 +19,8 @@ alternatives:
   - "v0"
   - "replit-agent"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "anton@lovable.dev"
 ---
 
 Lovable (formerly GPT Engineer) is for founders who have an idea and want a working app, not a wireframe or a mockup. You describe what you want, and it generates a full-stack React app with a Supabase backend — auth, database, the works. You can then edit the code or keep iterating with prompts.

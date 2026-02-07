@@ -17,6 +17,8 @@ alternatives:
   - "semrush"
   - "ubersuggest"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@ahrefs.com"
 ---
 
 Ahrefs tells you three things: what your competitors rank for, what backlinks they have, and what keywords you have a realistic chance of ranking for. That is the information you need to decide if organic search is worth pursuing for your business.

@@ -18,6 +18,8 @@ alternatives:
   - "canva"
   - "looka"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@midjourney.com"
 ---
 
 Midjourney generates images from text descriptions, and it does it better than most alternatives. Tell it "minimalist SaaS landing page hero illustration, purple gradient" and you get something you can actually use. The quality gap between Midjourney and free alternatives like DALL-E 3 is noticeable, especially for anything stylized or artistic.

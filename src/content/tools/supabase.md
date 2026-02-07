@@ -17,6 +17,8 @@ alternatives:
   - "firebase"
   - "planetscale"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@supabase.io"
 ---
 
 Supabase gives you a real Postgres database with the convenience of Firebase. Set up a project, and you immediately get a database, auth system, file storage, edge functions, and real-time subscriptions. No piecing together separate services.

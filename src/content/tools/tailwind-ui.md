@@ -16,6 +16,8 @@ alternatives:
   - "shadcn-ui"
   - "daisyui"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "adam@tailwindcss.com"
 ---
 
 Tailwind UI is the commercial component library from the Tailwind CSS creators. Adam Wathan built this into a multi-million dollar business bootstrapped entirely. One-time purchase, lifetime access. Copy-paste components that actually look good.

@@ -19,6 +19,8 @@ alternatives:
   - "tidio"
   - "tawk-to"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "mariusz@livechat.com"
 ---
 
 LiveChat is a focused live chat tool, not a full helpdesk. It does one thing well: put a fast, good-looking chat widget on your site and let you talk to visitors in real time. The Starter plan is $20/agent/month billed annually ($24 monthly), and the Team plan jumps to $41/agent/month. It connects to over 200 tools and pulls messages from email, WhatsApp, Facebook Messenger, and SMS into one inbox.

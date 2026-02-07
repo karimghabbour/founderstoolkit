@@ -19,6 +19,8 @@ alternatives:
   - "supabase"
   - "planetscale"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "glauber@turso.tech"
 ---
 
 Turso takes SQLite and makes it work as a cloud database. Each database is a LibSQL file replicated across edge locations, so reads happen in single-digit milliseconds from wherever your users are. The per-database model is ideal for multi-tenant apps where each user or workspace gets their own isolated database.

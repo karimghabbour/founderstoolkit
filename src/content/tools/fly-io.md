@@ -19,6 +19,8 @@ alternatives:
   - "render"
   - "digitalocean"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "kurt@fly.io"
 ---
 
 Fly.io takes your Docker container and runs it on servers around the world. Your app in Tokyo, Sao Paulo, and Amsterdam simultaneously — not behind a CDN, but actually running there. For apps where latency matters (real-time features, APIs, databases), this is the real deal.

@@ -19,6 +19,8 @@ alternatives:
   - "auth0"
   - "firebase-auth"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@stytch.com"
 ---
 
 Stytch is built around the idea that passwords are a liability. Instead of email/password as the default, it leads with magic links, one-time passcodes, passkeys, and biometric auth. The API is well-designed — you can have passwordless login working in under an hour. It also bundles device fingerprinting and bot detection, which most competitors charge extra for or do not offer.

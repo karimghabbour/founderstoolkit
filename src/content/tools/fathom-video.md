@@ -16,6 +16,8 @@ alternatives:
   - "otter-ai"
   - "fireflies"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "richard@fathom.video"
 ---
 
 Fathom records your Zoom/Meet calls and spits out summaries, action items, and highlights. Founded by Richard White (who built UserVoice). The free tier is surprisingly good — most solopreneurs won't need to pay. #1 AI notetaker on G2.

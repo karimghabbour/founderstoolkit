@@ -19,6 +19,8 @@ alternatives:
   - "tawk-to"
   - "livechat"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "tytus@tidio.net"
 ---
 
 Tidio combines live chat with an AI chatbot (Lyro) in a package built for small online stores and service businesses. The free plan gives you 50 conversations per month and a 7-day trial of premium features. Paid plans start at $29/mo (Starter), jump to $59/mo (Growth), $749/mo (Plus), and $2,999/mo (Premium). It integrates with Shopify, WordPress, and Wix out of the box.

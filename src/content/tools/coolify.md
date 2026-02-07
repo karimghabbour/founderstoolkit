@@ -19,6 +19,8 @@ alternatives:
   - "render"
   - "digitalocean"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "andras@coolify.io"
 ---
 
 Coolify is an open-source platform that gives you Heroku-like deployment on your own server. Install it on a $5/month VPS (Hetzner, DigitalOcean, whatever), and you get git-push deploys, automatic SSL, database provisioning, and a dashboard — all without paying per-app fees. Your $5 VPS can run multiple apps and databases that would cost $50+ on Railway or Render.

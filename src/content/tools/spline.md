@@ -18,6 +18,8 @@ alternatives:
   - "figma"
   - "canva"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "alejandro@spline.design"
 ---
 
 Spline brings 3D design into the browser the same way Figma brought 2D design into the browser. You can model objects, add materials, set up lighting, and animate — all without installing anything. The real selling point for web developers is the export: you get an embed code or React component that drops an interactive 3D scene directly into your site.

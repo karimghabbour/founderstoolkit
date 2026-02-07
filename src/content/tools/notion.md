@@ -17,6 +17,8 @@ alternatives:
   - "obsidian"
   - "coda"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@makenotion.com"
 ---
 
 Notion replaces your note app, your wiki, your project tracker, and your spreadsheet — or at least it tries to. The flexibility is both its strength and its trap. You can build a custom CRM, a content calendar, a knowledge base, and a task board all in one workspace. You can also spend three days tweaking your setup instead of doing actual work.

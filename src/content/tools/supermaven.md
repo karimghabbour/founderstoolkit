@@ -19,6 +19,8 @@ alternatives:
   - "github-copilot"
   - "cody"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@supermaven.com"
 ---
 
 Supermaven was the speed king of AI code completion — built by the creator of Tabnine, it focused on doing one thing (autocomplete) with extremely low latency and a massive context window. In November 2024, Cursor acquired Supermaven and is folding its technology into the Cursor editor.

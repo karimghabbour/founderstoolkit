@@ -17,6 +17,8 @@ alternatives:
   - "github-issues"
   - "jira"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "karri@linear.app"
 ---
 
 Linear is what happens when people who were frustrated with Jira build their own issue tracker. Every interaction is instant — no loading spinners, no waiting for pages. Keyboard shortcuts let you triage, assign, and move issues without touching the mouse.

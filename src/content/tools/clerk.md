@@ -17,6 +17,8 @@ alternatives:
   - "auth0"
   - "supabase-auth"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "colin@clerk.com"
 ---
 
 Clerk gives you a complete auth system without building one. Install the package, drop in the sign-up component, and you have Google login, email/password, MFA, and user profiles working. The UI components look professional without any styling work.

@@ -16,6 +16,8 @@ alternatives:
   - "framer"
   - "squarespace"
 lastVerified: "2026-02-05"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@webflow.com"
 ---
 
 Webflow is no-code website building for people who care about design. Founded by Vlad Magdalin who failed 3 times and nearly went bankrupt before the 4th try worked. Used by Discord, Dell, Vice. The learning curve is real but the results are professional-grade.

@@ -19,6 +19,8 @@ alternatives:
   - "auth0"
   - "lucia"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "advait@supertokens.com"
 ---
 
 SuperTokens is an open-source auth provider that gives you a real alternative to paying per-user fees. Self-host the SuperTokens core (a Java service) alongside your app, and you get email/password, social login, passwordless, session management, and MFA without paying anyone anything. The managed version is free up to 5,000 MAU if you do not want to run infrastructure.

@@ -19,6 +19,8 @@ alternatives:
   - "netlify"
   - "cloudflare-pages"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@vercel.com"
 ---
 
 Vercel removes the gap between "code works on my machine" and "code works in production." Push to GitHub, and your site is deployed. Every pull request gets its own preview URL. You never think about servers, CDN config, or SSL certificates.

@@ -17,6 +17,8 @@ alternatives:
   - "stripe"
   - "lemonsqueezy"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@paddle.com"
 ---
 
 Paddle takes the scariest part of selling software internationally — tax compliance — and makes it someone else's problem. They act as the merchant of record, which means they are legally the seller. They collect the payment, handle VAT/sales tax in every country, and pay you a net amount. You never file a foreign tax return.

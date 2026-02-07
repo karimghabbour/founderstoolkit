@@ -19,6 +19,8 @@ alternatives:
   - "lemonsqueezy"
   - "paddle"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@stripe.com"
 ---
 
 Stripe lets you start accepting payments in an afternoon — no merchant account, no bank meetings, no weeks of paperwork. Copy a few lines of code (or use no-code Payment Links), and you have a working checkout. That is why almost every solo founder starts here.

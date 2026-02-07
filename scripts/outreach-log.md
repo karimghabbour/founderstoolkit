@@ -102,3 +102,110 @@
 - Tempo: pending
 
 **Total outreach to date: 23 emails (4 on Feb 2 + 19 on Feb 6)**
+
+### 2026-02-07
+
+**Sent: 79 emails (batch 3 — full directory coverage)**
+
+**AI & Coding Tools (11):**
+| Tool | Contact | Type |
+|------|---------|------|
+| Base44 | hello@base44.com | General |
+| Bolt.new | eric@stackblitz.com | Founder (Eric Simons) |
+| Cody | sqs@sourcegraph.com | Founder (Quinn Slack) |
+| Cursor | founders@anysphere.co | Founders |
+| Devin | hello@cognition.ai | General |
+| Lovable | anton@lovable.dev | Founder (Anton Osika) |
+| Replit Agent | amjad@replit.com | Founder (Amjad Masad) |
+| Supermaven | hello@supermaven.com | General |
+| Trae | trae@bytedance.com | Team (ByteDance) |
+| v0 | hello@vercel.com | General |
+| Windsurf/Codeium | hello@codeium.com | General |
+
+**Indie/Bootstrapped Tools (20):**
+| Tool | Contact | Type |
+|------|---------|------|
+| Basecamp | jason@hey.com | Founder (Jason Fried) |
+| Beehiiv | tyler@beehiiv.com | Founder (Tyler Denk) |
+| Chatwoot | pranav@chatwoot.com | Founder (Pranav Raj S) |
+| Coolify | andras@coolify.io | Founder (Andras Bacsai) |
+| ConvertKit | nathan@kit.com | Founder (Nathan Barry) |
+| Fly.io | kurt@fly.io | Founder (Kurt Mackey) |
+| Framer | koen@framer.com | Founder (Koen Bok) |
+| n8n | jan@n8n.io | Founder (Jan Oberhauser) |
+| Neon | nikita@neon.tech | Founder (Nikita Shamgunov) |
+| PostHog | james@posthog.com | Founder (James Hawkins) |
+| Postmark | hello@postmarkapp.com | General (ActiveCampaign) |
+| Railway | jake@railway.app | Founder (Jake Cooper) |
+| SuperTokens | advait@supertokens.com | Founder (Advait Ruia) |
+| Turso | glauber@turso.tech | Founder (Glauber Costa) |
+| Upstash | enes@upstash.com | Founder (Enes Akar) |
+| Whereby | oyvind@whereby.com | CEO (Oyvind Reed) |
+| Xata | monica@xata.io | Founder (Monica Sarbu) |
+| Looka | dawsonw@looka.com | Founder (Dawson Whitfield) |
+| Photopea | info@photopea.com | General (Ivan Kutskir) |
+| Spline | alejandro@spline.design | Founder (Alejandro Leon) |
+
+**Medium Companies (18):**
+| Tool | Contact | Type |
+|------|---------|------|
+| Clerk | colin@clerk.com | Founder (Colin Sidoti) |
+| Coda | hello@coda.io | General |
+| Customer.io | colin@customer.io | Founder (Colin Nederkoorn) |
+| MailerLite | ignas@mailerlite.com | Founder (Ignas Rubezius) |
+| Make | hello@make.com | General (Celonis) |
+| Mercury | immad@mercury.com | Founder (Immad Akhund) |
+| Pitch | christian@pitch.com | Founder (Christian Reber) |
+| Sentry | hello@sentry.io | General |
+| Stytch | hello@stytch.com | General |
+| Tailwind UI | adam@tailwindcss.com | Founder (Adam Wathan) |
+| Tidio | tytus@tidio.net | Founder (Tytus Golas) |
+| tawk.to | robert@tawk.to | Founder (Robert D'Assisi) |
+| LiveChat | mariusz@livechat.com | Founder (Mariusz Cieply) |
+| Toggl | hello@toggl.com | General |
+| Webflow | hello@webflow.com | General |
+| LottieFiles | kshitij@lottiefiles.com | Founder (Kshitij Minglani) |
+| Linear | karri@linear.app | Founder (Karri Saarinen) |
+| Fathom Video | richard@fathom.video | Founder (Richard White) |
+
+**Larger Companies (28):**
+| Tool | Contact | Type |
+|------|---------|------|
+| Ahrefs | partnerships@ahrefs.com | Partnerships |
+| Airtable | partnerships@airtable.com | Partnerships |
+| Auth0 | partnerships@auth0.com | Partnerships |
+| Calendly | partnerships@calendly.com | Partnerships |
+| Canva | partnerships@canva.com | Partnerships |
+| Cloudflare Pages | partnerships@cloudflare.com | Partnerships |
+| DigitalOcean | partnerships@digitalocean.com | Partnerships |
+| Figma | partnerships@figma.com | Partnerships |
+| Freshdesk | partnerships@freshworks.com | Partnerships |
+| Intercom | partnerships@intercom.com | Partnerships |
+| Loom | partnerships@loom.com | Partnerships |
+| Midjourney | hello@midjourney.com | General |
+| MongoDB Atlas | partnerships@mongodb.com | Partnerships |
+| Netlify | partnerships@netlify.com | Partnerships |
+| Notion | partnerships@makenotion.com | Partnerships |
+| Otter.ai | hello@otter.ai | General |
+| Paddle | partnerships@paddle.com | Partnerships |
+| PlanetScale | partnerships@planetscale.com | Partnerships |
+| Squarespace | partnerships@squarespace.com | Partnerships |
+| Stripe | partnerships@stripe.com | Partnerships (check-in) |
+| Substack | hello@substackinc.com | General |
+| Vercel | partnerships@vercel.com | Partnerships (check-in) |
+| Zapier | partnerships@zapier.com | Partnerships |
+| Firebase Auth | partnerships@google.com | Partnerships |
+| Deno Deploy | hello@deno.com | General |
+| CockroachDB | partnerships@cockroachlabs.com | Partnerships |
+| Lucia | pilcrow@pilcrowonpaper.com | Maintainer |
+| Carrd | hello@carrd.co | General (AJ) |
+
+**Additional (2):**
+| Tool | Contact | Type |
+|------|---------|------|
+| Supabase | hello@supabase.io | General |
+| Cloudinary | hello@cloudinary.com | General |
+
+**Response tracking:** All 79 — pending
+
+**Total outreach to date: 102 emails (4 on Feb 2 + 19 on Feb 6 + 79 on Feb 7)**

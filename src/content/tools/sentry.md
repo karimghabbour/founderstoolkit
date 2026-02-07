@@ -17,6 +17,8 @@ alternatives:
   - "bugsnag"
   - "logrocket"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@sentry.io"
 ---
 
 Sentry catches errors in production before your users email you about them. When something breaks, you get a stack trace, the user's browser/device info, the exact request that triggered it, and breadcrumbs showing what happened before the error. It is the difference between "something is broken" and "this specific API call fails for Firefox users on line 47."

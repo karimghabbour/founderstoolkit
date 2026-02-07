@@ -19,6 +19,8 @@ alternatives:
   - "windsurf"
   - "cline"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "trae@bytedance.com"
 ---
 
 Trae gives you free access to GPT-4o and Claude 3.5 Sonnet in an AI IDE. That is a genuinely compelling offer — no other tool gives you premium AI models at zero cost. The editor is VS Code-based, and the Builder agent mode can handle multi-step tasks.

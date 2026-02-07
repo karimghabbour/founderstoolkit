@@ -19,6 +19,8 @@ alternatives:
   - "chatwoot"
   - "tidio"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@intercom.com"
 ---
 
 Intercom is the 800-pound gorilla of customer messaging. It combines live chat, a shared inbox, ticketing, a help center, and an AI chatbot (Fin) into one platform. The Essential plan starts at $29 per seat per month, and the Advanced and Expert plans go to $85 and $132 per seat respectively. It is built for companies that want to handle support, onboarding, and product communication from a single dashboard.

@@ -19,6 +19,8 @@ alternatives:
   - "github-copilot"
   - "cline"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@codeium.com"
 ---
 
 Windsurf (formerly Codeium's editor) combines regular code completion with Cascade, an agent mode that can plan out multi-step tasks and execute them across your project. Tell it "add user authentication to this app" and it will create files, install packages, and wire things up.

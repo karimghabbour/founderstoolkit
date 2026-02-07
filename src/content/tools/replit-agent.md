@@ -19,6 +19,8 @@ alternatives:
   - "bolt-new"
   - "v0"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "amjad@replit.com"
 ---
 
 Replit Agent is the closest thing to "describe your app and get it built." You write a description, it plans the architecture, writes the code, sets up the database, and deploys — all without leaving the browser. For non-technical founders, this is genuinely powerful.

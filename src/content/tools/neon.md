@@ -17,6 +17,8 @@ alternatives:
   - "supabase"
   - "planetscale"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "nikita@neon.tech"
 ---
 
 Neon is Postgres that disappears when you are not using it. On the free tier, your database scales to zero during quiet periods and wakes up when a request comes in. This means a side project that gets occasional traffic costs nothing, not $39/month like PlanetScale.

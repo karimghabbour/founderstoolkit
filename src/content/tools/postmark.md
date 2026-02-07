@@ -17,6 +17,8 @@ alternatives:
   - "resend"
   - "sendgrid"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@postmarkapp.com"
 ---
 
 Postmark has been laser-focused on one thing for over a decade: making sure transactional emails hit inboxes, not spam folders. Password resets, order confirmations, shipping notifications — the emails your users actually need to receive. They keep their deliverability high by refusing to send marketing email on the same infrastructure.

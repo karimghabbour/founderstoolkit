@@ -19,6 +19,8 @@ alternatives:
   - "replit-agent"
   - "v0"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "eric@stackblitz.com"
 ---
 
 Bolt.new runs a full Node.js environment inside your browser using WebContainers. You describe what you want to build, it writes the code, and you see a live preview instantly. No installing Node, no terminal, no VS Code — just a browser tab.

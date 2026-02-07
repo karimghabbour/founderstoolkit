@@ -17,6 +17,8 @@ alternatives:
   - "sketch"
   - "canva"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "partnerships@figma.com"
 ---
 
 Figma is where most of the internet gets designed these days. It runs in the browser, which means no installing heavy software — just open a tab and start designing. The free tier gives you 3 projects with unlimited files, which is enough for most solo founders.

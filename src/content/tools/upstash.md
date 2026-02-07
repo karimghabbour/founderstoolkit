@@ -17,6 +17,8 @@ alternatives:
   - "redis-cloud"
   - "momento"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "enes@upstash.com"
 ---
 
 Upstash is Redis for the serverless world. Instead of paying $15-30/month for an always-on Redis instance, you pay per command — and when your app is idle, you pay nothing. This makes it perfect for caching, rate limiting, and session storage in serverless apps.

@@ -17,6 +17,8 @@ alternatives:
   - "imgix"
   - "uploadthing"
 lastVerified: "2026-01-31"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@cloudinary.com"
 ---
 
 Cloudinary handles the annoying parts of dealing with images: uploading, storing, resizing, optimizing, and delivering them fast. Change an image from 2000x2000 to 400x400? Just change the URL parameters. Convert to WebP for smaller files? Also a URL parameter. No image processing code needed.

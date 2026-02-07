@@ -19,6 +19,8 @@ alternatives:
   - "bolt-new"
   - "replit-agent"
 lastVerified: "2026-02-06"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@base44.com"
 ---
 
 Base44 takes a different approach from most AI app builders — instead of writing code you can see, it generates complete applications through a chat interface. Describe what you need ("build me a task management app with user auth and Stripe billing"), and it creates the database, UI, backend logic, and authentication. Apps are live immediately with built-in hosting.
