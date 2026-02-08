@@ -1,0 +1,182 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+
+export const frontmatter = {
+  title: "Zapier vs Make vs n8n: Which Automation Tool for Solo Founders?",
+  date: "2026-02-07",
+  excerpt: "A side-by-side comparison of the three most popular automation platforms — pricing, ease of use, integrations, and self-hosting — so you can pick the right one."
+};
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.excerpt}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": frontmatter.title,
+      "datePublished": frontmatter.date,
+      "description": frontmatter.excerpt,
+      "publisher": {
+        "@type": "Organization",
+        "name": "Solo Founder Tools"
+      }
+    })} />
+  </Fragment>
+
+  <article class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-gray-500 mb-6">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/blog" class="hover:text-primary-600">Blog</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-700">Zapier vs Make vs n8n</span>
+      </nav>
+
+      <p class="text-sm text-gray-500 mb-3">{frontmatter.date}</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        {frontmatter.title}
+      </h1>
+
+      <div class="prose prose-gray max-w-none">
+        <p class="text-xl text-gray-600 mb-8">
+          Automation is the closest thing a solo founder has to a team. Connect your tools, eliminate repetitive work, and spend your time on what matters. But Zapier, Make, and n8n all approach the problem differently. Here is how they compare on the things that actually matter to a one-person business.
+        </p>
+
+        <h2>Quick comparison</h2>
+      </div>
+
+      <!-- Comparison table -->
+      <div class="mt-4 mb-8 overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th class="text-left py-3 pr-4 font-semibold text-gray-900"></th>
+              <th class="text-left py-3 pr-4 font-semibold text-gray-900">Zapier</th>
+              <th class="text-left py-3 pr-4 font-semibold text-gray-900">Make</th>
+              <th class="text-left py-3 font-semibold text-gray-900">n8n</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Pricing</td>
+              <td class="py-3 pr-4 text-gray-600">Free tier, from $19.99/mo</td>
+              <td class="py-3 pr-4 text-gray-600">Free tier, from $9/mo</td>
+              <td class="py-3 text-gray-600">Self-host free, cloud from $20/mo</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Integrations</td>
+              <td class="py-3 pr-4 text-gray-600">7,000+</td>
+              <td class="py-3 pr-4 text-gray-600">1,800+</td>
+              <td class="py-3 text-gray-600">400+ built-in, extensible</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Ease of use</td>
+              <td class="py-3 pr-4 text-gray-600">Easiest</td>
+              <td class="py-3 pr-4 text-gray-600">Medium</td>
+              <td class="py-3 text-gray-600">Steepest curve</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Self-hosting</td>
+              <td class="py-3 pr-4 text-gray-600">No</td>
+              <td class="py-3 pr-4 text-gray-600">No</td>
+              <td class="py-3 text-gray-600">Yes (fair-code license)</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Workflow complexity</td>
+              <td class="py-3 pr-4 text-gray-600">Linear paths</td>
+              <td class="py-3 pr-4 text-gray-600">Branching, loops, routers</td>
+              <td class="py-3 text-gray-600">Full programming logic</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Best for</td>
+              <td class="py-3 pr-4 text-gray-600">Simple, fast automations</td>
+              <td class="py-3 pr-4 text-gray-600">Complex visual workflows</td>
+              <td class="py-3 text-gray-600">Technical founders, self-hosters</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose prose-gray max-w-none">
+        <h2>Zapier: the default choice</h2>
+        <p>
+          <a href="/tools/zapier">Zapier</a> is the automation tool most people try first, and for good reason. It has the largest integration library at over 7,000 apps, and the interface is straightforward: pick a trigger, pick an action, done. If you need to send new Stripe customers to a Google Sheet, Zapier does it in two minutes.
+        </p>
+        <p>
+          The free tier gives you 100 tasks per month with single-step automations. That is enough to test the waters but not enough for real work. The Starter plan at $19.99/mo includes multi-step workflows and 750 tasks. The Professional plan at $49/mo bumps you to 2,000 tasks and adds paths (conditional logic).
+        </p>
+        <p>
+          The downside is cost at scale. Once you are running a few dozen workflows with thousands of tasks per month, Zapier gets expensive quickly. The per-task pricing model means you pay more as your business grows, which is the opposite of what a solo founder wants.
+        </p>
+
+        <h2>Make: more power, lower price</h2>
+        <p>
+          <a href="/tools/make">Make</a> (formerly Integromat) is where you go when Zapier's linear workflows feel limiting. Make's visual builder lets you create branching logic, loops, routers, and error handlers. The scenario view looks like a flowchart, which makes complex automations easier to reason about.
+        </p>
+        <p>
+          Pricing is Make's biggest advantage. The free tier gives you 1,000 operations per month. The Core plan starts at $9/mo with 10,000 operations. That is roughly half the cost of equivalent Zapier usage. Make counts operations differently than Zapier counts tasks, so direct comparisons are tricky, but in practice most solo founders find Make cheaper for the same workload.
+        </p>
+        <p>
+          The tradeoff is a steeper learning curve. Make's interface has more concepts to learn: modules, scenarios, routers, iterators, aggregators. If you just want to connect two apps and move on, this overhead is unnecessary. If you need conditional logic and data transformations, it pays off.
+        </p>
+
+        <h2>n8n: full control for technical founders</h2>
+        <p>
+          <a href="/tools/n8n">n8n</a> is the open-source option. You can self-host it for free on your own server, which means no per-task limits and no monthly subscription. The cloud-hosted version starts at $20/mo if you prefer not to manage infrastructure.
+        </p>
+        <p>
+          Where n8n stands apart is flexibility. You can write custom JavaScript or Python inside workflow nodes, connect to any API with HTTP request nodes, and build automations that would be impossible in Zapier or Make. The AI automation features have grown rapidly, and n8n has become a popular choice for building AI agent workflows.
+        </p>
+        <p>
+          The catch is that n8n requires technical skills. Self-hosting means you handle updates, backups, and uptime. The built-in integration library is smaller than Zapier's, so you may need to build custom connections. If you are comfortable with APIs and can spin up a VPS, n8n gives you the most value for money. If not, the friction is not worth it.
+        </p>
+
+        <h2>Pricing breakdown for real scenarios</h2>
+        <p>
+          Suppose you are a solo founder running an e-commerce side project. You need automations for: new order notifications, inventory syncing, abandoned cart emails, and weekly analytics reports. That is roughly 2,000-5,000 operations per month.
+        </p>
+        <ul>
+          <li><strong>Zapier</strong>: Professional plan at $49/mo (2,000 tasks) or Team plan at $69/mo for more.</li>
+          <li><strong>Make</strong>: Core plan at $9/mo covers 10,000 operations. You might not even hit the limit.</li>
+          <li><strong>n8n self-hosted</strong>: $5-10/mo for a small VPS. Unlimited operations.</li>
+          <li><strong>n8n cloud</strong>: $20/mo Starter plan covers this comfortably.</li>
+        </ul>
+        <p>
+          For this workload, Make and n8n are substantially cheaper than Zapier. The cost gap widens as your automation usage grows.
+        </p>
+
+        <h2>Head-to-head comparisons</h2>
+        <p>
+          For a deeper look at any two of these tools, check our dedicated comparison pages:
+        </p>
+        <ul>
+          <li><a href="/compare/zapier-vs-make">Zapier vs Make</a></li>
+          <li><a href="/compare/zapier-vs-n8n">Zapier vs n8n</a></li>
+          <li><a href="/compare/make-vs-n8n">Make vs n8n</a></li>
+        </ul>
+
+        <h2>Bottom line</h2>
+        <p>
+          <strong>Choose <a href="/tools/zapier">Zapier</a></strong> if you want the easiest setup and the widest integration library. It works for simple automations where you value speed over cost. Best for non-technical founders who just need things connected.
+        </p>
+        <p>
+          <strong>Choose <a href="/tools/make">Make</a></strong> if you need complex workflows at a reasonable price. The visual builder is powerful once you learn it, and the pricing is hard to beat for the amount of operations you get. Best for founders who have outgrown simple trigger-action automations.
+        </p>
+        <p>
+          <strong>Choose <a href="/tools/n8n">n8n</a></strong> if you are technical and want full control. Self-hosting eliminates recurring costs beyond server hosting, and the ability to write custom code inside workflows is unmatched. Best for developer-founders who want maximum flexibility.
+        </p>
+        <p>
+          Still deciding on the rest of your stack? <a href="/stack-builder">Try our Stack Builder</a> to see how these tools fit alongside the rest of your setup.
+        </p>
+      </div>
+
+      <!-- Newsletter CTA -->
+      <div class="mt-12">
+        <NewsletterSignup />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

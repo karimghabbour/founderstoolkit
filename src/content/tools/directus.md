@@ -17,6 +17,8 @@ alternatives:
   - "supabase"
   - "hasura"
 lastVerified: "2026-02-07"
+lastOutreach: "2026-02-07"
+outreachEmail: "info@directus.io"
 ---
 
 Directus is an open-source data platform that layers a real-time API and intuitive admin app on top of any SQL database. It supports REST and GraphQL out of the box, with granular role-based access control and built-in file storage. Ideal for solo founders who need a content backend with a visual dashboard, or who want to expose an existing database as an API without rewriting anything.

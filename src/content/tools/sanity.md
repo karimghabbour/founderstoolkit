@@ -17,6 +17,8 @@ alternatives:
   - "strapi"
   - "ghost"
 lastVerified: "2026-02-07"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@sanity.io"
 ---
 
 Sanity is a headless CMS that separates content management from presentation, allowing you to deliver content to any frontend via API. Its open-source editing studio (Sanity Studio) is fully customizable with React components. Solo founders benefit from the generous free tier, but should be aware that costs can increase as traffic and team size grow.

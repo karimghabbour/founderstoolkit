@@ -17,6 +17,8 @@ alternatives:
   - "directus"
   - "pocketbase"
 lastVerified: "2026-02-07"
+lastOutreach: "2026-02-07"
+outreachEmail: "tanmai@hasura.io"
 ---
 
 Hasura generates instant GraphQL and REST APIs from your PostgreSQL, MySQL, SQL Server, or other databases. It includes a built-in authorization engine with row-level permissions, event triggers, and the ability to federate multiple data sources into a single API. The free cloud tier is suitable for prototyping, though solo founders should note the jump to $99/mo for the Professional plan.

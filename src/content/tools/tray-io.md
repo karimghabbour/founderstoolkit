@@ -17,6 +17,8 @@ alternatives:
   - "make"
   - "n8n"
 lastVerified: "2026-02-07"
+lastOutreach: "2026-02-07"
+outreachEmail: "rich@tray.io"
 ---
 
 Tray.io (now branded as Tray.ai) is an enterprise automation platform designed for complex, multi-step workflows across business systems. It offers a visual builder with powerful data transformation capabilities and a universal API connector. Pricing starts at $595/mo for the Standard plan, making it best suited for funded startups or businesses with high-volume integration needs rather than bootstrapped solo founders.

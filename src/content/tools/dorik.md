@@ -17,6 +17,8 @@ alternatives:
   - "carrd"
   - "squarespace"
 lastVerified: "2026-02-07"
+lastOutreach: "2026-02-07"
+outreachEmail: "mizan@dorik.com"
 ---
 
 Dorik is a budget-friendly no-code website builder that includes AI-powered site generation, custom collections, and membership features. The free plan allows up to 5 sites on a Dorik subdomain, while paid plans start around $4/mo and add custom domains, more pages, and additional members. It is a strong option for solo founders looking for an affordable alternative to pricier builders like Webflow or Squarespace.

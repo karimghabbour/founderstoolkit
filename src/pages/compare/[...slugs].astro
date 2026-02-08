@@ -77,41 +77,90 @@ for (const other of sameCategoryTools) {
   }
 }
 
+const categoryName = category?.data.name || 'software';
 const title = `${tool1.data.name} vs ${tool2.data.name}`;
-const description = `Compare ${tool1.data.name} and ${tool2.data.name}. See features, pricing, pros and cons side by side.`;
+const description = `Compare ${tool1.data.name} vs ${tool2.data.name}: pricing, features, pros and cons. See which ${categoryName} tool is better for solo founders.`;
 
-// JSON-LD structured data
-const jsonLd = JSON.stringify([
+// JSON-LD structured data — SoftwareApplication for each tool
+const siteUrl = 'https://solofoundertools.com';
+const categorySlug = category ? getSlug(category.id) : '';
+const jsonLdSoftware = JSON.stringify([
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": `${siteUrl}/tools/${tool1Slug}`,
     "name": tool1.data.name,
     "description": tool1.data.description,
     "url": tool1.data.website,
-    "applicationCategory": "BusinessApplication",
-    "offers": { "@type": "Offer", "description": tool1.data.pricing },
+    "applicationCategory": categoryName,
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "description": tool1.data.pricing,
+      "category": "Software",
+    },
   },
   {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
+    "@id": `${siteUrl}/tools/${tool2Slug}`,
     "name": tool2.data.name,
     "description": tool2.data.description,
     "url": tool2.data.website,
-    "applicationCategory": "BusinessApplication",
-    "offers": { "@type": "Offer", "description": tool2.data.pricing },
+    "applicationCategory": categoryName,
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "description": tool2.data.pricing,
+      "category": "Software",
+    },
   },
 ]);
+
+// JSON-LD BreadcrumbList for search engine breadcrumb display
+const jsonLdBreadcrumb = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": siteUrl,
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Categories",
+      "item": `${siteUrl}/categories`,
+    },
+    ...(category ? [{
+      "@type": "ListItem",
+      "position": 3,
+      "name": category.data.name,
+      "item": `${siteUrl}/categories/${categorySlug}`,
+    }] : []),
+    {
+      "@type": "ListItem",
+      "position": category ? 4 : 3,
+      "name": `${tool1.data.name} vs ${tool2.data.name}`,
+    },
+  ],
+});
 ---
 
 <BaseLayout title={title} description={description}>
   <Fragment slot="head">
-    <script type="application/ld+json" set:html={jsonLd} />
+    <script type="application/ld+json" set:html={jsonLdSoftware} />
+    <script type="application/ld+json" set:html={jsonLdBreadcrumb} />
   </Fragment>
 
   <article class="py-12">
     <div class="max-w-6xl mx-auto px-4">
       <!-- Breadcrumb -->
-      <nav class="mb-8 text-sm">
+      <nav class="mb-8 text-sm" aria-label="Breadcrumb">
+        <a href="/" class="text-gray-500 hover:text-gray-700">Home</a>
+        <span class="mx-2 text-gray-400">/</span>
         <a href="/categories" class="text-gray-500 hover:text-gray-700">Categories</a>
         <span class="mx-2 text-gray-400">/</span>
         {category && (
@@ -122,7 +171,7 @@ const jsonLd = JSON.stringify([
             <span class="mx-2 text-gray-400">/</span>
           </>
         )}
-        <span class="text-gray-900">Compare</span>
+        <span class="text-gray-900">{tool1.data.name} vs {tool2.data.name}</span>
       </nav>
 
       <!-- Header -->
@@ -204,7 +253,7 @@ const jsonLd = JSON.stringify([
         </div>
       </div>
 
-      <!-- Verdict section -->
+      <!-- Verdict section — top 2 pros per tool for featured snippet targeting -->
       <section class="mb-16 border-t border-gray-100 pt-16">
         <p class="text-xs font-semibold tracking-widest uppercase text-gray-400 mb-2">The verdict</p>
         <h2 class="font-display text-3xl text-gray-900 mb-8">Which one is right for you?</h2>
@@ -212,7 +261,7 @@ const jsonLd = JSON.stringify([
           <div class="bg-[#fafaf9] rounded-xl p-6 border border-gray-200">
             <p class="text-xs font-semibold tracking-widest uppercase text-emerald-600 mb-3">Choose {tool1.data.name} if you want</p>
             <ul class="space-y-3">
-              {tool1.data.pros.map(pro => (
+              {(tool1.data.pros || []).slice(0, 2).map(pro => (
                 <li class="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed">
                   <span class="text-emerald-500 mt-0.5 flex-shrink-0 font-medium">&rarr;</span>
                   {pro}
@@ -228,7 +277,7 @@ const jsonLd = JSON.stringify([
           <div class="bg-[#fafaf9] rounded-xl p-6 border border-gray-200">
             <p class="text-xs font-semibold tracking-widest uppercase text-emerald-600 mb-3">Choose {tool2.data.name} if you want</p>
             <ul class="space-y-3">
-              {tool2.data.pros.map(pro => (
+              {(tool2.data.pros || []).slice(0, 2).map(pro => (
                 <li class="flex items-start gap-2.5 text-sm text-gray-700 leading-relaxed">
                   <span class="text-emerald-500 mt-0.5 flex-shrink-0 font-medium">&rarr;</span>
                   {pro}

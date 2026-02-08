@@ -17,6 +17,8 @@ alternatives:
   - "squarespace"
   - "wix"
 lastVerified: "2026-02-07"
+lastOutreach: "2026-02-07"
+outreachEmail: "info@duda.co"
 ---
 
 Duda is a website builder aimed at agencies, freelancers, and SaaS companies that build sites for clients. Plans start at $19/mo and include features like white-label dashboards, client billing, and team collaboration out of the box. For solo founders who also build websites for clients, Duda offers a more streamlined workflow than general-purpose builders.

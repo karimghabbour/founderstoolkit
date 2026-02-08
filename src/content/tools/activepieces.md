@@ -17,6 +17,8 @@ alternatives:
   - "make"
   - "n8n"
 lastVerified: "2026-02-07"
+lastOutreach: "2026-02-07"
+outreachEmail: "ash@activepieces.com"
 ---
 
 Activepieces is an open-source workflow automation tool that can be self-hosted for free with no task limits, or used as a managed cloud service. The cloud free plan includes 1,000 task executions per month, while the Standard plan charges $5 per active flow per month with unlimited runs. For solo founders who want full data control without per-task pricing, the self-hosted Community Edition is a strong alternative to Zapier and Make.

@@ -17,6 +17,8 @@ alternatives:
   - "contentful"
   - "ghost"
 lastVerified: "2026-02-07"
+lastOutreach: "2026-02-07"
+outreachEmail: "pierre@strapi.io"
 ---
 
 Strapi is an open-source headless CMS that gives you full control over your content API. You can self-host it for free on your own server or use Strapi Cloud for a managed experience starting at $29/mo. Solo founders who are comfortable with Node.js can save money by self-hosting, while those who prefer a managed solution can use Strapi Cloud to avoid server maintenance.

@@ -16,6 +16,8 @@ alternatives:
   - "ghost"
   - "wordpress"
 lastVerified: "2026-02-07"
+lastOutreach: "2026-02-07"
+outreachEmail: "hello@hashnode.com"
 ---
 
 Hashnode is a blogging platform built for developers that lets you publish on your own custom domain for free. Posts are also distributed through Hashnode's community feed, giving new blogs built-in discoverability. The Pro plan adds features like AI-powered writing tools, team blogs, and advanced analytics.

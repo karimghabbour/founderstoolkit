@@ -17,6 +17,8 @@ alternatives:
   - "pocketbase"
   - "appwrite"
 lastVerified: "2026-02-07"
+lastOutreach: "2026-02-07"
+outreachEmail: "jamie@convex.dev"
 ---
 
 Convex is a reactive backend platform where the database, server functions, and caching work together as one system. It handles real-time subscriptions, ACID transactions, and file storage without requiring separate infrastructure. The free Starter plan is pay-as-you-go with no base cost, making it practical for solo founders to prototype and launch without upfront commitment.

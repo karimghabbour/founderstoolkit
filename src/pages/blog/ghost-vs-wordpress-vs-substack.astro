@@ -1,0 +1,198 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import NewsletterSignup from '../../components/NewsletterSignup.astro';
+
+export const frontmatter = {
+  title: "Ghost vs WordPress vs Substack: Where Should Solo Founders Publish?",
+  date: "2026-02-07",
+  excerpt: "Comparing Ghost, WordPress, and Substack on pricing, content ownership, monetization, and SEO — with clear recommendations based on your publishing goals."
+};
+---
+
+<BaseLayout title={frontmatter.title} description={frontmatter.excerpt}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": frontmatter.title,
+      "datePublished": frontmatter.date,
+      "description": frontmatter.excerpt,
+      "publisher": {
+        "@type": "Organization",
+        "name": "Solo Founder Tools"
+      }
+    })} />
+  </Fragment>
+
+  <article class="py-12">
+    <div class="max-w-3xl mx-auto px-4">
+      <!-- Breadcrumb -->
+      <nav class="text-sm text-gray-500 mb-6">
+        <a href="/" class="hover:text-primary-600">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/blog" class="hover:text-primary-600">Blog</a>
+        <span class="mx-2">/</span>
+        <span class="text-gray-700">Ghost vs WordPress vs Substack</span>
+      </nav>
+
+      <p class="text-sm text-gray-500 mb-3">{frontmatter.date}</p>
+      <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+        {frontmatter.title}
+      </h1>
+
+      <div class="prose prose-gray max-w-none">
+        <p class="text-xl text-gray-600 mb-8">
+          Content is how solo founders build audiences, establish authority, and drive organic traffic. But the platform you publish on affects everything: what you own, how you monetize, and how easy it is to get found on Google. Here is an honest look at the three most popular publishing platforms for one-person businesses.
+        </p>
+
+        <h2>Quick comparison</h2>
+      </div>
+
+      <!-- Comparison table -->
+      <div class="mt-4 mb-8 overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b-2 border-gray-200">
+              <th class="text-left py-3 pr-4 font-semibold text-gray-900"></th>
+              <th class="text-left py-3 pr-4 font-semibold text-gray-900">Ghost</th>
+              <th class="text-left py-3 pr-4 font-semibold text-gray-900">WordPress</th>
+              <th class="text-left py-3 font-semibold text-gray-900">Substack</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Pricing</td>
+              <td class="py-3 pr-4 text-gray-600">Self-host free, managed from $9/mo</td>
+              <td class="py-3 pr-4 text-gray-600">Free software, hosting from $3/mo</td>
+              <td class="py-3 text-gray-600">Free, 10% of paid subs</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Ownership</td>
+              <td class="py-3 pr-4 text-gray-600">Full (self-host or export)</td>
+              <td class="py-3 pr-4 text-gray-600">Full (self-hosted)</td>
+              <td class="py-3 text-gray-600">Partial (can export, but limited)</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Monetization</td>
+              <td class="py-3 pr-4 text-gray-600">Built-in memberships, 0% cut</td>
+              <td class="py-3 pr-4 text-gray-600">Via plugins (WooCommerce, etc.)</td>
+              <td class="py-3 text-gray-600">Built-in paid newsletters, 10% cut</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">SEO</td>
+              <td class="py-3 pr-4 text-gray-600">Strong out of the box</td>
+              <td class="py-3 pr-4 text-gray-600">Excellent with plugins (Yoast, Rank Math)</td>
+              <td class="py-3 text-gray-600">Basic, limited control</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Setup time</td>
+              <td class="py-3 pr-4 text-gray-600">Minutes (managed) to hours (self-host)</td>
+              <td class="py-3 pr-4 text-gray-600">Hours to days</td>
+              <td class="py-3 text-gray-600">Minutes</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="py-3 pr-4 font-medium text-gray-900">Best for</td>
+              <td class="py-3 pr-4 text-gray-600">Independent publishers, membership sites</td>
+              <td class="py-3 pr-4 text-gray-600">SEO-driven content, complex sites</td>
+              <td class="py-3 text-gray-600">Newsletter-first writers</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="prose prose-gray max-w-none">
+        <h2>Ghost: the modern publishing platform</h2>
+        <p>
+          <a href="/tools/ghost">Ghost</a> was built by John O'Nolan, a former WordPress core team member, as a focused alternative to WordPress's increasing complexity. It is open source under the MIT license and run as a non-profit foundation.
+        </p>
+        <p>
+          The managed service starts at $9/mo and gives you a clean, fast publishing experience with built-in membership and payment features. You can offer free and paid tiers to your readers, and Ghost takes zero percent of your revenue. Compare that to Substack's 10% cut on every paid subscription. If you are charging $10/mo and have 100 paid subscribers, that is $100/mo to Substack versus $0 to Ghost (plus your hosting cost).
+        </p>
+        <p>
+          Ghost's SEO is solid out of the box. Clean URLs, proper meta tags, structured data, fast page loads, and an automatically generated sitemap. You do not need to install plugins or configure anything. The editor is minimal and focused on writing, which is either a feature or a limitation depending on your perspective.
+        </p>
+        <p>
+          The self-hosted option is completely free but requires a server and some technical knowledge. Ghost's theming system uses Handlebars templates, which gives you design flexibility but means customization requires some comfort with code.
+        </p>
+
+        <h2>WordPress: the everything platform</h2>
+        <p>
+          <a href="/tools/wordpress">WordPress</a> powers over 40% of all websites on the internet. The software itself is free and open source. You need separate hosting, which starts as low as $3/mo from budget providers, though $10-25/mo for managed WordPress hosting gives you a better experience.
+        </p>
+        <p>
+          WordPress's strength is its ecosystem. Over 60,000 plugins let you add almost any feature imaginable: SEO optimization (Yoast, Rank Math), e-commerce (WooCommerce), membership systems, forums, learning management systems, and more. The theme ecosystem is equally vast. Whatever you want to build, someone has probably built a WordPress plugin for it.
+        </p>
+        <p>
+          For SEO specifically, WordPress with Rank Math or Yoast is arguably the most powerful combination available. You get granular control over meta descriptions, canonical URLs, schema markup, XML sitemaps, breadcrumbs, and content analysis. Many SEO professionals consider WordPress the gold standard for organic search.
+        </p>
+        <p>
+          The downsides are real. WordPress requires ongoing maintenance: plugin updates, security patches, database optimization, and spam management. Plugin conflicts can break your site. Performance requires caching plugins and optimization work. And the admin interface, while functional, shows its age. For a solo founder, the maintenance overhead is a genuine cost measured in your time.
+        </p>
+
+        <h2>Substack: zero friction, limited control</h2>
+        <p>
+          <a href="/tools/substack">Substack</a> is the simplest option on this list. Sign up, write, publish. There is no hosting to manage, no software to update, and no design decisions to make. Your publication looks like every other Substack, and that is by design.
+        </p>
+        <p>
+          The platform is free to use. Substack makes money by taking a 10% cut of paid subscriptions (plus Stripe processing fees). If you are only running a free newsletter, you pay nothing. If you turn on paid subscriptions, the costs add up. At $10K/year in subscription revenue, Substack takes $1,000. At $100K/year, they take $10,000.
+        </p>
+        <p>
+          Substack's built-in audience discovery is a meaningful advantage. The recommendation network, leaderboards, and app-based reading experience help new publications find subscribers. For a solo founder starting from zero, this distribution can be more valuable than the revenue you give up.
+        </p>
+        <p>
+          The limitations are significant. SEO control is minimal: you cannot customize meta descriptions, URL slugs are limited, and your content lives on Substack's domain. Design customization is nearly nonexistent. You can export your subscriber list and posts, but migrating away means rebuilding your web presence and redirecting traffic. And if Substack changes its policies, pricing, or recommendation algorithm, you have limited recourse.
+        </p>
+
+        <h2>Monetization compared</h2>
+        <p>
+          This is where the differences matter most for solo founders thinking about revenue:
+        </p>
+        <ul>
+          <li><strong>Ghost</strong>: Built-in Stripe integration for memberships. You keep 100% of revenue minus Stripe's processing fee (2.9% + 30 cents). You can offer free, monthly, and annual tiers with gated content.</li>
+          <li><strong>WordPress</strong>: No built-in monetization. You add it through plugins: MemberPress, Restrict Content Pro, WooCommerce Subscriptions, or others. More flexible but more work to set up and maintain. Plugin costs range from free to $200+/year.</li>
+          <li><strong>Substack</strong>: Built-in paid subscriptions. Substack takes 10% of revenue plus Stripe fees. The simplest setup, the highest ongoing cost.</li>
+        </ul>
+        <p>
+          If monetization is your priority, run the numbers. At $1,000/mo in subscription revenue, Substack costs $100/mo in platform fees. Ghost's managed hosting costs $9-25/mo. WordPress hosting costs $3-25/mo plus plugin costs. The breakeven point where Ghost and WordPress become cheaper than Substack comes quickly as revenue grows.
+        </p>
+
+        <h2>Content ownership</h2>
+        <p>
+          Both <a href="/tools/ghost">Ghost</a> and <a href="/tools/wordpress">WordPress</a> give you full ownership of your content and subscriber data. With self-hosting, your data is on your server. Even with managed hosting, you can export everything at any time.
+        </p>
+        <p>
+          <a href="/tools/substack">Substack</a> lets you export your posts and subscriber email list, but you do not own the URL, the reader relationships within the app, or the recommendation network connections. If you leave, your subscribers get an email saying you moved. Whether they follow is up to them.
+        </p>
+
+        <h2>Head-to-head comparisons</h2>
+        <p>
+          Dig deeper into specific matchups on our comparison pages:
+        </p>
+        <ul>
+          <li><a href="/compare/ghost-vs-wordpress">Ghost vs WordPress</a></li>
+          <li><a href="/compare/ghost-vs-substack">Ghost vs Substack</a></li>
+          <li><a href="/compare/wordpress-vs-substack">WordPress vs Substack</a></li>
+        </ul>
+
+        <h2>Bottom line</h2>
+        <p>
+          <strong>Choose <a href="/tools/ghost">Ghost</a></strong> if you want a modern, focused publishing platform with built-in monetization and zero revenue share. It is the best balance of simplicity and ownership for solo founders who plan to make money from content. The managed hosting takes the maintenance burden off your plate.
+        </p>
+        <p>
+          <strong>Choose <a href="/tools/wordpress">WordPress</a></strong> if SEO is your primary growth channel and you need maximum flexibility. The plugin ecosystem is unmatched, and the SEO tools are the most powerful available. Accept the maintenance tradeoff or use managed WordPress hosting to reduce it.
+        </p>
+        <p>
+          <strong>Choose <a href="/tools/substack">Substack</a></strong> if you are just starting out, want zero setup friction, and value Substack's built-in audience discovery. It is the fastest path from idea to published newsletter. Plan to migrate if your paid subscriptions grow past a few hundred dollars per month, at which point the 10% cut starts to sting.
+        </p>
+        <p>
+          Figuring out the rest of your publishing stack? <a href="/stack-builder">Try our Stack Builder</a> to see how your publishing platform fits alongside your email, analytics, and other tools.
+        </p>
+      </div>
+
+      <!-- Newsletter CTA -->
+      <div class="mt-12">
+        <NewsletterSignup />
+      </div>
+    </div>
+  </article>
+</BaseLayout>

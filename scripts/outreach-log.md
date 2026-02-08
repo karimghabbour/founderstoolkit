@@ -209,3 +209,27 @@
 **Response tracking:** All 79 — pending
 
 **Total outreach to date: 102 emails (4 on Feb 2 + 19 on Feb 6 + 79 on Feb 7)**
+
+### 2026-02-07 (batch 4 — new tools)
+
+**Sent: 11 emails (newly added tools)**
+
+| Tool | Contact | Type |
+|------|---------|------|
+| Activepieces | ash@activepieces.com | Founder (Ash Samhouri) |
+| Dorik | mizan@dorik.com | Founder (Mizanur Rahman) |
+| Strapi | pierre@strapi.io | Founder (Pierre Burgy) |
+| Hasura | tanmai@hasura.io | Founder (Tanmai Gopal) |
+| Convex | jamie@convex.dev | Founder (Jamie Turner) |
+| Directus | info@directus.io | General (Ben Haynes) |
+| Appwrite | team@appwrite.io | General (Eldad Fux) |
+| Hashnode | hello@hashnode.com | General (Syed Fazle Rahman) |
+| Sanity | hello@sanity.io | General (Magnus Hillestad) |
+| Tray.io | rich@tray.io | Founder (Rich Waldron) |
+| Duda | info@duda.co | General (Itai Sadan) |
+
+**Skipped (large companies / acquired):** IFTTT, Wix, WordPress.com, Contentful, Pipedream (acquired by Workday), WordPress.org (open-source project)
+
+**Response tracking:** All 11 — pending
+
+**Total outreach to date: 113 emails (4 on Feb 2 + 19 on Feb 6 + 79+11 on Feb 7)**
