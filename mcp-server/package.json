@@ -7,8 +7,13 @@
   "bin": {
     "founderstoolkit-mcp": "./index.mjs"
   },
-  "keywords": ["mcp", "tools", "solo-founder", "saas", "directory", "ai-coding"],
+  "keywords": ["mcp", "model-context-protocol", "claude", "ai-tools", "tools", "solo-founder", "saas", "directory", "ai-coding", "startups"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghabbour/founderstoolkit"
+  },
+  "homepage": "https://founderstoolkit.org",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.0"
   }
