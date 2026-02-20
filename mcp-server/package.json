@@ -1,0 +1,15 @@
+{
+  "name": "founderstoolkit-mcp",
+  "version": "1.0.0",
+  "description": "MCP server exposing 140+ curated tools for solo founders — query by category, compare tools, get recommendations",
+  "main": "index.mjs",
+  "type": "module",
+  "bin": {
+    "founderstoolkit-mcp": "./index.mjs"
+  },
+  "keywords": ["mcp", "tools", "solo-founder", "saas", "directory", "ai-coding"],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}

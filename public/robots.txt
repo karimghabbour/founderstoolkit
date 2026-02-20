@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://founderstoolkit.org/sitemap-index.xml
